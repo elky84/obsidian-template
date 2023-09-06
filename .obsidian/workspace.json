@@ -4,15 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "80a4bd6a3aaaa30b",
+        "id": "e8a12b148fb65b66",
         "type": "tabs",
         "children": [
           {
-            "id": "a45ea0a511a2a4d0",
+            "id": "9f03841fe549a93a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3. Resource/bookshelf.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
         ]
@@ -89,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "3. Resource/bookshelf.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "3. Resource/bookshelf.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "3. Resource/bookshelf.md"
+              }
             }
           },
           {
@@ -172,8 +181,25 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "efd9fd2799ec69bc",
+  "active": "9f03841fe549a93a",
   "lastOpenFiles": [
+    "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
+    "3. Resource/Hobby/draw.md",
+    "3. Resource/Excalidraw/Diagram.md",
+    "1. Project/Task View.md",
+    "1. Project/Repeat Tasks.md",
+    "1. Project/dev toy/프로젝트 A.md",
+    "template/daily note.md",
+    "template/Zettelkasten/permanent note.md",
+    "template/Zettelkasten/fleet note.md",
+    "3. Resource/Canvas/Canvas.canvas",
+    "3. Resource/Draw.io/Diagram.svg",
+    "3. Resource/Canvas",
+    "README.md",
+    "1. Project/Tasks.md",
+    "1. Project/To Do.md",
+    "1. Project/daily logs/2023-08-15.md",
+    "Day Planners/Day Planner-20230907.md",
     "Day Planners/Day Planner-20230825.md",
     "Day Planners"
   ]
