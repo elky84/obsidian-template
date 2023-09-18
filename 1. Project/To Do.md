@@ -16,11 +16,13 @@ kanban-plugin: basic
 
 ## Complete
 
+**Complete**
 - [ ] 완료 된 일
 
 
 ## Hodling
 
+**Complete**
 - [ ] 진행이멈춘 일
 
 

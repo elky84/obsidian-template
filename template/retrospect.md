@@ -1,6 +1,8 @@
 --- 
-created: 2023-08-15 13:43 
-tags: retrospect, 회고
+date: <% tp.date.now("YYYY-MM-DD") %>
+tags: 
+- retrospect
+- 회고
 
 ---
 

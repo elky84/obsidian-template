@@ -1,13 +1,15 @@
 ---
 title: <% tp.file.title %>
-created:  <% tp.file.creation_date() %>
+date:  <% tp.file.creation_date() %>
 tags: dailynote
 ---
 ## [[<% tp.date.now("YYYY-MM-DD", -1, tp.file.title, "YYYY-MM-DD") %>| <<]] | <% tp.file.title %> | [[<% tp.date.now("YYYY-MM-DD", 1, tp.file.title, "YYYY-MM-DD") %> | >> ]]
 
 # 📅  일정
 - [ ] 
-
+# ⏳습관
+- [ ] 산책 📅 <% tp.file.title %> 
+- [ ] Dev Toy  ⏰ <% tp.file.title %> 19:00
 # 📒 메모
 - 
 
@@ -47,4 +49,4 @@ heading does not include Day Planner
 ## 📅 Full Calendar
 
 ## Day Planner
-- [ ] 00:00 휴식
+- 00:00 휴식

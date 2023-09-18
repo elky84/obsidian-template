@@ -1,5 +1,5 @@
 {
-  "folder": "1. Project/daily logs",
-  "template": "1. Project/daily logs/@ daily note template",
+  "folder": "Daily Notes",
+  "template": "Template/daily note",
   "autorun": false
 }

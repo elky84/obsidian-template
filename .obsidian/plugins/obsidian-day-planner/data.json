@@ -1,81 +1,16 @@
 {
-  "customFolder": "Day Planners",
-  "mode": 1,
-  "mermaid": true,
-  "notesToDates": [
-    {
-<<<<<<< HEAD
-      "notePath": "daily logs/2023-08-07.md",
-      "date": "Mon Aug 07 2023"
-    },
-    {
-      "notePath": "daily logs/2023-08-08.md",
-      "date": "Tue Aug 08 2023"
-    },
-    {
-      "notePath": "daily logs/2023-08-10.md",
-      "date": "Thu Aug 10 2023"
-    },
-    {
-      "notePath": "daily logs/2023-08-11.md",
-      "date": "Fri Aug 11 2023"
-    },
-    {
-      "notePath": "daily logs/2023-08-12.md",
-      "date": "Sat Aug 12 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-13.md",
-      "date": "Sun Aug 13 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-14.md",
-      "date": "Mon Aug 14 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-16.md",
-      "date": "Wed Aug 16 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-17.md",
-      "date": "Thu Aug 17 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-18.md",
-      "date": "Fri Aug 18 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-19.md",
-      "date": "Sat Aug 19 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-20.md",
-      "date": "Sun Aug 20 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-21.md",
-      "date": "Mon Aug 21 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-22.md",
-      "date": "Tue Aug 22 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-23.md",
-      "date": "Wed Aug 23 2023"
-=======
-      "notePath": "1. Project/daily logs/2023-08-15.md",
-      "date": "Tue Aug 15 2023"
-    },
-    {
-      "notePath": "1. Project/daily logs/2023-08-15.md",
-      "date": "Sun Aug 20 2023"
->>>>>>> dedff2e (vault backup: 2023-08-20 16:03:33)
-    }
-  ],
-  "completePastItems": false,
-  "circularProgress": true,
-  "nowAndNextInStatusBar": true,
-  "showTaskNotification": true,
-  "timelineZoomLevel": 2
+  "circularProgress": false,
+  "nowAndNextInStatusBar": false,
+  "showTaskNotification": false,
+  "zoomLevel": 2,
+  "timelineIcon": "calendar-with-checkmark",
+  "endLabel": "All done",
+  "startHour": 6,
+  "timelineDateFormat": "LLLL",
+  "centerNeedle": false,
+  "plannerHeading": "Day planner",
+  "plannerHeadingLevel": 1,
+  "timelineColored": false,
+  "timelineStartColor": "#006466",
+  "timelineEndColor": "#4d194d"
 }

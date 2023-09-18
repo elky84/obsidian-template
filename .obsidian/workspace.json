@@ -13,10 +13,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. Resource/bookshelf.md",
+                "file": "README.md",
                 "mode": "source",
                 "backlinks": true,
-                "source": false
+                "source": true
               }
             }
           }
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:project",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Resource/bookshelf.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Resource/bookshelf.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. Resource/bookshelf.md"
+                "file": "README.md"
               }
             }
           },
@@ -153,9 +153,27 @@
               "type": "reminder-list",
               "state": {}
             }
+          },
+          {
+            "id": "d55625f54bc20855",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          },
+          {
+            "id": "40e4f1e85539b70d",
+            "type": "leaf",
+            "state": {
+              "type": "tasks_timeline_view",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -164,11 +182,9 @@
   "left-ribbon": {
     "hiddenItems": {
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "templater-obsidian:Templater": false,
       "obsidian-advanced-slides:Show Slide Preview": false,
       "obsidian-full-calendar:Open Full Calendar": false,
-      "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-book-search-plugin:Create new book note": false,
       "obsidian-read-it-later:ReadItLater: Save clipboard": false,
       "chronology:Open Chronology": false,
@@ -178,29 +194,46 @@
       "daily-notes:Open today's daily note": false,
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
-      "audio-recorder:Start/stop recording": false
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-day-planner:Week plan": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "9f03841fe549a93a",
+  "active": "40e4f1e85539b70d",
   "lastOpenFiles": [
-    "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
-    "3. Resource/Hobby/draw.md",
-    "3. Resource/Excalidraw/Diagram.md",
-    "1. Project/Task View.md",
-    "1. Project/Repeat Tasks.md",
+    "Template/weekly note.md",
+    "Template/daily note.md",
+    "Template/book.md",
+    "Template/vision.md",
+    "Template/retrospect.md",
+    "Template/project management.md",
+    "Template/Zettelkasten/fleet note.md",
+    "Template/Zettelkasten/permanent note.md",
+    "4. Archive/write/2022 카타르 월드컵 16강 예상.md",
+    "4. Archive/write/2022 카타르 월드컵 8강 예상.md",
+    "4. Archive/write/2022 카타르 월드컵 4강 예상.md",
     "1. Project/dev toy/프로젝트 A.md",
-    "template/daily note.md",
-    "template/Zettelkasten/permanent note.md",
-    "template/Zettelkasten/fleet note.md",
-    "3. Resource/Canvas/Canvas.canvas",
-    "3. Resource/Draw.io/Diagram.svg",
-    "3. Resource/Canvas",
-    "README.md",
-    "1. Project/Tasks.md",
+    "1. Project/Repeat Tasks.md",
     "1. Project/To Do.md",
-    "1. Project/daily logs/2023-08-15.md",
-    "Day Planners/Day Planner-20230907.md",
-    "Day Planners/Day Planner-20230825.md",
+    "1. Project/Tasks.md",
+    "1. Project/Task View.md",
+    "README.md",
+    "Daily Notes",
+    "4. Archive/daily logs/2023-08-14.md",
+    "3. Resource/MindMap/MindMap.md",
+    "3. Resource/bookshelf.md",
+    "3. Resource/Hobby/draw.md",
+    "3. Resource/ExcaliBrain/excalibrain.md",
+    "3. Resource/MindMap",
+    "3. Resource/Draw.io/Diagram.svg",
+    "3. Resource/Excalidraw/Diagram.md",
+    "3. Resource/ExcaliBrain",
+    "3. Resource/data view - write.md",
+    "Daily Notes/2023-08-15.md",
+    "Day Planners/Day Planner-20230918.md",
+    "3. Resource/Canvas/Canvas.canvas",
+    "3. Resource/Canvas",
     "Day Planners"
   ]
 }

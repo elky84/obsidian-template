@@ -1,6 +1,6 @@
 ---
 title: project management
-created:  2023-08-15 13:43
+date:  <% tp.date.now("YYYY-MM-DD") %>
 tags: 'project'
 ---
 

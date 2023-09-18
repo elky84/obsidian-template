@@ -30,6 +30,25 @@ __export(main_exports, {
 module.exports = __toCommonJS(main_exports);
 var import_obsidian6 = require("obsidian");
 
+// src/core/ElementCategory.ts
+var ElementCategory = /* @__PURE__ */ ((ElementCategory2) => {
+  ElementCategory2["Flowchart"] = "Flowchart";
+  ElementCategory2["SequenceDiagram"] = "SequenceDiagram";
+  ElementCategory2["ClassDiagram"] = "ClassDiagram";
+  ElementCategory2["StateDiagram"] = "StateDiagram";
+  ElementCategory2["EntityRelationshipDiagram"] = "EntityRelationshipDiagram";
+  ElementCategory2["UserJourneyDiagram"] = "UserJourneyDiagram";
+  ElementCategory2["GanttChart"] = "GanttChart";
+  ElementCategory2["PieChart"] = "PieChart";
+  ElementCategory2["RequirementDiagram"] = "RequirementDiagram";
+  ElementCategory2["GitGraph"] = "GitGraph";
+  ElementCategory2["Mindmap"] = "Mindmap";
+  ElementCategory2["Timeline"] = "Timeline";
+  ElementCategory2["C4Diagram"] = "C4Diagram";
+  ElementCategory2["QuadrantChart"] = "QuadrantChart";
+  return ElementCategory2;
+})(ElementCategory || {});
+
 // src/elements/sampleDiagrams.ts
 var sampleDiagrams = {
   EntityRelationshipDiagram: `erDiagram
@@ -100,23 +119,129 @@ Alice-)John: See you later!`,
       Do work: 1: Me, Cat
     section Go home
       Go downstairs: 5: Me
-      Sit down: 5: Me`
+      Sit down: 5: Me`,
+  Mindmap: `mindmap
+      Root
+          A
+            B
+            C`,
+  Timeline: `timeline
+      title History of Social Media Platform
+      2002 : LinkedIn
+      2004 : Facebook
+         : Google
+      2005 : Youtube
+      2006 : Twitter`,
+  QuadrantChart: `quadrantChart
+      title Reach and engagement of campaigns
+      x-axis Low Reach --> High Reach
+      y-axis Low Engagement --> High Engagement
+      quadrant-1 We should expand
+      quadrant-2 Need to promote
+      quadrant-3 Re-evaluate
+      quadrant-4 May be improved
+      Campaign A: [0.3, 0.6]
+      Campaign B: [0.45, 0.23]
+      Campaign C: [0.57, 0.69]
+      Campaign D: [0.78, 0.34]
+      Campaign E: [0.40, 0.34]
+      Campaign F: [0.35, 0.78]`,
+  C4Diagram: `C4Context
+      title System Context diagram for Internet Banking System
+      Enterprise_Boundary(b0, "BankBoundary0") {
+        Person(customerA, "Banking Customer A", "A customer of the bank, with personal bank accounts.")
+        Person(customerB, "Banking Customer B")
+        Person_Ext(customerC, "Banking Customer C", "desc")
+    
+        Person(customerD, "Banking Customer D", "A customer of the bank, <br/> with personal bank accounts.")
+    
+        System(SystemAA, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
+    
+        Enterprise_Boundary(b1, "BankBoundary") {
+    
+        SystemDb_Ext(SystemE, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+    
+        System_Boundary(b2, "BankBoundary2") {
+          System(SystemA, "Banking System A")
+          System(SystemB, "Banking System B", "A system of the bank, with personal bank accounts. next line.")
+        }
+    
+        System_Ext(SystemC, "E-mail system", "The internal Microsoft Exchange e-mail system.")
+        SystemDb(SystemD, "Banking System D Database", "A system of the bank, with personal bank accounts.")
+    
+        Boundary(b3, "BankBoundary3", "boundary") {
+          SystemQueue(SystemF, "Banking System F Queue", "A system of the bank.")
+          SystemQueue_Ext(SystemG, "Banking System G Queue", "A system of the bank, with personal bank accounts.")
+        }
+        }
+      }
+    
+      BiRel(customerA, SystemAA, "Uses")
+      BiRel(SystemAA, SystemE, "Uses")
+      Rel(SystemAA, SystemC, "Sends e-mails", "SMTP")
+      Rel(SystemC, customerA, "Sends e-mails to")
+    
+      UpdateElementStyle(customerA, $fontColor="red", $bgColor="grey", $borderColor="red")
+      UpdateRelStyle(customerA, SystemAA, $textColor="blue", $lineColor="blue", $offsetX="5")
+      UpdateRelStyle(SystemAA, SystemE, $textColor="blue", $lineColor="blue", $offsetY="-10")
+      UpdateRelStyle(SystemAA, SystemC, $textColor="blue", $lineColor="blue", $offsetY="-40", $offsetX="-50")
+      UpdateRelStyle(SystemC, customerA, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="20")
+    
+      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")`
 };
 
-// src/core/ElementCategory.ts
-var ElementCategory = /* @__PURE__ */ ((ElementCategory2) => {
-  ElementCategory2["Flowchart"] = "Flowchart";
-  ElementCategory2["SequenceDiagram"] = "SequenceDiagram";
-  ElementCategory2["ClassDiagram"] = "ClassDiagram";
-  ElementCategory2["StateDiagram"] = "StateDiagram";
-  ElementCategory2["EntityRelationshipDiagram"] = "EntityRelationshipDiagram";
-  ElementCategory2["UserJourneyDiagram"] = "UserJourneyDiagram";
-  ElementCategory2["GanttChart"] = "GanttChart";
-  ElementCategory2["PieChart"] = "PieChart";
-  ElementCategory2["RequirementDiagram"] = "RequirementDiagram";
-  ElementCategory2["GitGraph"] = "GitGraph";
-  return ElementCategory2;
-})(ElementCategory || {});
+// src/elements/c4Diagram.ts
+var c4DiagramElements = [
+  {
+    id: crypto.randomUUID(),
+    category: "C4Diagram" /* C4Diagram */,
+    description: "sample C4 diagram (compatible with PlantUML)",
+    content: `C4Context
+		title System Context diagram for Internet Banking System
+		Enterprise_Boundary(b0, "BankBoundary0") {
+		  Person(customerA, "Banking Customer A", "A customer of the bank, with personal bank accounts.")
+		  Person(customerB, "Banking Customer B")
+		  Person_Ext(customerC, "Banking Customer C", "desc")
+  
+		  Person(customerD, "Banking Customer D", "A customer of the bank, <br/> with personal bank accounts.")
+  
+		  System(SystemAA, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
+  
+		  Enterprise_Boundary(b1, "BankBoundary") {
+  
+			SystemDb_Ext(SystemE, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+  
+			System_Boundary(b2, "BankBoundary2") {
+			  System(SystemA, "Banking System A")
+			  System(SystemB, "Banking System B", "A system of the bank, with personal bank accounts. next line.")
+			}
+  
+			System_Ext(SystemC, "E-mail system", "The internal Microsoft Exchange e-mail system.")
+			SystemDb(SystemD, "Banking System D Database", "A system of the bank, with personal bank accounts.")
+  
+			Boundary(b3, "BankBoundary3", "boundary") {
+			  SystemQueue(SystemF, "Banking System F Queue", "A system of the bank.")
+			  SystemQueue_Ext(SystemG, "Banking System G Queue", "A system of the bank, with personal bank accounts.")
+			}
+		  }
+		}
+  
+		BiRel(customerA, SystemAA, "Uses")
+		BiRel(SystemAA, SystemE, "Uses")
+		Rel(SystemAA, SystemC, "Sends e-mails", "SMTP")
+		Rel(SystemC, customerA, "Sends e-mails to")
+  
+		UpdateElementStyle(customerA, $fontColor="red", $bgColor="grey", $borderColor="red")
+		UpdateRelStyle(customerA, SystemAA, $textColor="blue", $lineColor="blue", $offsetX="5")
+		UpdateRelStyle(SystemAA, SystemE, $textColor="blue", $lineColor="blue", $offsetY="-10")
+		UpdateRelStyle(SystemAA, SystemC, $textColor="blue", $lineColor="blue", $offsetY="-40", $offsetX="-50")
+		UpdateRelStyle(SystemC, customerA, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="20")
+  
+		UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")`,
+    sortingOrder: 1,
+    isPinned: false
+  }
+];
 
 // src/elements/classDiagram.ts
 var classDiagramElements = [
@@ -632,6 +757,101 @@ var gitGraphElements = [
   }
 ];
 
+// src/elements/mindMap.ts
+var mindMapElements = [
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "a simple mindmap",
+    content: `mindmap
+        Root
+            A
+              B
+              C`,
+    sortingOrder: 1,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "square",
+    content: `id[I am a square]`,
+    sortingOrder: 2,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "rounded square",
+    content: `id(I am a rounded square)`,
+    sortingOrder: 3,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "circle",
+    content: `id((I am a circle))`,
+    sortingOrder: 4,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "bang",
+    content: `id))I am a bang((`,
+    sortingOrder: 5,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "cloud",
+    content: `id)I am a cloud(`,
+    sortingOrder: 6,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "hexagon",
+    content: `id{{I am a hexagon}}`,
+    sortingOrder: 7,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "default",
+    content: `I am the default shape`,
+    sortingOrder: 8,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Mindmap" /* Mindmap */,
+    description: "sample mindmap",
+    content: `mindmap
+        root((mindmap))
+          Origins
+            Long history
+            Popularisation
+              British popular psychology author Tony Buzan
+          Research
+            On effectiveness<br/>and features
+            On Automatic creation
+              Uses
+                  Creative techniques
+                  Strategic planning
+                  Argument mapping
+          Tools
+            Pen and paper
+            Mermaid`,
+    sortingOrder: 9,
+    isPinned: false
+  }
+];
+
 // src/elements/pieChart.ts
 var pieChartElements = [
   {
@@ -654,6 +874,46 @@ var pieChartElements = [
         "Graphs" : 85
         "Dashboards" : 14
         "Tips" : 1`,
+    sortingOrder: 1,
+    isPinned: false
+  }
+];
+
+// src/elements/quadrant.ts
+var quadrantElements = [
+  {
+    id: crypto.randomUUID(),
+    category: "QuadrantChart" /* QuadrantChart */,
+    description: "sample quadrant chart",
+    content: `quadrantChart
+		title Reach and engagement of campaigns
+		x-axis Low Reach --> High Reach
+		y-axis Low Engagement --> High Engagement
+		quadrant-1 We should expand
+		quadrant-2 Need to promote
+		quadrant-3 Re-evaluate
+		quadrant-4 May be improved
+		Campaign A: [0.3, 0.6]
+		Campaign B: [0.45, 0.23]
+		Campaign C: [0.57, 0.69]
+		Campaign D: [0.78, 0.34]
+		Campaign E: [0.40, 0.34]
+		Campaign F: [0.35, 0.78]`,
+    sortingOrder: 1,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "QuadrantChart" /* QuadrantChart */,
+    description: "themed quadrant chart",
+    content: `%%{init: {"quadrantChart": {"chartWidth": 400, "chartHeight": 400}, "themeVariables": {"quadrant1TextFill": "#ff0000"} }}%%
+		quadrantChart
+		  x-axis Urgent --> Not Urgent
+		  y-axis Not Important --> "Important \u2764"
+		  quadrant-1 Plan
+		  quadrant-2 Do
+		  quadrant-3 Delegate
+		  quadrant-4 Delete`,
     sortingOrder: 1,
     isPinned: false
   }
@@ -888,6 +1148,57 @@ var stateDiagramElements = [
   }
 ];
 
+// src/elements/timeline.ts
+var timelineElements = [
+  {
+    id: crypto.randomUUID(),
+    category: "Timeline" /* Timeline */,
+    description: "sample timeline",
+    content: `timeline
+		title History of Social Media Platform
+		2002 : LinkedIn
+		2004 : Facebook
+			 : Google
+		2005 : Youtube
+		2006 : Twitter`,
+    sortingOrder: 1,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Timeline" /* Timeline */,
+    description: "timeline with grouping",
+    content: `timeline
+		title Timeline of Industrial Revolution
+		section 17th-20th century
+			Industry 1.0 : Machinery, Water power, Steam <br>power
+			Industry 2.0 : Electricity, Internal combustion engine, Mass production
+			Industry 3.0 : Electronics, Computers, Automation
+		section 21st century
+			Industry 4.0 : Internet, Robotics, Internet of Things
+			Industry 5.0 : Artificial intelligence, Big data,3D printing`,
+    sortingOrder: 2,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Timeline" /* Timeline */,
+    description: "timeline with Forest theme. see the docs for additional themes",
+    content: `%%{init: { 'logLevel': 'debug', 'theme': 'forest' } }%%
+		timeline
+			title History of Social Media Platform
+			  2002 : LinkedIn
+			  2004 : Facebook : Google
+			  2005 : Youtube
+			  2006 : Twitter
+			  2007 : Tumblr
+			  2008 : Instagram
+			  2010 : Pinterest`,
+    sortingOrder: 3,
+    isPinned: false
+  }
+];
+
 // src/elements/userJourneyDiagram.ts
 var userJourneyDiagramElements = [
   {
@@ -927,7 +1238,11 @@ var defaultElements = [
   ...ganttChartElements,
   ...pieChartElements,
   ...requirementDiagramElements,
-  ...gitGraphElements
+  ...gitGraphElements,
+  ...mindMapElements,
+  ...timelineElements,
+  ...quadrantElements,
+  ...c4DiagramElements
 ];
 
 // src/core/elementService.ts
@@ -941,7 +1256,11 @@ var wrappingsForElementCategories = {
   GanttChart: { defaultWrapping: "gantt", wrappings: null },
   PieChart: { defaultWrapping: "pie", wrappings: null },
   RequirementDiagram: { defaultWrapping: "requirementDiagram", wrappings: null },
-  GitGraph: { defaultWrapping: "gitGraph", wrappings: null }
+  GitGraph: { defaultWrapping: "gitGraph", wrappings: null },
+  Mindmap: { defaultWrapping: "mindmap", wrappings: ["mindmap"] },
+  Timeline: { defaultWrapping: "timeline", wrappings: null },
+  QuadrantChart: { defaultWrapping: "quadrantChart", wrappings: null },
+  C4Diagram: { defaultWrapping: "C4Context", wrappings: null }
 };
 var MermaidElementService = class {
   static DefaultElements() {
@@ -962,7 +1281,7 @@ var MermaidElementService = class {
     plugin.saveSettings();
   }
   fixSortOrder(element, plugin) {
-    var elementsFromSameCategory = plugin.settings.elements.filter((element2) => element2.category === element2.category);
+    let elementsFromSameCategory = plugin.settings.elements.filter((element2) => element2.category === element2.category);
     if (elementsFromSameCategory.some((element2) => element2.sortingOrder === element2.sortingOrder)) {
       element.sortingOrder = elementsFromSameCategory.length;
     }
@@ -986,7 +1305,7 @@ accTitle: ${title}
   }
   wrapAsCompleteDiagram(element) {
     let wrapping = wrappingsForElementCategories[element.category];
-    let content = this.withTitle(element.description, element.content);
+    let content = element.category === "Mindmap" /* Mindmap */ ? element.content : this.withTitle(element.description, element.content);
     return (wrapping.wrappings ? wrapping.wrappings.some((w) => element.content.contains(w)) : element.content.contains(wrapping.defaultWrapping)) ? content : wrapping.defaultWrapping + "\n" + content;
   }
 };
@@ -1018,7 +1337,7 @@ var MermaidPluginSettings = class {
     this.categories = ElementCategory;
   }
   static DefaultSettings() {
-    var settings = new MermaidPluginSettings();
+    let settings = new MermaidPluginSettings();
     settings.elements = defaultElements;
     settings.selectedCategory = "Flowchart" /* Flowchart */;
     return settings;
@@ -1104,20 +1423,17 @@ var EditMermaidElementModal = class extends import_obsidian2.Modal {
     elementContentEl.style.height = "200px";
     elementContentEl.style.width = "100%";
     elementContentEl.onchange = async (e) => {
-      this._element.content = elementContentEl.value;
-      await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element), (svg, bindFunctions) => {
-        renderEl.innerHTML = svg;
-        renderContainerEl.appendChild(renderEl);
-      });
+      let { svg: svg2 } = await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element));
+      renderEl.innerHTML = svg2;
+      renderContainerEl.appendChild(renderEl);
     };
     let saveButtonEl = contentEl.createEl("button", { text: "Save" });
     saveButtonEl.onclick = (e) => {
       this.save();
     };
-    await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element), (svg, bindFunctions) => {
-      renderEl.innerHTML = svg;
-      renderContainerEl.appendChild(renderEl);
-    });
+    let { svg } = await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element));
+    renderEl.innerHTML = svg;
+    renderContainerEl.appendChild(renderEl);
   }
   save() {
     this._plugin._mermaidElementService.saveElement(this._element, this._plugin);
@@ -1294,12 +1610,13 @@ async function recreateElementsSection(sectionContainer, category, items, onElCl
   let mermaid = await (0, import_obsidian4.loadMermaid)();
   let filteredSortedItems = items.filter((i) => i.category == category).sort((a, b) => a.sortingOrder - b.sortingOrder);
   filteredSortedItems.forEach(async (elem, index) => {
+    console.log("mermaid element for rendering", elemService.wrapAsCompleteDiagram(elem));
     let el = createToolbarElement(sectionContainer);
     el.id = `mermaid-toolbar-element-${elem.category}-${index}`;
-    await mermaid.mermaidAPI.render(el.id, elemService.wrapAsCompleteDiagram(elem), (svg, bindFunctions) => {
-      el.innerHTML = svg;
-    });
+    let { svg } = await mermaid.render(el.id, elemService.wrapAsCompleteDiagram(elem));
+    el.innerHTML = svg;
     el.onclick = (e) => onElClick(elem.content);
+    sectionContainer.appendChild(el);
   });
 }
 function createToolbarElement(parentEl) {
@@ -1323,7 +1640,7 @@ var _MermaidToolbarView = class extends import_obsidian5.ItemView {
     super(leaf);
     this.topRowButtons = [
       new MermaidToolbarButton("insert Mermaid code block with sample diagram", "code-2", () => this.insertTextAtCursor(this._plugin._mermaidElementService.getSampleDiagram(this._plugin.settings.selectedCategory))),
-      new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid-js.github.io/mermaid/#/")),
+      new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid.js.org/intro/")),
       new MermaidToolbarButton("open settings", "settings", () => {
         this.app.setting.open();
         this.app.setting.openTabById("mermaid-tools");
@@ -1341,7 +1658,7 @@ var _MermaidToolbarView = class extends import_obsidian5.ItemView {
   async recreateToolbar(selectedCategory) {
     const container = this.containerEl.children[1];
     container.empty();
-    var toolbarElement = await createMermaidToolbar(this.topRowButtons, this.items, selectedCategory, async (newCat) => {
+    let toolbarElement = await createMermaidToolbar(this.topRowButtons, this.items, selectedCategory, async (newCat) => {
       this._plugin.settings.selectedCategory = newCat;
       this._plugin.saveSettings();
       await this.recreateToolbar(this._plugin.settings.selectedCategory);
@@ -1398,6 +1715,29 @@ var MermaidPlugin = class extends import_obsidian6.Plugin {
   }
   async loadSettings() {
     this.settings = Object.assign({}, MermaidPluginSettings.DefaultSettings(), await this.loadData());
+    this.addNewCategories();
+  }
+  addNewCategories() {
+    if (!this.settings.elements.some((x) => x.category === "Mindmap" /* Mindmap */)) {
+      this.settings.elements.push(...mindMapElements);
+      console.log("[Mermaid Tools] added Mindmap elements");
+    }
+    ;
+    if (!this.settings.elements.some((x) => x.category === "Timeline" /* Timeline */)) {
+      this.settings.elements.push(...timelineElements);
+      console.log("[Mermaid Tools] added Timeline elements");
+    }
+    ;
+    if (!this.settings.elements.some((x) => x.category === "QuadrantChart" /* QuadrantChart */)) {
+      this.settings.elements.push(...quadrantElements);
+      console.log("[Mermaid Tools] added QuadrantChart elements");
+    }
+    ;
+    if (!this.settings.elements.some((x) => x.category === "C4Diagram" /* C4Diagram */)) {
+      this.settings.elements.push(...c4DiagramElements);
+      console.log("[Mermaid Tools] added C4 diagram elements");
+    }
+    ;
   }
   async saveSettings() {
     await this.saveData(this.settings);

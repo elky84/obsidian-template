@@ -25,5 +25,9 @@
   "obsidian-tasks-plugin",
   "obsidian-admonition",
   "obsidian-sortable",
-  "obsidian-git"
+  "obsidian-git",
+  "tag-wrangler",
+  "tasks-calendar-wrapper",
+  "obsidian-icon-folder",
+  "excalibrain"
 ]
