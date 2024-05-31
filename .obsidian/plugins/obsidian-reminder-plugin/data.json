@@ -1,13 +1,6 @@
 {
   "scanned": true,
   "reminders": {
-    "1. Project/Tasks.md": [
-      {
-        "title": "Notion 해지",
-        "time": "2023-09-30",
-        "rowNumber": 12
-      }
-    ],
     "1. Project/Repeat Tasks.md": [
       {
         "title": "식물 물 주기",
@@ -16,13 +9,13 @@
       },
       {
         "title": "PS Plus 무료 게임 다운",
-        "time": "2023-10-18 00:00",
+        "time": "2024-07-31 00:00",
         "rowNumber": 8
       },
       {
         "title": "자동차 보험 갱신",
-        "time": "2023-09-30 12:00",
-        "rowNumber": 11
+        "time": "2025-05-31 12:00",
+        "rowNumber": 10
       }
     ]
   },

@@ -46,6 +46,8 @@ var ElementCategory = /* @__PURE__ */ ((ElementCategory2) => {
   ElementCategory2["Timeline"] = "Timeline";
   ElementCategory2["C4Diagram"] = "C4Diagram";
   ElementCategory2["QuadrantChart"] = "QuadrantChart";
+  ElementCategory2["SankeyDiagram"] = "SankeyDiagram";
+  ElementCategory2["XyChart"] = "XyChart";
   return ElementCategory2;
 })(ElementCategory || {});
 
@@ -187,7 +189,19 @@ Alice-)John: See you later!`,
       UpdateRelStyle(SystemAA, SystemC, $textColor="blue", $lineColor="blue", $offsetY="-40", $offsetX="-50")
       UpdateRelStyle(SystemC, customerA, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="20")
     
-      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")`
+      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")`,
+  SankeyDiagram: `sankey-beta
+
+      %% source,target,value
+      Electricity grid,Over generation / exports,104.453
+      Electricity grid,Heating and cooling - homes,113.726
+      Electricity grid,H2 conversion,27.14`,
+  XyChart: `xychart-beta
+      title "Sales Revenue"
+      x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+      y-axis "Revenue (in $)" 4000 --> 11000
+      bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+      line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]`
 };
 
 // src/elements/c4Diagram.ts
@@ -541,7 +555,7 @@ Start --> Stop`,
   {
     id: crypto.randomUUID(),
     category: "Flowchart" /* Flowchart */,
-    description: "A node in the form of a circle",
+    description: "Circle",
     content: "id1((Some text))",
     sortingOrder: 6,
     isPinned: false
@@ -549,7 +563,7 @@ Start --> Stop`,
   {
     id: crypto.randomUUID(),
     category: "Flowchart" /* Flowchart */,
-    description: "A node (rhombus)",
+    description: "Rhombus",
     content: "id1{Some text}",
     sortingOrder: 7,
     isPinned: false
@@ -557,9 +571,57 @@ Start --> Stop`,
   {
     id: crypto.randomUUID(),
     category: "Flowchart" /* Flowchart */,
+    description: "Hexagon",
+    content: "id1{{Some text}}",
+    sortingOrder: 8,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Parallelogram skewed right",
+    content: "id1[/Some text/]",
+    sortingOrder: 9,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Parallelogram skewed left",
+    content: "id1[\\Some text\\]",
+    sortingOrder: 10,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Trapezoid",
+    content: "A[/Some text\\]",
+    sortingOrder: 11,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Trapezoid upside down",
+    content: "A[\\Some text/]",
+    sortingOrder: 12,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Double circle node",
+    content: "id1(((Some text)))",
+    sortingOrder: 13,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
     description: "A link with arrow head",
     content: "A-->B",
-    sortingOrder: 8,
+    sortingOrder: 14,
     isPinned: false
   },
   {
@@ -567,7 +629,7 @@ Start --> Stop`,
     category: "Flowchart" /* Flowchart */,
     description: "An open link",
     content: "A --- B",
-    sortingOrder: 9,
+    sortingOrder: 15,
     isPinned: false
   },
   {
@@ -575,7 +637,7 @@ Start --> Stop`,
     category: "Flowchart" /* Flowchart */,
     description: "Text on links",
     content: "A-- This is the text! ---B",
-    sortingOrder: 10,
+    sortingOrder: 16,
     isPinned: false
   },
   {
@@ -583,7 +645,7 @@ Start --> Stop`,
     category: "Flowchart" /* Flowchart */,
     description: "A link with arrow head and text",
     content: "A-->|text|B",
-    sortingOrder: 11,
+    sortingOrder: 17,
     isPinned: false
   },
   {
@@ -591,7 +653,7 @@ Start --> Stop`,
     category: "Flowchart" /* Flowchart */,
     description: "Dotted link",
     content: "A-.->B",
-    sortingOrder: 12,
+    sortingOrder: 18,
     isPinned: false
   },
   {
@@ -599,7 +661,31 @@ Start --> Stop`,
     category: "Flowchart" /* Flowchart */,
     description: "Thick link",
     content: "A ==> B",
-    sortingOrder: 13,
+    sortingOrder: 19,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Invisible link",
+    content: "A ~~~ B",
+    sortingOrder: 20,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Link with circle edge",
+    content: "A --o B",
+    sortingOrder: 21,
+    isPinned: false
+  },
+  {
+    id: crypto.randomUUID(),
+    category: "Flowchart" /* Flowchart */,
+    description: "Link with cross edge",
+    content: "A --x B",
+    sortingOrder: 22,
     isPinned: false
   },
   {
@@ -994,6 +1080,22 @@ var requirementDiagramElements = [
   }
 ];
 
+// src/elements/sankeyDiagram.ts
+var sankeyDiagramElements = [
+  {
+    id: crypto.randomUUID(),
+    category: "SankeyDiagram" /* SankeyDiagram */,
+    description: "",
+    content: `sankey-beta
+        %% source,target,value
+        Electricity grid,Over generation / exports,104.453
+        Electricity grid,Heating and cooling - homes,113.726
+        Electricity grid,H2 conversion,27.14`,
+    sortingOrder: 0,
+    isPinned: false
+  }
+];
+
 // src/elements/sequenceDiagram.ts
 var sequenceDiagramElements = [
   {
@@ -1227,6 +1329,23 @@ var userJourneyDiagramElements = [
   }
 ];
 
+// src/elements/xyChart.ts
+var xyChartElements = [
+  {
+    id: crypto.randomUUID(),
+    category: "XyChart" /* XyChart */,
+    description: "a sample XYChart diagram",
+    content: `xychart-beta
+        title "Sales Revenue"
+        x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+        y-axis "Revenue (in $)" 4000 --> 11000
+        bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+        line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]`,
+    sortingOrder: 0,
+    isPinned: false
+  }
+];
+
 // src/elements/defaultElements.ts
 var defaultElements = [
   ...flowchartElements,
@@ -1242,7 +1361,9 @@ var defaultElements = [
   ...mindMapElements,
   ...timelineElements,
   ...quadrantElements,
-  ...c4DiagramElements
+  ...c4DiagramElements,
+  ...sankeyDiagramElements,
+  ...xyChartElements
 ];
 
 // src/core/elementService.ts
@@ -1260,14 +1381,16 @@ var wrappingsForElementCategories = {
   Mindmap: { defaultWrapping: "mindmap", wrappings: ["mindmap"] },
   Timeline: { defaultWrapping: "timeline", wrappings: null },
   QuadrantChart: { defaultWrapping: "quadrantChart", wrappings: null },
-  C4Diagram: { defaultWrapping: "C4Context", wrappings: null }
+  C4Diagram: { defaultWrapping: "C4Context", wrappings: null },
+  SankeyDiagram: { defaultWrapping: "sankey-beta", wrappings: null },
+  XyChart: { defaultWrapping: "xychart-beta", wrappings: null }
 };
 var MermaidElementService = class {
   static DefaultElements() {
     return defaultElements;
   }
   saveElement(element, plugin) {
-    let elementExists = plugin.settings.elements.some((el) => el.id === element.id);
+    const elementExists = plugin.settings.elements.some((el) => el.id === element.id);
     if (elementExists) {
       plugin.settings.elements.forEach((el) => {
         if (el.id === element.id) {
@@ -1281,7 +1404,7 @@ var MermaidElementService = class {
     plugin.saveSettings();
   }
   fixSortOrder(element, plugin) {
-    let elementsFromSameCategory = plugin.settings.elements.filter((element2) => element2.category === element2.category);
+    const elementsFromSameCategory = plugin.settings.elements.filter((element2) => element2.category === element2.category);
     if (elementsFromSameCategory.some((element2) => element2.sortingOrder === element2.sortingOrder)) {
       element.sortingOrder = elementsFromSameCategory.length;
     }
@@ -1304,8 +1427,8 @@ accTitle: ${title}
 `;
   }
   wrapAsCompleteDiagram(element) {
-    let wrapping = wrappingsForElementCategories[element.category];
-    let content = element.category === "Mindmap" /* Mindmap */ ? element.content : this.withTitle(element.description, element.content);
+    const wrapping = wrappingsForElementCategories[element.category];
+    const content = element.category === "Mindmap" /* Mindmap */ ? element.content : this.withTitle(element.description, element.content);
     return (wrapping.wrappings ? wrapping.wrappings.some((w) => element.content.contains(w)) : element.content.contains(wrapping.defaultWrapping)) ? content : wrapping.defaultWrapping + "\n" + content;
   }
 };
@@ -1423,6 +1546,7 @@ var EditMermaidElementModal = class extends import_obsidian2.Modal {
     elementContentEl.style.height = "200px";
     elementContentEl.style.width = "100%";
     elementContentEl.onchange = async (e) => {
+      this._element.content = elementContentEl.value;
       let { svg: svg2 } = await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element));
       renderEl.innerHTML = svg2;
       renderContainerEl.appendChild(renderEl);
@@ -1610,7 +1734,6 @@ async function recreateElementsSection(sectionContainer, category, items, onElCl
   let mermaid = await (0, import_obsidian4.loadMermaid)();
   let filteredSortedItems = items.filter((i) => i.category == category).sort((a, b) => a.sortingOrder - b.sortingOrder);
   filteredSortedItems.forEach(async (elem, index) => {
-    console.log("mermaid element for rendering", elemService.wrapAsCompleteDiagram(elem));
     let el = createToolbarElement(sectionContainer);
     el.id = `mermaid-toolbar-element-${elem.category}-${index}`;
     let { svg } = await mermaid.render(el.id, elemService.wrapAsCompleteDiagram(elem));

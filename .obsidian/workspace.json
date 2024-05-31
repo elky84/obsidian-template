@@ -11,12 +11,13 @@
             "id": "9f03841fe549a93a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": true
+                "file": "1. Project/To Do.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": []
+                }
               }
             }
           }
@@ -94,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "1. Project/To Do.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "1. Project/To Do.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "1. Project/To Do.md"
               }
             }
           },
@@ -160,20 +161,22 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           },
           {
-            "id": "40e4f1e85539b70d",
+            "id": "3398203099f5736a",
             "type": "leaf",
             "state": {
-              "type": "tasks_timeline_view",
+              "type": "timeline",
               "state": {}
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -181,13 +184,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-advanced-slides:Show Slide Preview": false,
-      "obsidian-full-calendar:Open Full Calendar": false,
-      "obsidian-book-search-plugin:Create new book note": false,
-      "obsidian-read-it-later:ReadItLater: Save clipboard": false,
-      "chronology:Open Chronology": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -195,30 +191,38 @@
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
       "audio-recorder:Start/stop recording": false,
-      "obsidian-day-planner:Week plan": false,
+      "obsidian-advanced-slides:Show Slide Preview": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-day-planner:Timeline": false,
+      "templater-obsidian:Templater": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-read-it-later:ReadItLater: Save clipboard": false,
+      "obsidian-book-search-plugin:Create new book note": false,
+      "chronology:Open Chronology": false,
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "40e4f1e85539b70d",
+  "active": "9f03841fe549a93a",
   "lastOpenFiles": [
-    "Template/weekly note.md",
-    "Template/daily note.md",
+    "1. Project/Tasks.md",
+    "1. Project/Task View.md",
+    "1. Project/Repeat Tasks.md",
+    "1. Project/dev toy/프로젝트 A.md",
     "Template/book.md",
-    "Template/vision.md",
-    "Template/retrospect.md",
     "Template/project management.md",
+    "Template/daily note.md",
     "Template/Zettelkasten/fleet note.md",
     "Template/Zettelkasten/permanent note.md",
+    "Template/vision.md",
+    "Template/weekly note.md",
+    "README.md",
+    "Template/retrospect.md",
     "4. Archive/write/2022 카타르 월드컵 16강 예상.md",
     "4. Archive/write/2022 카타르 월드컵 8강 예상.md",
     "4. Archive/write/2022 카타르 월드컵 4강 예상.md",
-    "1. Project/dev toy/프로젝트 A.md",
-    "1. Project/Repeat Tasks.md",
     "1. Project/To Do.md",
-    "1. Project/Tasks.md",
-    "1. Project/Task View.md",
-    "README.md",
     "Daily Notes",
     "4. Archive/daily logs/2023-08-14.md",
     "3. Resource/MindMap/MindMap.md",

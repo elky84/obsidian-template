@@ -385,11 +385,23 @@
   background-color: #4CC9D8;
   transform: rotate(0.5turn);
 }
+@keyframes pulse {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.2;
+  }
+}
 .day-planner {
   position: relative;
 }
 .day-planner .status-bar-item-segment:hover {
   cursor: pointer;
+}
+.status-bar-item.plugin-obsidian-day-planner {
+  display: flex;
+  gap: var(--size-2-2);
 }
 .day-planner-progress-bar {
   overflow: hidden;
@@ -431,12 +443,8 @@
   border-left: 20px solid transparent;
 }
 .progress-pie.day-planner {
-  float: left;
-  display: none;
   width: 20px;
   height: 20px;
-  margin: 0.3px 10px 0.3px 0;
-  background-color: var(--text-muted);
 }
 .progress-pie.day-planner::after {
   width: 80%;
@@ -450,8 +458,13 @@
   background-color: transparent;
 }
 [data-type=timeline] .view-content,
-[data-type=weekly] .view-content {
+[data-type=weekly] .view-content,
+[data-type=timeTracker] .view-content {
   --time-ruler-width: 30px;
+  --scrollbar-width: 12px;
+  --shadow-color: #00000010;
+  --shadow-right: 2px 0px 2px var(--shadow-color);
+  --shadow-bottom: 0px 2px 2px var(--shadow-color);
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -460,4 +473,13 @@
   position: absolute;
   right: 0;
   left: 0;
+}
+.day-planner-release-notes-modal .modal-content {
+  height: 100%;
+  overflow: auto;
+}
+.day-planner-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--size-4-2);
 }
