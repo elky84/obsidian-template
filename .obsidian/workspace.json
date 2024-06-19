@@ -4,24 +4,32 @@
     "type": "split",
     "children": [
       {
-        "id": "e8a12b148fb65b66",
+        "id": "3d18888404a4824a",
         "type": "tabs",
         "children": [
           {
-            "id": "9f03841fe549a93a",
+            "id": "a44b382b3044b073",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "mindmap",
+              "state": {}
+            }
+          },
+          {
+            "id": "b7d514de915223ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
               "state": {
-                "file": "1. Project/To Do.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": []
-                }
+                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1. Project/To Do.md",
+                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1. Project/To Do.md",
+                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1. Project/To Do.md"
+                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md"
               }
             }
           },
@@ -168,7 +176,7 @@
             }
           },
           {
-            "id": "3398203099f5736a",
+            "id": "8f9f62cc13a086df",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -191,52 +199,55 @@
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
       "audio-recorder:Start/stop recording": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "templater-obsidian:Templater": false,
       "obsidian-advanced-slides:Show Slide Preview": false,
       "obsidian-full-calendar:Open Full Calendar": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-day-planner:Timeline": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "obsidian-kanban:Create new board": false,
-      "obsidian-read-it-later:ReadItLater: Save clipboard": false,
       "obsidian-book-search-plugin:Create new book note": false,
+      "obsidian-read-it-later:ReadItLater: Save clipboard": false,
       "chronology:Open Chronology": false,
-      "mermaid-tools:Open Mermaid Toolbar": false
+      "templates:Insert template": false
     }
   },
-  "active": "9f03841fe549a93a",
+  "active": "b7d514de915223ba",
   "lastOpenFiles": [
+    "2. Area/Read/공중 그네 - 오쿠다히데오 奥田英朗.md",
     "1. Project/Tasks.md",
-    "1. Project/Task View.md",
     "1. Project/Repeat Tasks.md",
-    "1. Project/dev toy/프로젝트 A.md",
-    "Template/book.md",
-    "Template/project management.md",
-    "Template/daily note.md",
-    "Template/Zettelkasten/fleet note.md",
-    "Template/Zettelkasten/permanent note.md",
-    "Template/vision.md",
-    "Template/weekly note.md",
+    "view/tasks view.md",
+    "view/data view - write.md",
     "README.md",
-    "Template/retrospect.md",
+    "view",
     "4. Archive/write/2022 카타르 월드컵 16강 예상.md",
-    "4. Archive/write/2022 카타르 월드컵 8강 예상.md",
     "4. Archive/write/2022 카타르 월드컵 4강 예상.md",
-    "1. Project/To Do.md",
-    "Daily Notes",
-    "4. Archive/daily logs/2023-08-14.md",
-    "3. Resource/MindMap/MindMap.md",
-    "3. Resource/bookshelf.md",
+    "4. Archive/write/2022 카타르 월드컵 8강 예상.md",
+    "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
     "3. Resource/Hobby/draw.md",
-    "3. Resource/ExcaliBrain/excalibrain.md",
-    "3. Resource/MindMap",
-    "3. Resource/Draw.io/Diagram.svg",
+    "3. Resource/MindMap/mindmap-enhance.md",
+    "3. Resource/MindMap/mindmap-md.md",
+    "Untitled mindmap.md",
+    "3. Resource/Develop/개발기.md",
     "3. Resource/Excalidraw/Diagram.md",
-    "3. Resource/ExcaliBrain",
-    "3. Resource/data view - write.md",
-    "Daily Notes/2023-08-15.md",
-    "Day Planners/Day Planner-20230918.md",
+    "3. Resource/Draw.io/Diagram.svg",
     "3. Resource/Canvas/Canvas.canvas",
+    "3. Resource/ExcaliBrain/excalibrain.md",
+    "3. Resource/Hobby/excalibrain.md",
+    "2. Area/ReadItLater/RabbitMQ 클러스터, 미러링 구현 및 Spring 연동하기.md",
+    "1. Project/To Do.md",
+    "2. Area/Read/인더풀 - 오쿠다히데오.md",
+    "Weekly/2024-W25.md",
+    "template/weekly.md",
+    "template/book.md",
+    "3. Resource/bookshelf.md",
+    "template/daily.md",
+    "Weekly",
+    "Daily Notes",
+    "3. Resource/MindMap",
+    "3. Resource/ExcaliBrain",
     "3. Resource/Canvas",
     "Day Planners"
   ]

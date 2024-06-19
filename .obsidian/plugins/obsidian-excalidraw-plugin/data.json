@@ -9,7 +9,6 @@
   "decompressForMDView": false,
   "onceOffCompressFlagReset": true,
   "autosave": true,
-  "autosaveInterval": 15000,
   "autosaveIntervalDesktop": 15000,
   "autosaveIntervalMobile": 10000,
   "drawingFilenamePrefix": "Drawing ",
@@ -52,7 +51,7 @@
   "done": "🗹",
   "hoverPreviewWithoutCTRL": false,
   "linkOpacity": 1,
-  "openInAdjacentPane": false,
+  "openInAdjacentPane": true,
   "showSecondOrderLinks": true,
   "focusOnFileTab": false,
   "openInMainWorkspace": true,
@@ -84,6 +83,7 @@
   "experimentalEnableFourthFont": false,
   "experimantalFourthFont": "Virgil",
   "addDummyTextElement": false,
+  "zoteroCompatibility": false,
   "fieldSuggester": true,
   "compatibilityMode": false,
   "drawingOpenCount": 0,
@@ -91,7 +91,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/1.9.19",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.2.3",
     "libraryItems": []
   },
   "imageElementNotice": true,
@@ -103,7 +103,7 @@
   "mdCSS": "",
   "scriptEngineSettings": {},
   "defaultTrayMode": false,
-  "previousRelease": "2.2.3",
+  "previousRelease": "2.2.6",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
   "latexBoilerplate": "\\color{blue}",
@@ -747,5 +747,6 @@
   "longPressDesktop": 500,
   "longPressMobile": 500,
   "isDebugMode": false,
+  "autosaveInterval": 15000,
   "mathjaxSourceURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-svg.js"
 }
