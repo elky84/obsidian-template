@@ -1,5 +1,6 @@
 {
   "accentColor": "",
   "cssTheme": "Minimal",
-  "baseFontSize": 18
+  "baseFontSize": 18,
+  "textFontFamily": "Bookman Old Style"
 }
