@@ -21,10 +21,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "template/Zettelkasten/permanent note.md",
+                "file": "template/vision.md",
                 "mode": "source",
                 "backlinks": true,
-                "source": false
+                "source": true
               }
             }
           }
@@ -58,7 +58,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:project",
+                "query": "[\"tag\"]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,7 +75,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -103,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "template/Zettelkasten/permanent note.md",
+                "file": "template/vision.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "template/Zettelkasten/permanent note.md",
+                "file": "template/vision.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "template/Zettelkasten/permanent note.md"
+                "file": "template/vision.md"
               }
             }
           },
@@ -182,9 +183,19 @@
               "type": "timeline",
               "state": {}
             }
+          },
+          {
+            "id": "19712bbc3edc45e9",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "template/vision.md"
+              }
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
@@ -215,20 +226,20 @@
   },
   "active": "f5eb12027b9dc2bd",
   "lastOpenFiles": [
-    "template/Zettelkasten/fleet note.md",
+    "2. Area/Read/인더풀 - 오쿠다히데오.md",
+    "2. Area/Read/공중 그네 - 오쿠다히데오 奥田英朗.md",
+    "Weekly/2024-W26.md",
+    "template/weekly.md",
     "template/Zettelkasten/permanent note.md",
+    "template/Zettelkasten/fleet note.md",
     "view/tasks view.md",
     "view/data view - write.md",
     "Daily Notes/2024-06-28.md",
     "Daily Notes/2024-06-19.md",
-    "Weekly/2024-W26.md",
-    "template/weekly.md",
     "template/due.md",
     "README.md",
     "Weekly/2024-W25.md",
-    "2. Area/Read/인더풀 - 오쿠다히데오.md",
     "Daily Notes/2024-06-24.md",
-    "2. Area/Read/공중 그네 - 오쿠다히데오 奥田英朗.md",
     "1. Project/Tasks.md",
     "1. Project/Repeat Tasks.md",
     "view",

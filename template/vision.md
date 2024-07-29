@@ -1,5 +1,5 @@
 ---
-tag: vision
+tags: vision
 ---
 
 # 🖼️ Vision Board

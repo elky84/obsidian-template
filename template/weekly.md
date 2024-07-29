@@ -1,9 +1,9 @@
 ---
-title: <% tp.file.title %>
-tag: weekly
+title: weekly
+tags: weekly
 ---
 
-## [[<% tp.date.now("YYYY-[W]WW", -7) %>| <<]] | <% tp.file.title %> | [[<%  tp.date.now("YYYY-[W]WW", 7) %> | >> ]]
+## [[2024-W30| <<]] | weekly | [[2024-W32 | >> ]]
 
 ## 🏆 Goal
 
@@ -26,10 +26,10 @@ SORT start DESC
 - 
 
 ## 📅 Schedule
-###  🗒️[[ <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>]] Mon
+###  🗒️[[ 2024-07-29]] Mon
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>
+due 2024-07-29
 not done
 hide due date
 hide done date
@@ -37,15 +37,15 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>
+done due 2024-07-29
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ <% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>]]  Tue
+###  🗒️ [[ 2024-07-30]]  Tue
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>
+due 2024-07-30
 not done
 hide due date
 hide done date
@@ -53,14 +53,14 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>
+done due 2024-07-30
 hide due date
 hide done date
 ```
-###  🗒️ [[ <% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>]]  Wed
+###  🗒️ [[ 2024-07-31]]  Wed
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>
+due 2024-07-31
 not done
 hide due date
 hide done date
@@ -68,15 +68,15 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>
+done due 2024-07-31
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ <% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>]]  Thu
+###  🗒️ [[ 2024-08-01]]  Thu
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>
+due 2024-08-01
 not done
 hide due date
 hide done date
@@ -84,15 +84,15 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>
+done due 2024-08-01
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ <% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>]]  Fri
+###  🗒️ [[ 2024-08-02]]  Fri
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>
+due 2024-08-02
 not done
 hide due date
 hide done date
@@ -100,15 +100,15 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>
+done due 2024-08-02
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ <% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>]]  Sat
+###  🗒️ [[ 2024-08-03]]  Sat
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>
+due 2024-08-03
 not done
 hide due date
 hide done date
@@ -116,15 +116,15 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>
+done due 2024-08-03
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️[[ <% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>]]  Sun
+###  🗒️[[ 2024-08-04]]  Sun
 #### 할 일
 ```tasks 
-due <% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>
+due 2024-08-04
 not done
 hide due date
 hide done date
@@ -132,7 +132,7 @@ hide recurrence rule
 ```
 #### 한 일
 ```tasks 
-done due <% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>
+done due 2024-08-04
 hide due date
 hide done date
 hide recurrence rule
