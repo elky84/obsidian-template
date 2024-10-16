@@ -3,7 +3,7 @@ title: weekly
 tags: weekly
 ---
 
-## [[2024-W30| <<]] | weekly | [[2024-W32 | >> ]]
+## [[<% tp.date.now("YYYY-[W]WW", -7) %>| <<]] | <% tp.file.title %> | [[<%  tp.date.now("YYYY-[W]WW", 7) %> | >> ]]
 
 ## 🏆 Goal
 
@@ -15,124 +15,361 @@ TABLE WITHOUT ID
     start,
     end,
     "진행 중" as Status
-FROM #
-WHERE contains(file.path, "Working") AND !contains(file.path, "Templates") 
+WHERE contains(file.path, "1. Project") AND start != null
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    start,
+    end,
+    "완료" as Status
+WHERE (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) AND dateformat(end, "W") = dateformat(date(now), "W")
 SORT start DESC
 ```
 # 회고
-## 업무
-- 
-## 개인
-- 
 
-## 📅 Schedule
-###  🗒️[[ 2024-07-29]] Mon
-#### 할 일
+
+# 📅 Schedule
+##  🗒️[[<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>]] Mon
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-07-29
+due <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-07-29
+done due <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ 2024-07-30]]  Tue
-#### 할 일
+###  🗒️ [[<% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>]]  Tue
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-07-30
+due <% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-07-30
+done due <% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 ```
-###  🗒️ [[ 2024-07-31]]  Wed
-#### 할 일
+###  🗒️ [[<% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>]]  Wed
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-07-31
+due <% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-07-31
+done due <% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ 2024-08-01]]  Thu
-#### 할 일
+###  🗒️ [[<% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>]]  Thu
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-08-01
+due <% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-08-01
+done due <% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ 2024-08-02]]  Fri
-#### 할 일
+###  🗒️ [[<% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>]]  Fri
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-08-02
+due <% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-08-02
+done due <% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[ 2024-08-03]]  Sat
-#### 할 일
+###  🗒️ [[<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>]]  Sat
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-08-03
+due <% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-08-03
+done due <% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️[[ 2024-08-04]]  Sun
-#### 할 일
+###  🗒️[[<% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>]]  Sun
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(due, "yyyy-MM-dd") >= "<% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>" AND dateformat(due, "yyyy-MM-dd") <= "<% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+WHERE dateformat(end, "yyyy-MM-dd") = "<% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+### 할 일
 ```tasks 
-due 2024-08-04
+due <% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>
 not done
 hide due date
 hide done date
 hide recurrence rule
 ```
-#### 한 일
+### 한 일
 ```tasks 
-done due 2024-08-04
+done due <% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 hide recurrence rule

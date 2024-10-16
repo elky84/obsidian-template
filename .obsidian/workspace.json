@@ -16,13 +16,13 @@
             }
           },
           {
-            "id": "f5eb12027b9dc2bd",
+            "id": "8645e6e5b9f08e3b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "template/vision.md",
-                "mode": "source",
+                "file": "template/weekly.md",
+                "mode": "preview",
                 "backlinks": true,
                 "source": true
               }
@@ -58,7 +58,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"tag\"]",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,8 +75,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -104,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "template/vision.md",
+                "file": "template/weekly.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "template/vision.md",
+                "file": "template/weekly.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "template/vision.md"
+                "file": "template/weekly.md"
               }
             }
           },
@@ -190,12 +189,12 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "template/vision.md"
+                "file": "template/weekly.md"
               }
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -224,12 +223,16 @@
       "templates:Insert template": false
     }
   },
-  "active": "f5eb12027b9dc2bd",
+  "active": "8645e6e5b9f08e3b",
   "lastOpenFiles": [
+    "template/업무/작업.md",
+    "template/weekly.md",
+    "template/업무",
+    "template/daily.md",
+    "template/vision.md",
     "2. Area/Read/인더풀 - 오쿠다히데오.md",
     "2. Area/Read/공중 그네 - 오쿠다히데오 奥田英朗.md",
     "Weekly/2024-W26.md",
-    "template/weekly.md",
     "template/Zettelkasten/permanent note.md",
     "template/Zettelkasten/fleet note.md",
     "view/tasks view.md",
@@ -250,9 +253,6 @@
     "3. Resource/Hobby/draw.md",
     "3. Resource/MindMap/mindmap-enhance.md",
     "3. Resource/MindMap/mindmap-md.md",
-    "Untitled mindmap.md",
-    "3. Resource/Develop/개발기.md",
-    "3. Resource/Excalidraw/Diagram.md",
     "3. Resource/Draw.io/Diagram.svg",
     "3. Resource/Canvas/Canvas.canvas",
     "Weekly",

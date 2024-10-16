@@ -1,14 +1,10 @@
----
-title: <% tp.file.title %>
-created:  <% tp.file.creation_date() %>
-tags: dailynote
----
 ## [[<% tp.date.now("YYYY-MM-DD", -1, tp.file.title, "YYYY-MM-DD") %>| <<]] | <% tp.file.title %> | [[<% tp.date.now("YYYY-MM-DD", 1, tp.file.title, "YYYY-MM-DD") %> | >> ]]
 
 # 📅  일정
 
 # 🔁 습관
-- [ ] 영양제
+- [ ] 영양제 ⏰ <% tp.file.title %> 11:00 📅 <% tp.file.title %>
+
 # 📒 메모
 - 
 # 🗓️ 할 일
@@ -31,22 +27,60 @@ hide due date
 hide recurrence rule
 ```
 ## 💻업무
+### 진행 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+FROM #💻작업 OR #이슈
+WHERE start != null AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 오늘 마감 해야 될 일
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+FROM #💻작업 OR #이슈
+WHERE due != null AND start != null AND dateformat(due, "yyyy-MM-dd") <= "<% tp.file.title %>" AND contains(file.path, "1. Project")
+SORT start DESC
+```
+### 오늘 완료 한 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    tags,
+    start,
+    due,
+    end
+FROM #💻작업 OR #이슈
+WHERE dateformat(end, "yyyy-MM-dd") = "<% tp.file.title %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
+SORT start DESC
+```
+## ⌛ 놓친 일
+### Task
+```tasks 
+not done 
+due before <% tp.file.title %> 
+hide recurrence rule
+```
+### Dataview
 ```dataview
 TABLE WITHOUT ID
     file.link as Title,
     start,
     due,
     end,
-    "진행 중" as Status
-FROM #
-WHERE contains(file.path, "Working") AND !contains(file.path, "Templates") 
+    (contains(file.path, "4. Archive") or contains(file.path, "3. Resource")) as Completed
+FROM #💻작업 OR #이슈
+WHERE due != null AND contains(file.path, "1. Project") AND dateformat(end, "yyyy-MM-dd") < "<% tp.file.title %>"
 SORT start DESC
-```
-## ⌛ 놓친 일
-```tasks 
-not done 
-due before <% tp.file.title %> 
-hide recurrence rule
 ```
 
 # 📃 회고
@@ -64,4 +98,8 @@ hide recurrence rule
 ## 🗄️ 기록
 - 
 ## Day planner
-- 00:00 
+- 10:00 
+- [ ] 10:30 데일리 미팅 ⏰ <% tp.file.title %> 10:30 📅 <% tp.file.title %>
+- 10:45
+- [ ] 13:00 점심 식사 ⏰ <% tp.file.title %> 13:00 📅 <% tp.file.title %>
+- 14:00
