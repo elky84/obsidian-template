@@ -12,7 +12,9 @@
             "type": "leaf",
             "state": {
               "type": "mindmap",
-              "state": {}
+              "state": {},
+              "icon": "dot-network",
+              "title": "Mind Map of weekly"
             }
           },
           {
@@ -25,7 +27,9 @@
                 "mode": "preview",
                 "backlinks": true,
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "weekly"
             }
           }
         ],
@@ -49,7 +53,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -64,7 +70,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -72,7 +80,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -90,14 +100,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "dad057a8589c4268",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
-            }
-          },
-          {
             "id": "0cbe517d2d6913ec",
             "type": "leaf",
             "state": {
@@ -111,7 +113,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for weekly"
             }
           },
           {
@@ -123,7 +127,9 @@
                 "file": "template/weekly.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from weekly"
             }
           },
           {
@@ -134,7 +140,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -144,7 +152,9 @@
               "type": "outline",
               "state": {
                 "file": "template/weekly.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Outline of weekly"
             }
           },
           {
@@ -152,7 +162,9 @@
             "type": "leaf",
             "state": {
               "type": "chronology-calendar-view",
-              "state": {}
+              "state": {},
+              "icon": "clock",
+              "title": "Chronology"
             }
           },
           {
@@ -160,7 +172,9 @@
             "type": "leaf",
             "state": {
               "type": "reminder-list",
-              "state": {}
+              "state": {},
+              "icon": "clock",
+              "title": "Reminders"
             }
           },
           {
@@ -172,7 +186,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           },
           {
@@ -180,7 +196,9 @@
             "type": "leaf",
             "state": {
               "type": "timeline",
-              "state": {}
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Day Planner Timeline"
             }
           },
           {
@@ -190,11 +208,13 @@
               "type": "file-properties",
               "state": {
                 "file": "template/weekly.md"
-              }
+              },
+              "icon": "lucide-info",
+              "title": "File properties for weekly"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
