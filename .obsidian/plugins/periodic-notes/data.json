@@ -3,7 +3,7 @@
   "hasMigratedDailyNoteSettings": true,
   "hasMigratedWeeklyNoteSettings": false,
   "daily": {
-    "folder": "Periodic/Daily Notes",
+    "folder": "Periodic/Daily",
     "template": "template/daily",
     "enabled": true
   },

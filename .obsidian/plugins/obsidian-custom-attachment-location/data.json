@@ -1,7 +1,18 @@
 {
   "attachmentFolderPath": "./${filename}",
-  "pastedImageFileName": "image-${date}",
-  "dateTimeFormat": "YYYY-MM-DD_HH-mm-ss",
+  "autoRenameFiles": false,
   "autoRenameFolder": true,
-  "autoRenameFiles": false
+  "convertImagesToJpeg": false,
+  "convertImagesOnDragAndDrop": false,
+  "deleteOrphanAttachments": false,
+  "duplicateNameSeparator": " ",
+  "jpegQuality": 0.8,
+  "keepEmptyAttachmentFolders": false,
+  "pastedFileName": "file-${date:YYYYMMDDHHmmssSSS}",
+  "renameCollectedFiles": false,
+  "renameOnlyImages": true,
+  "renamePastedFilesWithKnownNames": false,
+  "renameAttachmentsOnDragAndDrop": false,
+  "replaceWhitespace": false,
+  "toLowerCase": false
 }

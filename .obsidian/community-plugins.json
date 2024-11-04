@@ -19,7 +19,6 @@
   "obsidian-read-it-later",
   "quickadd",
   "chronology",
-  "obsidian-reminder-plugin",
   "obsidian-tasks-plugin",
   "obsidian-admonition",
   "obsidian-sortable",
@@ -30,5 +29,6 @@
   "obsidian-minimal-settings",
   "obsidian-enhancing-mindmap",
   "obsidian-style-settings",
-  "periodic-notes"
+  "periodic-notes",
+  "obsidian-reminder-plugin"
 ]
