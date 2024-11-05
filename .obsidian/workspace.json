@@ -4,37 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "c32535be9f6ff8ca",
+        "id": "fcf3d611ed1162d6",
         "type": "tabs",
         "children": [
           {
-            "id": "e0d2c2fa9fb5f6fe",
+            "id": "c236f828fda4743b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1. Project/Tasks.md",
+                "file": "template/Works/컨텐츠.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tasks"
-            }
-          },
-          {
-            "id": "d6a5e3b6c95e5a22",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Periodic/Daily/2024-06-28.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2024-06-28"
+              "title": "컨텐츠"
             }
           }
         ]
@@ -155,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1. Project/Tasks.md"
+                "file": "template/Works/컨텐츠.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Tasks"
+              "title": "Outline of 컨텐츠"
             }
           },
           {
@@ -234,27 +219,43 @@
       "audio-recorder:Start/stop recording": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-kanban:Create new board": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "templater-obsidian:Templater": false,
       "obsidian-advanced-slides:Show Slide Preview": false,
       "obsidian-full-calendar:Open Full Calendar": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
-      "obsidian-day-planner:Timeline": false,
       "obsidian-book-search-plugin:Create new book note": false,
       "obsidian-read-it-later:ReadItLater: Save clipboard": false,
       "chronology:Open Chronology": false,
       "templates:Insert template": false,
-      "periodic-notes:Open today": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-day-planner:Open Timeline": false,
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "e0d2c2fa9fb5f6fe",
+  "active": "c236f828fda4743b",
   "lastOpenFiles": [
-    "view/tasks view.md",
+    "template/Works/운영툴.md",
+    "template/Works/리뷰.md",
+    "template/Works/리서치.md",
+    "1. Project/Tasks.md",
+    "template/Works/개선.md",
+    "template/Works/기능.md",
+    "template/Works/기능 테스트.md",
+    "template/Works/규칙.md",
+    "template/Works/가이드.md",
+    "template/Works/레퍼런스.md",
+    "template/Works/컨텐츠.md",
     "Periodic/Daily/2024-06-28.md",
+    "template/Works/체크 리스트.md",
+    "template/Works/이슈.md",
+    "template/Works/설정.md",
+    "template/Works/분석.md",
+    "template/Works/문서화.md",
+    "template/Works/대응.md",
+    "template/Works/Code Snippets.md",
+    "template/Works/논의.md",
     "Periodic/Weekly/2024-W26.md",
+    "view/tasks view.md",
     "Periodic/Yearly/2024.md",
     "Periodic/Monthly/2024-10.md",
     "Periodic/Quarterly/2024-Q4.md",
@@ -263,25 +264,6 @@
     "Periodic/Quarterly",
     "Periodic/Yearly",
     "Periodic",
-    "template/yearly.md",
-    "template/quarterly.md",
-    "template/weekly.md",
-    "1. Project/To Do.md",
-    "1. Project/Tasks.md",
-    "template/Works/회의록.md",
-    "template/Works/컨텐츠.md",
-    "template/Works/체크 리스트.md",
-    "template/Works/이슈.md",
-    "template/Works/운영툴.md",
-    "template/Works/설정.md",
-    "template/Works/분석.md",
-    "template/Works/문서화.md",
-    "template/Works/리서치.md",
-    "template/Works/리뷰.md",
-    "template/Works/레퍼런스.md",
-    "template/Works/대응.md",
-    "template/Works/논의.md",
-    "template/Works/기능.md",
     "template/Works",
     "template/새 폴더",
     "template/업무",

@@ -1,0 +1,8 @@
+.markdown-preview-view h1 + p,
+.markdown-preview-view h2 + p,
+.markdown-preview-view h3 + p,
+.markdown-preview-view h4 + p,
+.markdown-preview-view h5 + p,
+.markdown-preview-view h6 + p {
+    margin-top: 0.2em;
+}

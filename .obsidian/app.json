@@ -1,6 +1,7 @@
 {
-  "attachmentFolderPath": "./tasks view",
+  "attachmentFolderPath": "./attachments",
   "readableLineLength": false,
   "newFileLocation": "current",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "strictLineBreaks": false
 }

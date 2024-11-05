@@ -2,5 +2,8 @@
   "accentColor": "",
   "cssTheme": "Minimal",
   "baseFontSize": 18,
-  "textFontFamily": "Franklin Gothic Book"
+  "textFontFamily": "Franklin Gothic Book",
+  "enabledCssSnippets": [
+    "spacing-fix"
+  ]
 }
