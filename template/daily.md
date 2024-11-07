@@ -35,7 +35,6 @@ TABLE WITHOUT ID
     start,
     due,
     end
-FROM #💻작업 OR #이슈
 WHERE start != null AND contains(file.path, "1. Project")
 SORT start DESC
 ```
@@ -47,7 +46,6 @@ TABLE WITHOUT ID
     start,
     due,
     end
-FROM #💻작업 OR #이슈
 WHERE due != null AND start != null AND dateformat(due, "yyyy-MM-dd") <= "<% tp.file.title %>" AND contains(file.path, "1. Project")
 SORT start DESC
 ```
@@ -59,7 +57,6 @@ TABLE WITHOUT ID
     start,
     due,
     end
-FROM #💻작업 OR #이슈
 WHERE dateformat(end, "yyyy-MM-dd") = "<% tp.file.title %>" AND (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) 
 SORT start DESC
 ```
@@ -78,8 +75,7 @@ TABLE WITHOUT ID
     due,
     end,
     (contains(file.path, "4. Archive") or contains(file.path, "3. Resource")) as Completed
-FROM #💻작업 OR #이슈
-WHERE due != null AND contains(file.path, "1. Project") AND dateformat(end, "yyyy-MM-dd") < "<% tp.file.title %>"
+WHERE due != null AND contains(file.path, "1. Project") AND dateformat(end, "yyyy-MM-dd") > "<% tp.file.title %>"
 SORT start DESC
 ```
 

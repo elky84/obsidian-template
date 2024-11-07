@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "template/Works/컨텐츠.md",
+                "file": "template/daily.md",
                 "mode": "source",
                 "backlinks": true,
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "컨텐츠"
+              "title": "daily"
             }
           }
         ]
@@ -140,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "template/Works/컨텐츠.md"
+                "file": "template/daily.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 컨텐츠"
+              "title": "Outline of daily"
             }
           },
           {
@@ -229,11 +229,14 @@
       "templates:Insert template": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-day-planner:Open Timeline": false,
-      "obsidian-day-planner:Open Multi-Day View": false
+      "obsidian-day-planner:Open Multi-Day View": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "periodic-notes:Open today": false
     }
   },
   "active": "c236f828fda4743b",
   "lastOpenFiles": [
+    "template/Works/컨텐츠.md",
     "template/Works/운영툴.md",
     "template/Works/리뷰.md",
     "template/Works/리서치.md",
@@ -244,7 +247,6 @@
     "template/Works/규칙.md",
     "template/Works/가이드.md",
     "template/Works/레퍼런스.md",
-    "template/Works/컨텐츠.md",
     "Periodic/Daily/2024-06-28.md",
     "template/Works/체크 리스트.md",
     "template/Works/이슈.md",
