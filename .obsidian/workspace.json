@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "fcf3d611ed1162d6",
+        "id": "c643b5a1afaba224",
         "type": "tabs",
         "children": [
           {
-            "id": "c236f828fda4743b",
+            "id": "aa12c5dadda83a2b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "template/daily.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": true
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "daily"
+              "title": "New tab"
             }
           }
         ]
@@ -139,11 +134,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "template/daily.md"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Outline of daily"
+              "title": "Outline"
             }
           },
           {
@@ -234,8 +227,10 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "c236f828fda4743b",
+  "active": "aa12c5dadda83a2b",
   "lastOpenFiles": [
+    "template/weekly.md",
+    "template/daily.md",
     "template/Works/컨텐츠.md",
     "template/Works/운영툴.md",
     "template/Works/리뷰.md",
@@ -260,8 +255,6 @@
     "view/tasks view.md",
     "Periodic/Yearly/2024.md",
     "Periodic/Monthly/2024-10.md",
-    "Periodic/Quarterly/2024-Q4.md",
-    "template/monthly.md",
     "Periodic/Monthly",
     "Periodic/Quarterly",
     "Periodic/Yearly",

@@ -8,6 +8,7 @@ tags: weekly
 ## 🏆 Goal
 
 ## ✅ Tasks
+
 ### 업무
 ```dataview
 TABLE WITHOUT ID
@@ -32,7 +33,7 @@ SORT start DESC
 
 
 # 📅 Schedule
-##  🗒️[[<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>]] Mon
+##  🗒️[[<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>]] Sun
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
@@ -81,7 +82,7 @@ hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[<% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>]]  Tue
+###  🗒️ [[<% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>]]  Mon
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
@@ -129,7 +130,7 @@ done due <% moment().startOf('week').add(1, 'days').format('YYYY-MM-DD') %>
 hide due date
 hide done date
 ```
-###  🗒️ [[<% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>]]  Wed
+###  🗒️ [[<% moment().startOf('week').add(2, 'days').format('YYYY-MM-DD') %>]]  Tue
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
@@ -178,7 +179,7 @@ hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[<% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>]]  Thu
+###  🗒️ [[<% moment().startOf('week').add(3, 'days').format('YYYY-MM-DD') %>]]  Wed
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
@@ -227,7 +228,7 @@ hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[<% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>]]  Fri
+###  🗒️ [[<% moment().startOf('week').add(4, 'days').format('YYYY-MM-DD') %>]]  Thu
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
@@ -276,7 +277,7 @@ hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️ [[<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>]]  Sat
+###  🗒️ [[<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>]]  Fri
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
@@ -325,7 +326,7 @@ hide due date
 hide done date
 hide recurrence rule
 ```
-###  🗒️[[<% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>]]  Sun
+###  🗒️[[<% moment().startOf('week').add(6, 'days').format('YYYY-MM-DD') %>]]  Sat
 ### 진행 중 업무
 ```dataview
 TABLE WITHOUT ID
