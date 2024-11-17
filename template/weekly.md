@@ -2,8 +2,7 @@
 title: weekly
 tags: weekly
 ---
-
-## [[<% tp.date.now("YYYY-[W]WW", -7) %>| <<]] | <% tp.file.title %> | [[<%  tp.date.now("YYYY-[W]WW", 7) %> | >> ]]
+## [[<% moment().startOf('week').format("YYYY-[W]WW") %>| <<]] | <% tp.file.title %> | [[<% moment().add(2, 'weeks').startOf('week').format("YYYY-[W]WW") %> | >> ]]
 
 ## 🏆 Goal
 
