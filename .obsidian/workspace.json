@@ -11,10 +11,10 @@
             "id": "3bcd4258c187c4dd",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "planner-release-notes",
               "state": {},
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Day Planner Release 0.27.0"
             }
           }
         ]
@@ -176,16 +176,6 @@
             }
           },
           {
-            "id": "f38ee4f336645b5c",
-            "type": "leaf",
-            "state": {
-              "type": "timeline",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Timeline"
-            }
-          },
-          {
             "id": "77b4685da5d7a9d0",
             "type": "leaf",
             "state": {
@@ -193,6 +183,16 @@
               "state": {},
               "icon": "clock",
               "title": "Reminders"
+            }
+          },
+          {
+            "id": "93fd56db7c4c2184",
+            "type": "leaf",
+            "state": {
+              "type": "planner-timeline",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
             }
           }
         ],
