@@ -3503,7 +3503,7 @@ var require_RenameDeleteHandler = __commonJS({
       }
       const oldAttachmentFiles = [];
       if (!await (0, import_AttachmentPath5.hasOwnAttachmentFolder)(app, oldPath)) {
-        const oldCache = await (0, import_MetadataCache2.getCacheSafe)(app, oldPath);
+        const oldCache = await (0, import_MetadataCache2.getCacheSafe)(app, newPath);
         if (!oldCache) {
           return;
         }
@@ -8880,13 +8880,13 @@ var EventWrapper = class {
         const shouldRename = this.shouldRenameAttachments(entry.file);
         let filename = shouldRename ? await getPastedFileName(this.plugin, createSubstitutionsFromPath(noteFile.path, originalCopiedFileName)) : originalCopiedFileName;
         filename = replaceWhitespace(this.plugin, filename);
-        const filePropertyBag = { type: "application/octet-stream" };
+        const filePropertyBag = { type: entry.type.replace("image/", "image-override/") };
         if (!shouldRename) {
           filePropertyBag.lastModified = entry.file.lastModified;
         }
         const renamedFile = new File([new Blob([fileArrayBuffer])], (0, import_Path3.makeFileName)(filename, extension), filePropertyBag);
         if (!shouldRename) {
-          Object.defineProperty(renamedFile, "path", { value: entry.file.path || (import_electron.webUtils?.getPathForFile(entry.file) ?? "") });
+          Object.defineProperty(renamedFile, "path", { value: getFilePath(entry.file) });
         }
         newDataTransfer.items.add(renamedFile);
       }
@@ -8970,7 +8970,7 @@ var PasteEventWrapper = class extends EventWrapper {
     if (this.plugin.settingsCopy.renameOnlyImages && !(0, import_Blob.isImageFile)(file)) {
       return false;
     }
-    return file.path === "" || this.plugin.settingsCopy.renamePastedFilesWithKnownNames;
+    return getFilePath(file) === "" || this.plugin.settingsCopy.renamePastedFilesWithKnownNames;
   }
 };
 function registerPasteDropEventHandlers(plugin) {
@@ -8983,6 +8983,9 @@ function registerPasteDropEventHandlers(plugin) {
     plugin.registerDomEvent(window2.document, "paste", listener, { capture: true });
     plugin.registerDomEvent(window2.document, "drop", listener, { capture: true });
   }
+}
+function getFilePath(file) {
+  return file.path || (import_electron.webUtils?.getPathForFile(file) ?? "");
 }
 async function handlePasteAndDrop(plugin, event) {
   const eventWrapper = event.constructor.name === "ClipboardEvent" ? new PasteEventWrapper(event, plugin) : new DropEventWrapper(event, plugin);

@@ -4559,12 +4559,23 @@ var titleIcon = {
     remove,
 };
 
+// Cache for font size
+let cachedFontSize = null;
+let fontSizeCacheTime = 0;
 const calculateFontTextSize = () => {
     var _a;
+    // get cached font size if available
+    const now = Date.now();
+    if (cachedFontSize !== null && now - fontSizeCacheTime < 2000) {
+        return cachedFontSize;
+    }
     let fontSize = parseFloat((_a = getComputedStyle(document.body).getPropertyValue('--font-text-size')) !== null && _a !== void 0 ? _a : '0');
     if (!fontSize) {
         fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
     }
+    // set font size cache
+    cachedFontSize = fontSize;
+    fontSizeCacheTime = now;
     return fontSize;
 };
 const calculateInlineTitleSize = () => {

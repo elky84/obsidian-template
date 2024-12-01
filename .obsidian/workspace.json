@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "2a9748e78a9d930f",
+        "id": "458154ba58d19db4",
         "type": "tabs",
         "children": [
           {
-            "id": "3bcd4258c187c4dd",
+            "id": "ecdbf80af2150092",
             "type": "leaf",
             "state": {
-              "type": "planner-release-notes",
+              "type": "empty",
               "state": {},
               "icon": "lucide-file",
-              "title": "Day Planner Release 0.27.0"
+              "title": "New tab"
             }
           }
         ]
@@ -176,16 +176,6 @@
             }
           },
           {
-            "id": "77b4685da5d7a9d0",
-            "type": "leaf",
-            "state": {
-              "type": "reminder-list",
-              "state": {},
-              "icon": "clock",
-              "title": "Reminders"
-            }
-          },
-          {
             "id": "93fd56db7c4c2184",
             "type": "leaf",
             "state": {
@@ -193,6 +183,16 @@
               "state": {},
               "icon": "calendar-with-checkmark",
               "title": "Timeline"
+            }
+          },
+          {
+            "id": "0297b642078de724",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {},
+              "icon": "clock",
+              "title": "Reminders"
             }
           }
         ],
@@ -227,7 +227,7 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "3bcd4258c187c4dd",
+  "active": "ecdbf80af2150092",
   "lastOpenFiles": [
     "template/weekly.md",
     "template/daily.md",
