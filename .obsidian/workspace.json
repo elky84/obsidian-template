@@ -11,10 +11,15 @@
             "id": "ecdbf80af2150092",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "인더풀 - 오쿠다히데오"
             }
           }
         ]
@@ -134,9 +139,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md"
+              },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of 인더풀 - 오쿠다히데오"
             }
           },
           {
