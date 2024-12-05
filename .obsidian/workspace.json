@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "458154ba58d19db4",
+        "id": "3c46cccbbd855fa3",
         "type": "tabs",
         "children": [
           {
-            "id": "ecdbf80af2150092",
+            "id": "7132099a7fbc927c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "인더풀 - 오쿠다히데오"
+              "title": "New tab"
             }
           }
         ]
@@ -140,10 +135,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2. Area/Read/인더풀 - 오쿠다히데오.md"
+                "file": "template/Periodic/weekly.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 인더풀 - 오쿠다히데오"
+              "title": "Outline of weekly"
             }
           },
           {
@@ -234,10 +229,15 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "ecdbf80af2150092",
+  "active": "8e3bc176ff7f95a4",
   "lastOpenFiles": [
-    "template/weekly.md",
-    "template/daily.md",
+    "template/Periodic/quarterly.md",
+    "template/Periodic/daily.md",
+    "template/Periodic/monthly.md",
+    "template/vision.md",
+    "2. Area/Read/인더풀 - 오쿠다히데오.md",
+    "template/Periodic",
+    "template/Periodic/weekly.md",
     "template/Works/컨텐츠.md",
     "template/Works/운영툴.md",
     "template/Works/리뷰.md",
@@ -258,10 +258,6 @@
     "template/Works/대응.md",
     "template/Works/Code Snippets.md",
     "template/Works/논의.md",
-    "Periodic/Weekly/2024-W26.md",
-    "view/tasks view.md",
-    "Periodic/Yearly/2024.md",
-    "Periodic/Monthly/2024-10.md",
     "Periodic/Monthly",
     "Periodic/Quarterly",
     "Periodic/Yearly",
@@ -272,7 +268,6 @@
     "view",
     "3. Resource/Draw.io/Diagram.svg",
     "3. Resource/Canvas/Canvas.canvas",
-    "Periodic/Weekly",
-    "Periodic/Daily"
+    "Periodic/Weekly"
   ]
 }
