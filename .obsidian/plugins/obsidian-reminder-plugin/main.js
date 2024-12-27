@@ -9318,7 +9318,7 @@ var _Todo = class {
     return `${this.prefix}${this.check}${this.suffix}${this.body}`;
   }
   isChecked() {
-    return this.check === "x";
+    return _Todo.checkedStatuses.some((status) => status === this.check);
   }
   setChecked(checked) {
     this.check = checked ? "x" : " ";
@@ -9332,6 +9332,7 @@ var _Todo = class {
 };
 var Todo = _Todo;
 Todo.regexp = new RegExp("^(?<prefix>((> ?)*)?\\s*[\\-\\*][ ]+\\[)(?<check>.)(?<suffix>\\]\\s+)(?<body>.*)$");
+Todo.checkedStatuses = ["x", "-"];
 var MarkdownDocument = class {
   constructor(file, content) {
     this.file = file;
