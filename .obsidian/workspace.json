@@ -11,10 +11,15 @@
             "id": "7132099a7fbc927c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Periodic/Yearly/2025.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "2025"
             }
           }
         ]
@@ -206,6 +211,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-read-it-later:ReadItLater: Create from clipboard": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -219,7 +225,6 @@
       "obsidian-full-calendar:Open Full Calendar": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-book-search-plugin:Create new book note": false,
-      "obsidian-read-it-later:ReadItLater: Save clipboard": false,
       "chronology:Open Chronology": false,
       "templates:Insert template": false,
       "obsidian-git:Open Git source control": false,
@@ -229,20 +234,28 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "8e3bc176ff7f95a4",
+  "active": "7132099a7fbc927c",
   "lastOpenFiles": [
+    "Periodic/Quarterly/2025-Q1.md",
+    "Periodic/Yearly/2025.md",
+    "Periodic/Daily/2025-01-28.md",
+    "Periodic/Monthly/2025-01.md",
+    "Periodic/Weekly/2025-W05.md",
+    "template/Periodic/yearly.md",
+    "Periodic/Weekly/2024-W26.md",
     "template/Periodic/quarterly.md",
-    "template/Periodic/daily.md",
+    "template/Periodic/weekly.md",
     "template/Periodic/monthly.md",
+    "1. Project/Tasks.md",
+    "1. Project/To Do.md",
+    "template/Periodic/daily.md",
     "template/vision.md",
     "2. Area/Read/인더풀 - 오쿠다히데오.md",
     "template/Periodic",
-    "template/Periodic/weekly.md",
     "template/Works/컨텐츠.md",
     "template/Works/운영툴.md",
     "template/Works/리뷰.md",
     "template/Works/리서치.md",
-    "1. Project/Tasks.md",
     "template/Works/개선.md",
     "template/Works/기능.md",
     "template/Works/기능 테스트.md",
@@ -250,14 +263,6 @@
     "template/Works/가이드.md",
     "template/Works/레퍼런스.md",
     "Periodic/Daily/2024-06-28.md",
-    "template/Works/체크 리스트.md",
-    "template/Works/이슈.md",
-    "template/Works/설정.md",
-    "template/Works/분석.md",
-    "template/Works/문서화.md",
-    "template/Works/대응.md",
-    "template/Works/Code Snippets.md",
-    "template/Works/논의.md",
     "Periodic/Monthly",
     "Periodic/Quarterly",
     "Periodic/Yearly",

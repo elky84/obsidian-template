@@ -9,7 +9,7 @@ tags:
 ## 🏆 Goal
 
 ## ✅ Tasks
-
+- [ ] 회고 ⏰ <% moment().endOf('year').format('YYYY-MM-DD') %> 13:00 📅 <% moment().endOf('year').format('YYYY-MM-DD') %>
 # 회고
 - 
 # [[<% moment().format('YYYY') %>-Q1]]

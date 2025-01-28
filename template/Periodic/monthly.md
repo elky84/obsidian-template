@@ -9,6 +9,6 @@ tags:
 ## 🏆 Goal
 
 ## ✅ Tasks
-
+- [ ] 회고 ⏰ <% moment().endOf('month').format('YYYY-MM-DD') %> 18:00 📅 <% moment().endOf('month').format('YYYY-MM-DD') %>
 # 회고
 - 
