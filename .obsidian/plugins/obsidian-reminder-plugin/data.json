@@ -1,65 +1,62 @@
 {
   "scanned": true,
   "reminders": {
-    "1. Project/Tasks.md": [
+    "Periodic/Tasks.md": [
       {
-        "title": "식물 물 주기",
-        "time": "2024-07-29 22:13",
-        "rowNumber": 16
-      },
-      {
-        "title": "PS Plus 무료 게임 다운",
-        "time": "2024-07-31 00:00",
-        "rowNumber": 18
-      },
-      {
-        "title": "자동차 보험 갱신",
-        "time": "2024-10-31 12:00",
-        "rowNumber": 20
+        "title": "월간 노트",
+        "time": "2025-02-01 00:00",
+        "rowNumber": 10
       },
       {
         "title": "주간 노트",
         "time": "2025-02-04 00:00",
-        "rowNumber": 23
-      },
-      {
-        "title": "월간 노트",
-        "time": "2025-02-01 00:00",
-        "rowNumber": 25
+        "rowNumber": 8
       },
       {
         "title": "분기 노트",
         "time": "2025-04-01",
-        "rowNumber": 27
+        "rowNumber": 12
       },
       {
         "title": "한 해 시작",
         "time": "2026-01-02 00:00",
-        "rowNumber": 29
+        "rowNumber": 14
       }
     ],
-    "Periodic/Monthly/2025-01.md": [
-      {
-        "title": "회고",
-        "time": "2025-01-31 18:00",
-        "rowNumber": 11
-      }
-    ],
-    "Periodic/Daily/2025-01-28.md": [
+    "Periodic/Daily/2025-02-19.md": [
       {
         "title": "영양제",
-        "time": "2025-01-28 11:00",
+        "time": "2025-02-19 11:00",
         "rowNumber": 5
       },
       {
         "title": "10:30 데일리 미팅",
-        "time": "2025-01-28 10:30",
+        "time": "2025-02-19 10:30",
         "rowNumber": 97
       },
       {
         "title": "13:00 점심 식사",
-        "time": "2025-01-28 13:00",
+        "time": "2025-02-19 13:00",
         "rowNumber": 99
+      }
+    ],
+    "Periodic/Weekly/2025-W08.md": [
+      {
+        "title": "식물 물 주기",
+        "time": "2025-02-16 19:00",
+        "rowNumber": 9
+      }
+    ],
+    "Periodic/Monthly/2025-02.md": [
+      {
+        "title": "회고",
+        "time": "2025-02-28 18:00",
+        "rowNumber": 11
+      },
+      {
+        "title": "PS Plus 무료 게임 다운",
+        "time": "2025-02-11 00:00",
+        "rowNumber": 12
       }
     ],
     "Periodic/Quarterly/2025-Q1.md": [
@@ -74,6 +71,11 @@
         "title": "회고",
         "time": "2025-12-31 13:00",
         "rowNumber": 11
+      },
+      {
+        "title": "자동차 보험 갱신",
+        "time": "2025-10-31",
+        "rowNumber": 12
       }
     ]
   },
