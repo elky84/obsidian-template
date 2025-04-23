@@ -204,8 +204,8 @@
             "state": {
               "type": "planner-timeline",
               "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Timeline"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -219,7 +219,27 @@
             }
           },
           {
-            "id": "28ba220f5f9dc224",
+            "id": "9c1679b2df960919",
+            "type": "leaf",
+            "state": {
+              "type": "planner-timeline",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
+            }
+          },
+          {
+            "id": "947f73321b30b3d3",
+            "type": "leaf",
+            "state": {
+              "type": "chronology-calendar-view",
+              "state": {},
+              "icon": "clock",
+              "title": "Chronology"
+            }
+          },
+          {
+            "id": "d9eb0f04bcdd5346",
             "type": "leaf",
             "state": {
               "type": "reminder-list",
@@ -248,7 +268,6 @@
       "obsidian-excalidraw-plugin:New drawing": false,
       "obsidian-kanban:Create new board": false,
       "templater-obsidian:Templater": false,
-      "obsidian-advanced-slides:Show Slide Preview": false,
       "obsidian-full-calendar:Open Full Calendar": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-day-planner:Open Timeline": false,
@@ -260,7 +279,7 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "f494df8303d3de8b",
+  "active": "947f73321b30b3d3",
   "lastOpenFiles": [
     "Periodic/Daily/2025-02-19.md",
     "Periodic/Tasks.md",
