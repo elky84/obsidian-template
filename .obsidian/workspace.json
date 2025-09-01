@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "004188c2fd9383e3",
+        "id": "0c2a4c1b566a8ca0",
         "type": "tabs",
         "children": [
           {
-            "id": "67ba3f97d09a4c69",
+            "id": "32351b3a8452b170",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "3. Resource/bookshelf.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "bookshelf"
             }
           }
         ]
@@ -148,8 +162,8 @@
             "state": {
               "type": "chronology-calendar-view",
               "state": {},
-              "icon": "clock",
-              "title": "Chronology"
+              "icon": "lucide-ghost",
+              "title": "chronology-calendar-view"
             }
           },
           {
@@ -179,37 +193,7 @@
             }
           },
           {
-            "id": "93fd56db7c4c2184",
-            "type": "leaf",
-            "state": {
-              "type": "planner-timeline",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
             "id": "00be3094168e5dfe",
-            "type": "leaf",
-            "state": {
-              "type": "chronology-calendar-view",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "603aa1e1b00fd545",
-            "type": "leaf",
-            "state": {
-              "type": "planner-timeline",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "f494df8303d3de8b",
             "type": "leaf",
             "state": {
               "type": "chronology-calendar-view",
@@ -219,7 +203,37 @@
             }
           },
           {
-            "id": "9c1679b2df960919",
+            "id": "f494df8303d3de8b",
+            "type": "leaf",
+            "state": {
+              "type": "chronology-calendar-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "chronology-calendar-view"
+            }
+          },
+          {
+            "id": "947f73321b30b3d3",
+            "type": "leaf",
+            "state": {
+              "type": "chronology-calendar-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "chronology-calendar-view"
+            }
+          },
+          {
+            "id": "eb90d90c8507e604",
+            "type": "leaf",
+            "state": {
+              "type": "chronology-calendar-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "chronology-calendar-view"
+            }
+          },
+          {
+            "id": "ae8335c67e6a9c28",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -229,17 +243,7 @@
             }
           },
           {
-            "id": "947f73321b30b3d3",
-            "type": "leaf",
-            "state": {
-              "type": "chronology-calendar-view",
-              "state": {},
-              "icon": "clock",
-              "title": "Chronology"
-            }
-          },
-          {
-            "id": "d9eb0f04bcdd5346",
+            "id": "3b2e86263ab6e7d2",
             "type": "leaf",
             "state": {
               "type": "reminder-list",
@@ -249,7 +253,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -257,6 +261,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -279,35 +284,35 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "947f73321b30b3d3",
+  "active": "32351b3a8452b170",
   "lastOpenFiles": [
-    "Periodic/Daily/2025-02-19.md",
-    "Periodic/Tasks.md",
+    "view/tasks view.md",
+    "view/data view - write.md",
+    "README.md",
+    "template/vision.md",
+    "template/book.md",
+    "Periodic/Daily/2025-09-01.md",
+    "Periodic/Monthly/2025-09.md",
+    "Periodic/Quarterly/2025-Q3.md",
+    "Periodic/Yearly/2025.md",
+    "Periodic/Weekly/2025-W36.md",
+    "template/Periodic/weekly.md",
+    "template/Periodic/monthly.md",
+    "template/Periodic/daily.md",
     "template/Periodic/yearly.md",
+    "template/Periodic/quarterly.md",
     "Periodic/Monthly/2025-02.md",
+    "Periodic/Daily/2025-02-19.md",
     "Periodic/Quarterly/2025-Q1.md",
     "Periodic/Weekly/2025-W08.md",
-    "Periodic/Yearly/2025.md",
-    "template/Periodic/monthly.md",
+    "Periodic/Tasks.md",
+    "__TEMP_bf6477b5-2d36-4b12-8c43-90ccb4cb52e2.md",
     "Periodic/Monthly/2025-01.md",
     "Periodic/Daily/2025-01-28.md",
-    "template/Periodic/weekly.md",
     "Periodic/Weekly/2025-W05.md",
     "Periodic/Weekly/2024-W26.md",
-    "template/Periodic/quarterly.md",
     "1. Project/To Do.md",
-    "template/Periodic/daily.md",
-    "template/vision.md",
-    "2. Area/Read/인더풀 - 오쿠다히데오.md",
     "template/Periodic",
-    "template/Works/컨텐츠.md",
-    "template/Works/운영툴.md",
-    "template/Works/리뷰.md",
-    "template/Works/리서치.md",
-    "template/Works/개선.md",
-    "template/Works/기능.md",
-    "template/Works/기능 테스트.md",
-    "template/Works/규칙.md",
     "Periodic/Monthly",
     "Periodic/Quarterly",
     "Periodic/Yearly",

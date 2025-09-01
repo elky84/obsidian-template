@@ -3,5 +3,6 @@
   "readableLineLength": false,
   "newFileLocation": "current",
   "alwaysUpdateLinks": true,
-  "strictLineBreaks": false
+  "strictLineBreaks": false,
+  "promptDelete": false
 }

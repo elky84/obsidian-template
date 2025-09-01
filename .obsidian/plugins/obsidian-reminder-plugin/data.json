@@ -1,101 +1,85 @@
 {
   "scanned": true,
   "reminders": {
-    "Periodic/Tasks.md": [
-      {
-        "title": "월간 노트",
-        "time": "2025-02-01 00:00",
-        "rowNumber": 10
-      },
-      {
-        "title": "주간 노트",
-        "time": "2025-02-04 00:00",
-        "rowNumber": 8
-      },
-      {
-        "title": "분기 노트",
-        "time": "2025-04-01",
-        "rowNumber": 12
-      },
-      {
-        "title": "한 해 시작",
-        "time": "2026-01-02 00:00",
-        "rowNumber": 14
-      }
-    ],
-    "Periodic/Daily/2025-02-19.md": [
-      {
-        "title": "영양제",
-        "time": "2025-02-19 11:00",
-        "rowNumber": 5
-      },
-      {
-        "title": "10:30 데일리 미팅",
-        "time": "2025-02-19 10:30",
-        "rowNumber": 97
-      },
-      {
-        "title": "13:00 점심 식사",
-        "time": "2025-02-19 13:00",
-        "rowNumber": 99
-      }
-    ],
-    "Periodic/Weekly/2025-W08.md": [
-      {
-        "title": "식물 물 주기",
-        "time": "2025-02-16 19:00",
-        "rowNumber": 9
-      }
-    ],
-    "Periodic/Monthly/2025-02.md": [
-      {
-        "title": "회고",
-        "time": "2025-02-28 18:00",
-        "rowNumber": 11
-      },
-      {
-        "title": "PS Plus 무료 게임 다운",
-        "time": "2025-02-11 00:00",
-        "rowNumber": 12
-      }
-    ],
-    "Periodic/Quarterly/2025-Q1.md": [
-      {
-        "title": "회고",
-        "time": "2025-03-31 13:00",
-        "rowNumber": 11
-      }
-    ],
     "Periodic/Yearly/2025.md": [
       {
-        "title": "회고",
+        "title": "회고 📅 2025-12-31",
         "time": "2025-12-31 13:00",
         "rowNumber": 11
       },
       {
-        "title": "자동차 보험 갱신",
+        "title": "자동차 보험 갱신 📅 2025-10-31",
         "time": "2025-10-31",
         "rowNumber": 12
+      },
+      {
+        "title": "Yearly 노트 생성 📅 2026-09-01",
+        "time": "2026-09-01 00:00",
+        "rowNumber": 13
+      }
+    ],
+    "Periodic/Weekly/2025-W36.md": [
+      {
+        "title": "Weekly 노트 생성 📅 2025-09-07",
+        "time": "2025-09-07 00:00",
+        "rowNumber": 10
+      }
+    ],
+    "Periodic/Quarterly/2025-Q3.md": [
+      {
+        "title": "회고 📅 2025-09-30",
+        "time": "2025-09-30 13:00",
+        "rowNumber": 11
+      },
+      {
+        "title": "Quarterly 노트 생성 📅 2025-12-01",
+        "time": "2025-12-01 00:00",
+        "rowNumber": 12
+      }
+    ],
+    "Periodic/Monthly/2025-09.md": [
+      {
+        "title": "회고 📅 2025-09-30",
+        "time": "2025-09-30 18:00",
+        "rowNumber": 11
+      },
+      {
+        "title": "Monthly 노트 생성 📅 2025-10-01",
+        "time": "2025-10-01 00:00",
+        "rowNumber": 13
+      }
+    ],
+    "Periodic/Daily/2025-09-01.md": [
+      {
+        "title": "13:00 점심 식사 📅 2025-09-01",
+        "time": "2025-09-01 13:00",
+        "rowNumber": 97
       }
     ]
   },
   "debug": false,
   "settings": {
     "reminderTime": "10:00",
+    "reminderTimeStep": 15,
     "laters": "In 30 minutes\nIn 1 hour\nIn 3 hours\nTomorrow\nNext week",
     "useSystemNotification": false,
     "autoCompleteTrigger": "(@",
-    "primaryReminderFormat": "TasksPluginReminderFormat",
+    "primaryReminderFormat": "ReminderPluginReminderFormat",
     "enableReminderPluginReminderFormat": true,
     "dateFormat": "YYYY-MM-DD",
     "dateTimeFormat": "YYYY-MM-DD HH:mm",
     "strictDateFormat": false,
-    "linkDatesToDailyNotes": false,
-    "enableTasksPluginReminderFormat": true,
-    "useCustomEmojiForTasksPlugin": true,
+    "linkDatesToDailyNotes": true,
+    "enableTasksPluginReminderFormat": false,
+    "useCustomEmojiForTasksPlugin": false,
     "removeTagsForTasksPlugin": false,
     "enableKanbanPluginReminderFormat": true,
+    "yearMonthDisplayFormat": "YYYY, MMMM",
+    "monthDayDisplayFormat": "MM/DD",
+    "shortDateWithWeekdayDisplayFormat": "M/DD (ddd)",
+    "timeDisplayFormat": "HH:mm",
     "editDetectionSec": 10,
-    "reminderCheckIntervalSec": 5
+    "reminderCheckIntervalSec": 5,
+    "weekStart": "0"
   }
 }

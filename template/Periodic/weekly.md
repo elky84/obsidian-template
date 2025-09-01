@@ -7,7 +7,8 @@ tags: weekly
 ## 🏆 Goal
 
 ## ✅ Tasks
-- [ ] 식물 물 주기 ⏰ <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %> 19:00 📅 <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>
+- [ ] 식물 물 주기 (@<% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %> 19:00) 📅 <% moment().startOf('week').add(0, 'days').format('YYYY-MM-DD') %>
+- [ ] Weekly 노트 생성 (@<% moment().startOf('week').add(1, 'week').format('YYYY-MM-DD') %> 00:00) 📅 <% moment().startOf('week').add(1, 'week').format('YYYY-MM-DD') %>
 ### 업무
 ```dataview
 TABLE WITHOUT ID
