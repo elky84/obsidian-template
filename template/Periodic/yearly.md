@@ -9,9 +9,8 @@ tags:
 ## 🏆 Goal
 
 ## ✅ Tasks
-- [ ] 회고 (@<% moment().endOf('year').format('YYYY-MM-DD') %> 13:00) 📅 <% moment().endOf('year').format('YYYY-MM-DD') %>
-- [ ] 자동차 보험 갱신 (@<% moment().format('YYYY') %>-10-31) 📅 <% moment().format('YYYY') %>-10-31
-- [ ] Yearly 노트 생성 (@<% moment().add(1, 'year').format('YYYY-MM-DD') %> 00:00) 📅 <% moment().add(1, 'year').format('YYYY-MM-DD') %>
+- [ ] 회고 ⏰<% moment().endOf('year').format('YYYY-MM-DD') %> 13:00 📅 <% moment().endOf('year').format('YYYY-MM-DD') %>
+- [ ] Yearly 노트 생성 ⏰<% moment().add(1, 'year').format('YYYY-MM-DD') %> 00:00 📅 <% moment().add(1, 'year').format('YYYY-MM-DD') %>
 # 회고
 - 
 # [[<% moment().format('YYYY') %>-Q1]]

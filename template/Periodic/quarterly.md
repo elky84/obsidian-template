@@ -9,8 +9,8 @@ tags:
 ## 🏆 Goal
 
 ## ✅ Tasks
-- [ ] 회고 (@<% moment().endOf('quarter').format('YYYY-MM-DD') %> 13:00) 📅 <% moment().endOf('quarter').format('YYYY-MM-DD') %>
-- [ ] Quarterly 노트 생성 (@<% moment().add(3, 'month').format('YYYY-MM-DD') %> 00:00) 📅 <% moment().add(3, 'month').format('YYYY-MM-DD') %>
+- [ ] 회고 ⏰<% moment().endOf('quarter').format('YYYY-MM-DD') %> 13:00 📅 <% moment().endOf('quarter').format('YYYY-MM-DD') %>
+- [ ] Quarterly 노트 생성 ⏰<% moment().add(3, 'month').format('YYYY-MM-DD') %> 00:00 📅 <% moment().add(3, 'month').format('YYYY-MM-DD') %>
 # 회고
 - 
 ## [[<% moment().format('YYYY-MM') %>]]

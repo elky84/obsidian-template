@@ -3,7 +3,7 @@
 # 📅  일정
 
 # 🔁 습관
-- [ ] 영양제 (@<% tp.file.title %> 11:00) 📅 <% tp.file.title %>
+- [ ] 영양제⏰ <% tp.file.title %> 11:00 📅 <% tp.file.title %>
 
 # 📒 메모
 - 
@@ -95,5 +95,5 @@ hide recurrence rule
 - 
 ## Day planner
 - 10:00 
-- [ ] 13:00 점심 식사 (@<% tp.file.title %> 13:00) 📅 <% tp.file.title %>
+- [ ] 13:00 점심 식사 ⏰<% tp.file.title %> 13:00 📅 <% tp.file.title %>
 - 14:00

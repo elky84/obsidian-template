@@ -1,59 +1,52 @@
 {
   "scanned": true,
   "reminders": {
-    "Periodic/Yearly/2025.md": [
-      {
-        "title": "회고 📅 2025-12-31",
-        "time": "2025-12-31 13:00",
-        "rowNumber": 11
-      },
-      {
-        "title": "자동차 보험 갱신 📅 2025-10-31",
-        "time": "2025-10-31",
-        "rowNumber": 12
-      },
-      {
-        "title": "Yearly 노트 생성 📅 2026-09-01",
-        "time": "2026-09-01 00:00",
-        "rowNumber": 13
-      }
-    ],
-    "Periodic/Weekly/2025-W36.md": [
-      {
-        "title": "Weekly 노트 생성 📅 2025-09-07",
-        "time": "2025-09-07 00:00",
-        "rowNumber": 10
-      }
-    ],
     "Periodic/Quarterly/2025-Q3.md": [
       {
-        "title": "회고 📅 2025-09-30",
+        "title": "회고",
         "time": "2025-09-30 13:00",
         "rowNumber": 11
       },
       {
-        "title": "Quarterly 노트 생성 📅 2025-12-01",
-        "time": "2025-12-01 00:00",
+        "title": "Quarterly 노트 생성",
+        "time": "2025-12-02 00:00",
+        "rowNumber": 12
+      }
+    ],
+    "Periodic/Yearly/2025.md": [
+      {
+        "title": "회고",
+        "time": "2025-12-31 13:00",
+        "rowNumber": 11
+      },
+      {
+        "title": "Yearly 노트 생성",
+        "time": "2026-09-02 00:00",
         "rowNumber": 12
       }
     ],
     "Periodic/Monthly/2025-09.md": [
       {
-        "title": "회고 📅 2025-09-30",
+        "title": "회고",
         "time": "2025-09-30 18:00",
         "rowNumber": 11
       },
       {
-        "title": "Monthly 노트 생성 📅 2025-10-01",
-        "time": "2025-10-01 00:00",
-        "rowNumber": 13
+        "title": "Monthly 노트 생성",
+        "time": "2025-10-02 00:00",
+        "rowNumber": 12
       }
     ],
-    "Periodic/Daily/2025-09-01.md": [
+    "Periodic/Weekly/2025-W36.md": [
       {
-        "title": "13:00 점심 식사 📅 2025-09-01",
-        "time": "2025-09-01 13:00",
-        "rowNumber": 97
+        "title": "Read it later 정리",
+        "time": "2025-09-05 10:00",
+        "rowNumber": 12
+      },
+      {
+        "title": "Weekly 노트 생성",
+        "time": "2025-09-07 00:00",
+        "rowNumber": 13
       }
     ]
   },
@@ -64,22 +57,17 @@
     "laters": "In 30 minutes\nIn 1 hour\nIn 3 hours\nTomorrow\nNext week",
     "useSystemNotification": false,
     "autoCompleteTrigger": "(@",
-    "primaryReminderFormat": "ReminderPluginReminderFormat",
+    "primaryReminderFormat": "TasksPluginReminderFormat",
     "enableReminderPluginReminderFormat": true,
     "dateFormat": "YYYY-MM-DD",
     "dateTimeFormat": "YYYY-MM-DD HH:mm",
     "strictDateFormat": false,
     "linkDatesToDailyNotes": true,
-    "enableTasksPluginReminderFormat": false,
-    "useCustomEmojiForTasksPlugin": false,
+    "enableTasksPluginReminderFormat": true,
+    "useCustomEmojiForTasksPlugin": true,
     "removeTagsForTasksPlugin": false,
     "enableKanbanPluginReminderFormat": true,
-    "yearMonthDisplayFormat": "YYYY, MMMM",
-    "monthDayDisplayFormat": "MM/DD",
-    "shortDateWithWeekdayDisplayFormat": "M/DD (ddd)",
-    "timeDisplayFormat": "HH:mm",
     "editDetectionSec": 10,
-    "reminderCheckIntervalSec": 5,
-    "weekStart": "0"
+    "reminderCheckIntervalSec": 5
   }
 }
