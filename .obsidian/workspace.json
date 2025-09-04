@@ -4,31 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "2e68a6c03108c58c",
+        "id": "43f048c3c03336ce",
         "type": "tabs",
         "children": [
           {
-            "id": "624de7bc6af44900",
+            "id": "a3028751f5f7e25e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "기슬 인터뷰 - 운영체제"
+              "title": "New tab"
             }
           }
         ]
@@ -284,8 +270,9 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "624de7bc6af44900",
+  "active": "a3028751f5f7e25e",
   "lastOpenFiles": [
+    "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
     "template/Periodic/weekly.md",
     "__TEMP_93853b29-5ed5-43b1-8724-4c26e496e793.md",
     "Periodic/Weekly/2025-W36.md",
@@ -311,7 +298,6 @@
     "Periodic/Quarterly/2025-Q1.md",
     "Periodic/Weekly/2025-W08.md",
     "Periodic/Tasks.md",
-    "__TEMP_bf6477b5-2d36-4b12-8c43-90ccb4cb52e2.md",
     "template/Periodic",
     "Periodic/Monthly",
     "Periodic/Quarterly",
