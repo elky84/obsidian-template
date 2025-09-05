@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "43f048c3c03336ce",
+        "id": "a218a1b25b609648",
         "type": "tabs",
         "children": [
           {
-            "id": "a3028751f5f7e25e",
+            "id": "16dea1d1e763ecc0",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -270,7 +270,7 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "a3028751f5f7e25e",
+  "active": "16dea1d1e763ecc0",
   "lastOpenFiles": [
     "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
     "template/Periodic/weekly.md",
