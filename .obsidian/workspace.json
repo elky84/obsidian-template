@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a218a1b25b609648",
+        "id": "716b601c38bf5aa2",
         "type": "tabs",
         "children": [
           {
-            "id": "16dea1d1e763ecc0",
+            "id": "cb7182ca9559a257",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -270,10 +270,14 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "16dea1d1e763ecc0",
+  "active": "cb7182ca9559a257",
   "lastOpenFiles": [
-    "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
+    "template/Periodic/yearly.md",
     "template/Periodic/weekly.md",
+    "template/Periodic/quarterly.md",
+    "template/Periodic/monthly.md",
+    "Periodic/Weekly/2025-W39.md",
+    "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
     "__TEMP_93853b29-5ed5-43b1-8724-4c26e496e793.md",
     "Periodic/Weekly/2025-W36.md",
     "__TEMP_2f3fcd4b-7d07-41e2-b235-3818233fa268.md",
@@ -282,7 +286,6 @@
     "Periodic/Quarterly/2025-Q3.md",
     "Periodic/Daily/2025-09-02.md",
     "template/Periodic/daily.md",
-    "template/Periodic/monthly.md",
     "Periodic/Daily/2025-09-01.md",
     "3. Resource/bookshelf.md",
     "__TEMP_2b006be9-db1f-4a75-838a-b328ebbab8ff.md",
@@ -291,13 +294,10 @@
     "README.md",
     "template/vision.md",
     "template/book.md",
-    "template/Periodic/yearly.md",
-    "template/Periodic/quarterly.md",
     "Periodic/Monthly/2025-02.md",
     "Periodic/Daily/2025-02-19.md",
     "Periodic/Quarterly/2025-Q1.md",
     "Periodic/Weekly/2025-W08.md",
-    "Periodic/Tasks.md",
     "template/Periodic",
     "Periodic/Monthly",
     "Periodic/Quarterly",

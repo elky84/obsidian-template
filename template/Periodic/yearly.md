@@ -10,7 +10,7 @@ tags:
 
 ## ✅ Tasks
 - [ ] 회고 ⏰<% moment().endOf('year').format('YYYY-MM-DD') %> 13:00 📅 <% moment().endOf('year').format('YYYY-MM-DD') %>
-- [ ] Yearly 노트 생성 ⏰<% moment().add(1, 'year').format('YYYY-MM-DD') %> 00:00 📅 <% moment().add(1, 'year').format('YYYY-MM-DD') %>
+- [ ] Yearly 노트 생성 ⏰<% moment().startOf('year').add(1, 'year').format('YYYY-MM-DD') %> 00:00 📅 <% moment().startOf('year').add(1, 'year').format('YYYY-MM-DD') %>
 # 회고
 - 
 # [[<% moment().format('YYYY') %>-Q1]]
