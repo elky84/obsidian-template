@@ -10,9 +10,9 @@ tags:
 
 ## ✅ Tasks
 - [ ] 회고 ⏰<% moment().endOf('quarter').format('YYYY-MM-DD') %> 13:00 📅 <% moment().endOf('quarter').format('YYYY-MM-DD') %>
-- [ ] Quarterly 노트 생성 ⏰<% moment().startOf('quarter').add(3, 'month').format('YYYY-MM-DD') %> 00:00 📅 <% moment().startOf('quarter').add(3, 'month').format('YYYY-MM-DD') %>
+- [ ] Quarterly 노트 생성 ⏰<% moment().startOf('quarter').add(1, 'quarter').format('YYYY-MM-DD') %> 00:00 📅 <% moment().startOf('quarter').add(1, 'quarter').format('YYYY-MM-DD') %>
 # 회고
 - 
-## [[<% moment().format('YYYY-MM') %>]]
-## [[<% moment().add(1, 'month').format('YYYY-MM') %>]]
-## [[<% moment().add(2, 'month').format('YYYY-MM') %>]]
+## [[<% moment().startOf('quarter').format('YYYY-MM') %>]]
+## [[<% moment().startOf('quarter').add(1, 'month').format('YYYY-MM') %>]]
+## [[<% moment().startOf('quarter').add(2, 'month').format('YYYY-MM') %>]]
