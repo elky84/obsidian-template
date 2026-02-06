@@ -12,7 +12,7 @@ tags: weekly
 ## ✅ Tasks
 - [ ] Read it later 정리 ⏰<% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %> 10:00 📅 <% moment().startOf('week').add(5, 'days').format('YYYY-MM-DD') %>
 - [ ] Weekly 노트 생성 ⏰<% moment().startOf('week').add(1, 'week').format('YYYY-MM-DD') %> 00:00 📅 <% moment().startOf('week').add(1, 'week').format('YYYY-MM-DD') %>
-### 업무
+### 진행 업무
 ```dataview
 TABLE WITHOUT ID
     file.link as Title,
@@ -22,6 +22,18 @@ TABLE WITHOUT ID
 WHERE contains(file.path, "1. Project") AND start != null
 SORT start DESC
 ```
+### 대기 중 업무
+```dataview
+TABLE WITHOUT ID
+    file.link as Title,
+    start,
+    end,
+    "완료" as Status
+WHERE contains(file.path, "2. Area")
+  AND !startswith(file.folder, "template")
+  AND start != null AND end = null
+SORT start DESC
+```
 ### 완료 한 업무
 ```dataview
 TABLE WITHOUT ID
@@ -29,7 +41,9 @@ TABLE WITHOUT ID
     start,
     end,
     "완료" as Status
-WHERE (contains(file.path, "3. Resource") or contains(file.path, "4. Archive")) AND dateformat(end, "W") = dateformat(date(now), "W")
+WHERE !contains(file.path, "1. Project")
+  AND !startswith(file.folder, "template")
+  AND dateformat(end, "yyyy-'W'WW") = this.file.name
 SORT start DESC
 ```
 # 회고
