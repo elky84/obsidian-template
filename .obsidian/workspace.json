@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "50f188066f5e0ebf",
+        "id": "0c9ddf10304724cf",
         "type": "tabs",
         "children": [
           {
-            "id": "34cd74c322d700c6",
+            "id": "bce3dc25fad7a379",
             "type": "leaf",
             "state": {
-              "type": "task-genius-changelog",
+              "type": "empty",
               "state": {},
-              "icon": "task-genius",
-              "title": "Changelog"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -267,19 +267,11 @@
       "obsidian-read-it-later:ReadItLater: Create from clipboard": false,
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
-      "tasknotes:Open mini calendar": false,
-      "tasknotes:Open advanced calendar": false,
-      "tasknotes:Open task list": false,
-      "tasknotes:Open agenda": false,
-      "tasknotes:Open kanban board": false,
-      "tasknotes:Open pomodoro": false,
-      "tasknotes:Open pomodoro stats": false,
-      "tasknotes:Create new task": false,
       "periodic-notes:Open today": false,
       "obsidian-task-progress-bar:Open Task Genius view": false
     }
   },
-  "active": "34cd74c322d700c6",
+  "active": "bce3dc25fad7a379",
   "lastOpenFiles": [
     "TaskNotes/Views/relationships.base",
     "TaskNotes/Views/agenda-default.base",
