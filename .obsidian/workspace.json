@@ -4,31 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "59ba4f90decf3584",
+        "id": "50f188066f5e0ebf",
         "type": "tabs",
         "children": [
           {
-            "id": "9c12da3d57d324d4",
+            "id": "34cd74c322d700c6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "template/Periodic/weekly.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "weekly"
+              "type": "task-genius-changelog",
+              "state": {},
+              "icon": "task-genius",
+              "title": "Changelog"
             }
           }
         ]
@@ -281,15 +267,30 @@
       "obsidian-read-it-later:ReadItLater: Create from clipboard": false,
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
-      "periodic-notes:Open today": false
+      "tasknotes:Open mini calendar": false,
+      "tasknotes:Open advanced calendar": false,
+      "tasknotes:Open task list": false,
+      "tasknotes:Open agenda": false,
+      "tasknotes:Open kanban board": false,
+      "tasknotes:Open pomodoro": false,
+      "tasknotes:Open pomodoro stats": false,
+      "tasknotes:Create new task": false,
+      "periodic-notes:Open today": false,
+      "obsidian-task-progress-bar:Open Task Genius view": false
     }
   },
-  "active": "9c12da3d57d324d4",
+  "active": "34cd74c322d700c6",
   "lastOpenFiles": [
+    "TaskNotes/Views/relationships.base",
+    "TaskNotes/Views/agenda-default.base",
+    "TaskNotes/Views/calendar-default.base",
+    "TaskNotes/Views/tasks-default.base",
+    "TaskNotes/Views/kanban-default.base",
+    "TaskNotes/Views/mini-calendar-default.base",
+    "template/Periodic/weekly.md",
     "template/Periodic/monthly.md",
     "template/Periodic/yearly.md",
     "template/Periodic/quarterly.md",
-    "template/Periodic/weekly.md",
     "Periodic/Weekly/2025-W39.md",
     "3. Resource/Interview/기슬 인터뷰 - 운영체제.md",
     "__TEMP_93853b29-5ed5-43b1-8724-4c26e496e793.md",
@@ -311,18 +312,12 @@
     "Periodic/Monthly/2025-02.md",
     "Periodic/Daily/2025-02-19.md",
     "Periodic/Quarterly/2025-Q1.md",
-    "Periodic/Weekly/2025-W08.md",
     "template/Periodic",
     "Periodic/Monthly",
     "Periodic/Quarterly",
     "Periodic/Yearly",
     "Periodic",
-    "template/Works",
-    "template/새 폴더",
-    "template/업무",
-    "view",
     "3. Resource/Draw.io/Diagram.svg",
-    "3. Resource/Canvas/Canvas.canvas",
-    "Periodic/Weekly"
+    "3. Resource/Canvas/Canvas.canvas"
   ]
 }

@@ -23,11 +23,12 @@
   "obsidian-sortable",
   "obsidian-git",
   "tag-wrangler",
-  "tasks-calendar-wrapper",
   "obsidian-icon-folder",
   "obsidian-enhancing-mindmap",
   "obsidian-style-settings",
   "periodic-notes",
   "obsidian-reminder-plugin",
-  "obsidian-thumbnails"
+  "obsidian-thumbnails",
+  "todoist-sync-plugin",
+  "obsidian-task-progress-bar"
 ]
