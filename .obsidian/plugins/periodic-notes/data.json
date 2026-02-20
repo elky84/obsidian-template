@@ -4,30 +4,30 @@
   "hasMigratedWeeklyNoteSettings": false,
   "daily": {
     "folder": "Periodic/Daily",
-    "template": "template/Periodic/daily",
+    "template": "Templates/Periodic/daily",
     "enabled": true
   },
   "weekly": {
     "format": "",
-    "template": "template/Periodic/weekly.md",
+    "template": "Templates/Periodic/weekly.md",
     "folder": "Periodic/Weekly",
     "enabled": true
   },
   "monthly": {
     "format": "",
-    "template": "template/Periodic/monthly.md",
+    "template": "Templates/Periodic/monthly.md",
     "folder": "Periodic/Monthly",
     "enabled": true
   },
   "quarterly": {
     "format": "",
-    "template": "template/Periodic/quarterly.md",
+    "template": "Templates/Periodic/quarterly.md",
     "folder": "Periodic/Quarterly",
     "enabled": true
   },
   "yearly": {
     "format": "",
-    "template": "template/Periodic/yearly.md",
+    "template": "Templates/Periodic/yearly.md",
     "folder": "Periodic/Yearly",
     "enabled": true
   }

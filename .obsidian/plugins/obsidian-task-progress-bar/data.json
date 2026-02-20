@@ -371,6 +371,28 @@
   "globalFilterRules": {},
   "viewConfiguration": [
     {
+      "id": "today",
+      "name": "Today",
+      "icon": "calendar-days",
+      "type": "default",
+      "visible": true,
+      "region": "top",
+      "hideCompletedAndAbandonedTasks": true,
+      "filterBlanks": false,
+      "filterRules": {}
+    },
+    {
+      "id": "upcoming",
+      "name": "Upcoming",
+      "icon": "calendar",
+      "type": "default",
+      "visible": true,
+      "region": "top",
+      "hideCompletedAndAbandonedTasks": true,
+      "filterBlanks": false,
+      "filterRules": {}
+    },
+    {
       "id": "inbox",
       "name": "Inbox",
       "icon": "inbox",
@@ -378,7 +400,8 @@
       "visible": true,
       "hideCompletedAndAbandonedTasks": true,
       "filterRules": {},
-      "filterBlanks": false
+      "filterBlanks": false,
+      "region": "top"
     },
     {
       "id": "working-on",
@@ -432,7 +455,8 @@
       "visible": true,
       "hideCompletedAndAbandonedTasks": true,
       "filterRules": {},
-      "filterBlanks": false
+      "filterBlanks": false,
+      "region": "top"
     },
     {
       "id": "review",
@@ -643,7 +667,7 @@
     "showRewardType": "modal"
   },
   "habit": {
-    "enableHabits": false,
+    "enableHabits": true,
     "habits": []
   },
   "filterConfig": {
@@ -708,9 +732,25 @@
     "quickInputShowQuickActions": true
   },
   "fileFilter": {
-    "enabled": false,
+    "enabled": true,
     "mode": "blacklist",
-    "rules": [],
+    "rules": [
+      {
+        "type": "pattern",
+        "path": "3. Resource/*",
+        "enabled": true
+      },
+      {
+        "type": "pattern",
+        "path": "4. Archive/*",
+        "enabled": true
+      },
+      {
+        "type": "pattern",
+        "path": "Templates/*",
+        "enabled": true
+      }
+    ],
     "scopeControls": {
       "inlineTasksEnabled": true,
       "fileTasksEnabled": true
@@ -939,8 +979,17 @@
       "ws_1771229390600_pg0hr4usg": {
         "id": "ws_1771229390600_pg0hr4usg",
         "name": "Default",
-        "updatedAt": 1771229390600,
-        "settings": {}
+        "updatedAt": 1771594846251,
+        "settings": {
+          "fluentFilterState": {
+            "inbox": {
+              "filters": {},
+              "advancedFilter": null,
+              "viewMode": "list"
+            }
+          },
+          "fluentActiveViewId": "inbox"
+        }
       }
     }
   }
