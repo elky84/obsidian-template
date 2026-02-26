@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d0d3769b7565f112",
+        "id": "26662edf3f72b239",
         "type": "tabs",
         "children": [
           {
-            "id": "5ee0941f638b7e34",
+            "id": "ceb29a4b73ef3bf1",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -267,19 +267,11 @@
       "obsidian-read-it-later:ReadItLater: Create from clipboard": false,
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
-      "tasknotes:Open mini calendar": false,
-      "tasknotes:Open advanced calendar": false,
-      "tasknotes:Open task list": false,
-      "tasknotes:Open agenda": false,
-      "tasknotes:Open kanban board": false,
-      "tasknotes:Open pomodoro": false,
-      "tasknotes:Open pomodoro stats": false,
-      "tasknotes:Create new task": false,
       "periodic-notes:Open today": false,
       "obsidian-task-progress-bar:Open Task Genius view": false
     }
   },
-  "active": "5ee0941f638b7e34",
+  "active": "ceb29a4b73ef3bf1",
   "lastOpenFiles": [
     "Templates/Periodic/daily.md",
     "Templates/Periodic/monthly.md",
