@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "26662edf3f72b239",
+        "id": "588ca433c960f499",
         "type": "tabs",
         "children": [
           {
-            "id": "ceb29a4b73ef3bf1",
+            "id": "a1e208aa2c6418d9",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -257,7 +257,6 @@
       "templates:Insert template": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:New drawing": false,
-      "obsidian-kanban:Create new board": false,
       "templater-obsidian:Templater": false,
       "obsidian-full-calendar:Open Full Calendar": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
@@ -268,10 +267,12 @@
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
       "periodic-notes:Open today": false,
-      "obsidian-task-progress-bar:Open Task Genius view": false
+      "obsidian-task-progress-bar:Open Task Genius view": false,
+      "rss-dashboard:RSS dashboard": false,
+      "rss-dashboard:RSS discover": false
     }
   },
-  "active": "ceb29a4b73ef3bf1",
+  "active": "a1e208aa2c6418d9",
   "lastOpenFiles": [
     "Templates/Periodic/daily.md",
     "Templates/Periodic/monthly.md",

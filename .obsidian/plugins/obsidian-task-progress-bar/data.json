@@ -859,9 +859,9 @@
   "customDateFormats": [],
   "onboarding": {
     "completed": false,
-    "version": "",
+    "version": "9.13.1",
     "configMode": "beginner",
-    "skipOnboarding": false,
+    "skipOnboarding": true,
     "completedAt": ""
   },
   "fileSource": {

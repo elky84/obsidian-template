@@ -7,7 +7,6 @@
   "templater-obsidian",
   "obsidian-outliner",
   "obsidian-diagrams-net",
-  "obsidian-full-calendar",
   "obsidian-custom-attachment-location",
   "mermaid-tools",
   "find-unlinked-files",
@@ -18,16 +17,15 @@
   "quickadd",
   "chronology",
   "obsidian-tasks-plugin",
-  "obsidian-admonition",
   "obsidian-sortable",
   "obsidian-git",
   "tag-wrangler",
-  "obsidian-icon-folder",
   "obsidian-enhancing-mindmap",
   "obsidian-style-settings",
   "periodic-notes",
   "obsidian-reminder-plugin",
   "obsidian-thumbnails",
   "todoist-sync-plugin",
-  "obsidian-task-progress-bar"
+  "obsidian-task-progress-bar",
+  "rss-dashboard"
 ]
