@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "588ca433c960f499",
+        "id": "f702446ab2d10d4c",
         "type": "tabs",
         "children": [
           {
-            "id": "a1e208aa2c6418d9",
+            "id": "88433976842056a6",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -258,7 +258,6 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "templater-obsidian:Templater": false,
-      "obsidian-full-calendar:Open Full Calendar": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-day-planner:Open Timeline": false,
       "obsidian-day-planner:Open Multi-Day View": false,
@@ -266,20 +265,20 @@
       "obsidian-read-it-later:ReadItLater: Create from clipboard": false,
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
-      "periodic-notes:Open today": false,
-      "obsidian-task-progress-bar:Open Task Genius view": false,
       "rss-dashboard:RSS dashboard": false,
-      "rss-dashboard:RSS discover": false
+      "rss-dashboard:RSS discover": false,
+      "periodic-notes:Open today": false,
+      "obsidian-task-progress-bar:Open Task Genius view": false
     }
   },
-  "active": "a1e208aa2c6418d9",
+  "active": "88433976842056a6",
   "lastOpenFiles": [
+    "1. Project/dev toy/프로젝트 A.md",
     "Templates/Periodic/daily.md",
     "Templates/Periodic/monthly.md",
     "Templates/Periodic/quarterly.md",
     "Templates/Periodic/weekly.md",
     "Templates/Periodic/yearly.md",
-    "1. Project/dev toy/프로젝트 A.md",
     "1. Project/dev toy/기본적인 로직 프로토타이핑.md",
     "Templates/Works/Code Snippets.md",
     "Templates/Works/대응.md",
