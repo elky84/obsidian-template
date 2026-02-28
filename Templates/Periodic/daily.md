@@ -36,7 +36,31 @@ hide recurrence rule
 ```
 ## 💻업무
 ### 진행 중 업무
-![[Working.base]]
+```base
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.folder.startsWith("1. Project")
+        - '!file.tags.contains("excalidraw")'
+        - file.ext != "png"
+        - start <= "<% tp.file.title %>"
+        - end.isEmpty()
+    order:
+      - file.name
+      - tags
+      - start
+      - end
+      - due
+    columnSize:
+      file.name: 270
+      note.tags: 301
+      note.start: 219
+      note.end: 123
+      note.due: 188
+
+```
 ### 오늘 마감 해야 될 일
 ```tasks
 path includes 1. Project
@@ -73,5 +97,3 @@ hide recurrence rule
 
 ## Day planner
 - 10:00 
-- [ ] 13:00 점심 식사 ⏰<% tp.file.title %> 13:00 📅 <% tp.file.title %>
-- 14:00

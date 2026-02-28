@@ -13,6 +13,24 @@ tags:
 - [ ] Quarterly 노트 생성 ⏰<% moment().startOf('quarter').add(1, 'quarter').format('YYYY-MM-DD') %> 00:00 📅 <% moment().startOf('quarter').add(1, 'quarter').format('YYYY-MM-DD') %>
 # 회고
 - 
-## [[<% moment().startOf('quarter').format('YYYY-MM') %>]]
-## [[<% moment().startOf('quarter').add(1, 'month').format('YYYY-MM') %>]]
-## [[<% moment().startOf('quarter').add(2, 'month').format('YYYY-MM') %>]]
+
+# 월간 노트
+<%*
+let title = tp.file.title;
+let match = title.match(/^(\d{4})-Q([1-4])$/);
+
+if (!match) {
+    tR += "파일 이름이 YYYY-QN 형식이 아닙니다.";
+    return;
+}
+
+let year = match[1];
+let quarter = parseInt(match[2]);
+
+let startMonth = (quarter - 1) * 3 + 1;
+
+for (let i = 0; i < 3; i++) {
+    let month = String(startMonth + i).padStart(2, "0");
+    tR += `[[${year}-${month}]]\n`;
+}
+%>
