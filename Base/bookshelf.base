@@ -1,0 +1,15 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.tags.contains("📚Book")
+    order:
+      - file.name
+      - status
+      - rating
+      - year
+      - author
+      - publisher
+    columnSize:
+      note.rating: 153

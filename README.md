@@ -47,16 +47,7 @@ PARA 기록법을 이용합니다.
 ## Plugin
 ### Chart
 - [비주얼한 메모로 업그레이드! 옵시디안 차트(그래프) 그리는 플러그인 - YouTube](https://www.youtube.com/watch?v=L2yax2QaWdg)
-### DataView
-- [메모를 데이터베이스로! 옵시디안을 데이터뷰 플러그인 기초 - YouTube](https://www.youtube.com/watch?v=30btdLPW8zU)
-- [Dataview in Obsidian: A Beginner's Guide - Obsidian Rocks](https://obsidian.rocks/dataview-in-obsidian-a-beginners-guide/)
-- [Dataview (blacksmithgu.github.io)](https://blacksmithgu.github.io/obsidian-dataview/)
-#### Example
-- [Dataview Example Vault (s-blu.github.io)](https://s-blu.github.io/obsidian_dataview_example_vault/)
-#### Query Builder
-- [Basic Dataview Query Builder (s-blu.github.io)](https://s-blu.github.io/basic-dataview-query-builder/)
-#### Flatten
-- [Example FLATTEN Queries - Dataview Example Vault (s-blu.github.io)](https://s-blu.github.io/obsidian_dataview_example_vault/20%20Dataview%20Queries/Example%20FLATTEN%20Queries/)
+
 ### Advanced Tables
 - [[obsidian] advanced tables 플러그인 추천](https://luran.me/641)
 ### Full Calendar

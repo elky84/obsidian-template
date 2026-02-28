@@ -1,40 +1,64 @@
 {
   "scanned": true,
   "reminders": {
-    "Periodic/Quarterly/2025-Q3.md": [
+    "Periodic/Monthly/2026-02.md": [
       {
         "title": "회고",
-        "time": "2025-09-30 13:00",
-        "rowNumber": 11
-      },
-      {
-        "title": "Quarterly 노트 생성",
-        "time": "2025-12-02 00:00",
-        "rowNumber": 12
-      }
-    ],
-    "Periodic/Yearly/2025.md": [
-      {
-        "title": "회고",
-        "time": "2025-12-31 13:00",
-        "rowNumber": 11
-      },
-      {
-        "title": "Yearly 노트 생성",
-        "time": "2026-09-02 00:00",
-        "rowNumber": 12
-      }
-    ],
-    "Periodic/Monthly/2025-09.md": [
-      {
-        "title": "회고",
-        "time": "2025-09-30 18:00",
+        "time": "2026-02-28 18:00",
         "rowNumber": 11
       },
       {
         "title": "Monthly 노트 생성",
-        "time": "2025-10-02 00:00",
+        "time": "2026-03-01 00:00",
         "rowNumber": 12
+      }
+    ],
+    "Periodic/Yearly/2026.md": [
+      {
+        "title": "회고",
+        "time": "2026-12-31 13:00",
+        "rowNumber": 11
+      },
+      {
+        "title": "Yearly 노트 생성",
+        "time": "2027-01-01 00:00",
+        "rowNumber": 12
+      }
+    ],
+    "Periodic/Quarterly/2026-Q1.md": [
+      {
+        "title": "회고",
+        "time": "2026-03-31 13:00",
+        "rowNumber": 11
+      },
+      {
+        "title": "Quarterly 노트 생성",
+        "time": "2026-04-01 00:00",
+        "rowNumber": 12
+      }
+    ],
+    "Periodic/Weekly/2026-W09.md": [
+      {
+        "title": "Read it later 정리",
+        "time": "2026-02-27 10:00",
+        "rowNumber": 12
+      },
+      {
+        "title": "Weekly 노트 생성",
+        "time": "2026-03-01 00:00",
+        "rowNumber": 13
+      }
+    ],
+    "Periodic/Daily/2026-02-28.md": [
+      {
+        "title": "약 먹기",
+        "time": "2026-02-28",
+        "rowNumber": 9
+      },
+      {
+        "title": "13:00 점심 식사",
+        "time": "2026-02-28 13:00",
+        "rowNumber": 75
       }
     ]
   },

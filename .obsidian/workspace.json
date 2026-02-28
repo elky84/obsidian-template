@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "f702446ab2d10d4c",
+        "id": "b55d96e5e4891264",
         "type": "tabs",
         "children": [
           {
-            "id": "88433976842056a6",
+            "id": "9aa73d82a9163bf2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "README"
             }
           }
         ]
@@ -49,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"end\"]",
+                "query": "dataview",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +84,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -266,18 +281,26 @@
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
       "rss-dashboard:RSS dashboard": false,
-      "rss-dashboard:RSS discover": false,
-      "periodic-notes:Open today": false,
-      "obsidian-task-progress-bar:Open Task Genius view": false
+      "rss-dashboard:RSS discover": false
     }
   },
-  "active": "88433976842056a6",
+  "active": "9aa73d82a9163bf2",
   "lastOpenFiles": [
-    "1. Project/dev toy/프로젝트 A.md",
+    "Templates/Periodic/weekly.md",
+    "Periodic/Monthly/2026-02.md",
+    "Periodic/Weekly/2026-W09.md",
+    "Periodic/Daily/2026-02-28.md",
     "Templates/Periodic/daily.md",
+    "Periodic/Quarterly/2026-Q1.md",
+    "Periodic/Yearly/2026.md",
+    "README.md",
+    "3. Resource/bookshelf.md",
+    "Base/bookshelf.base",
+    "Base/Untitled.md",
+    "Base",
+    "1. Project/dev toy/프로젝트 A.md",
     "Templates/Periodic/monthly.md",
     "Templates/Periodic/quarterly.md",
-    "Templates/Periodic/weekly.md",
     "Templates/Periodic/yearly.md",
     "1. Project/dev toy/기본적인 로직 프로토타이핑.md",
     "Templates/Works/Code Snippets.md",
@@ -297,18 +320,8 @@
     "__TEMP_93853b29-5ed5-43b1-8724-4c26e496e793.md",
     "Periodic/Weekly/2025-W36.md",
     "__TEMP_2f3fcd4b-7d07-41e2-b235-3818233fa268.md",
-    "Periodic/Monthly/2025-09.md",
-    "Periodic/Yearly/2025.md",
-    "Periodic/Quarterly/2025-Q3.md",
-    "Periodic/Daily/2025-09-02.md",
-    "Periodic/Daily/2025-09-01.md",
-    "3. Resource/bookshelf.md",
-    "__TEMP_2b006be9-db1f-4a75-838a-b328ebbab8ff.md",
-    "view/tasks view.md",
     "Templates/Periodic",
     "Periodic/Monthly",
-    "Periodic/Quarterly",
-    "Periodic/Yearly",
     "3. Resource/Draw.io/Diagram.svg",
     "3. Resource/Canvas/Canvas.canvas"
   ]
