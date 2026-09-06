@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3109d42af5cf269c",
+        "id": "a25a0e7391be87d5",
         "type": "tabs",
         "children": [
           {
-            "id": "f4c63a2b7998a64d",
+            "id": "086be22246c6990a",
             "type": "leaf",
             "state": {
-              "type": "planner-release-notes",
+              "type": "empty",
               "state": {},
               "icon": "lucide-file",
-              "title": "Day Planner Release 0.35.1"
+              "title": "새 탭"
             }
           }
         ]
@@ -37,9 +37,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false,
-                "showSearch": false,
-                "searchQuery": ""
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -221,7 +219,7 @@
             }
           },
           {
-            "id": "5a5ae714469fb974",
+            "id": "ae8335c67e6a9c28",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -231,17 +229,7 @@
             }
           },
           {
-            "id": "55f6eb24a6c73a25",
-            "type": "leaf",
-            "state": {
-              "type": "planner-time-tracker",
-              "state": {},
-              "icon": "timer",
-              "title": "Time Tracker"
-            }
-          },
-          {
-            "id": "5dcb2912d388433f",
+            "id": "3b2e86263ab6e7d2",
             "type": "leaf",
             "state": {
               "type": "reminder-list",
@@ -283,13 +271,13 @@
       "obsidian-task-progress-bar:Open Task Genius view": false
     }
   },
-  "active": "f4c63a2b7998a64d",
+  "active": "086be22246c6990a",
   "lastOpenFiles": [
+    "Templates/Periodic/weekly.md",
     "새 텍스트 문서.txt",
     "README.md",
     "Periodic/Daily/2026-02-28.md",
     "Templates/Periodic/daily.md",
-    "Templates/Periodic/weekly.md",
     "Templates/Periodic/monthly.md",
     "Templates/Periodic/yearly.md",
     "Templates/Periodic/quarterly.md",
@@ -320,7 +308,6 @@
     "__TEMP_93853b29-5ed5-43b1-8724-4c26e496e793.md",
     "Periodic/Weekly/2025-W36.md",
     "Templates/Periodic",
-    "Periodic/Monthly",
     "3. Resource/Draw.io/Diagram.svg",
     "3. Resource/Canvas/Canvas.canvas"
   ]

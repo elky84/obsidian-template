@@ -69,7 +69,8 @@ views:
         - '!file.folder.startsWith("Templates")'
         - end.isEmpty()
         - "!start.isEmpty()"
-    order:
+        - file.tags.contains("작업")
+	order:
       - file.name
       - start
       - end
