@@ -4,6 +4,7 @@
   "baseFontSize": 18,
   "textFontFamily": "Franklin Gothic Book",
   "enabledCssSnippets": [
-    "spacing-fix"
+    "spacing-fix",
+    "reminder"
   ]
 }

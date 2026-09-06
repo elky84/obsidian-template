@@ -1,0 +1,6 @@
+/* Reminder 알림 내부 아이콘 숨기기 */
+main:has(.reminder-title) svg,
+main:has(.reminder-title) .icon,
+main:has(.reminder-title) .icon-container {
+  display: none !important;
+}

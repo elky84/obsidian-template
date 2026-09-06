@@ -1703,9 +1703,12 @@ var CategoryService = class {
     }
     this.categories = this.categories.filter((cat) => cat.id !== id);
   }
-  loadCategories(customCategories, defaultCategorySortOrders = {}) {
+  loadCategories(customCategories = [], defaultCategorySortOrders = {}, categoryModifications = {}) {
     const defaultCategories = DEFAULT_CATEGORIES.map((cat) => ({
       ...cat,
+      ...categoryModifications[cat.id],
+      id: cat.id,
+      isCustom: false,
       sortOrder: defaultCategorySortOrders[cat.id] !== void 0 ? defaultCategorySortOrders[cat.id] : cat.sortOrder
     }));
     const customCats = customCategories.filter((cat) => cat.isCustom);
@@ -1737,9 +1740,13 @@ var MermaidElementService = class {
   static DefaultElements() {
     return defaultElements;
   }
-  saveElement(element, plugin) {
-    const elementExists = plugin.settings.elements.some((el) => el.id === element.id);
+  async saveElement(element, plugin) {
+    const existingElement = plugin.settings.elements.find((el) => el.id === element.id);
+    const elementExists = existingElement !== void 0;
     if (elementExists) {
+      if (existingElement.categoryId !== element.categoryId) {
+        this.fixSortOrder(element, plugin);
+      }
       const index = plugin.settings.elements.findIndex((el) => el.id === element.id);
       if (index !== -1) {
         plugin.settings.elements[index] = element;
@@ -1748,7 +1755,7 @@ var MermaidElementService = class {
       this.fixSortOrder(element, plugin);
       plugin.settings.elements.push(element);
     }
-    plugin.saveSettings();
+    await plugin.saveSettings();
   }
   fixSortOrder(element, plugin) {
     const elementsFromSameCategory = plugin.settings.elements.filter((el) => el.categoryId === element.categoryId);
@@ -1759,7 +1766,6 @@ var MermaidElementService = class {
   getSampleDiagram(categoryId) {
     const category = this.categoryService.getCategoryById(categoryId);
     if (!category) {
-      console.warn(`[Mermaid Tools] No category found for ID: ${categoryId}, using default sample`);
       return this.wrapForPastingIntoEditor(this.wrapWithMermaidBlock("flowchart TD\nStart --> End"));
     }
     const sampleKey = category.name;
@@ -1767,7 +1773,6 @@ var MermaidElementService = class {
     if (sample) {
       return this.wrapForPastingIntoEditor(this.wrapWithMermaidBlock(sample));
     }
-    console.warn(`[Mermaid Tools] No sample diagram found for category: ${category.name}, using default sample`);
     return this.wrapForPastingIntoEditor(this.wrapWithMermaidBlock("flowchart TD\nStart --> End"));
   }
   wrapForPastingIntoEditor(text) {
@@ -1782,41 +1787,13 @@ ${text}
   wrapAsCompleteDiagram(element) {
     const wrapping = this.categoryService.getWrappingData(element.categoryId);
     if (!wrapping) {
-      console.warn(`[Mermaid Tools] No wrapping data found for category: ${element.categoryId}`);
       return element.content;
     }
-    const contentAlreadyWrapped = wrapping.wrappings ? wrapping.wrappings.some((w) => element.content.contains(w)) : element.content.contains(wrapping.defaultWrapping);
+    const contentAlreadyWrapped = wrapping.wrappings ? wrapping.wrappings.some((w) => element.content.includes(w)) : element.content.includes(wrapping.defaultWrapping);
     if (contentAlreadyWrapped) {
       return element.content;
     }
     const wrappedContent = wrapping.defaultWrapping + "\n" + element.content;
-    const firstWord = wrapping.defaultWrapping.trim().split(/\s+/)[0];
-    const validDiagramTypes = [
-      "flowchart",
-      "graph",
-      "sequenceDiagram",
-      "classDiagram",
-      "stateDiagram-v2",
-      "erDiagram",
-      "journey",
-      "gantt",
-      "pie",
-      "requirementDiagram",
-      "gitGraph",
-      "mindmap",
-      "timeline",
-      "quadrantChart",
-      "C4Context",
-      "sankey-beta",
-      "xychart-beta",
-      "packet-beta",
-      "kanban",
-      "block-beta",
-      "architecture-beta"
-    ];
-    if (!validDiagramTypes.includes(firstWord)) {
-      console.warn(`[Mermaid Tools] Potentially invalid diagram type "${firstWord}" in category ${element.categoryId}. This may cause rendering errors.`);
-    }
     return wrappedContent;
   }
 };
@@ -1857,6 +1834,7 @@ var MermaidPluginSettings = class {
     settings.selectedCategoryId = "flowchart";
     settings.defaultCategorySortOrders = {};
     settings.categoryModifications = {};
+    settings.defaultElementCategoryIds = Array.from(new Set(defaultElements.map((element) => element.categoryId)));
     return settings;
   }
 };
@@ -1864,15 +1842,9 @@ var MermaidPluginSettings = class {
 // src/trident-icon.ts
 var import_obsidian = require("obsidian");
 function addTridentIcon() {
-  (0, import_obsidian.addIcon)(TRIDENT_ICON_NAME, getSanitizedSvg());
+  (0, import_obsidian.addIcon)(TRIDENT_ICON_NAME, TRIDENT_ICON);
 }
-function getSanitizedSvg() {
-  var sanitized = (0, import_obsidian.sanitizeHTMLToDom)(tridentIcon);
-  var tempContainer = createDiv();
-  tempContainer.appendChild(sanitized);
-  return tempContainer.innerHTML;
-}
-var tridentIcon = `<svg width="100" height="100" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+var TRIDENT_ICON = `<svg width="100" height="100" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M63.3876 30.1639C62.8776 29.6541 62.1414 29.4434 61.439 29.6051L46.6574 32.5601C45.9179 
 32.7318 45.3279 33.2907 45.1192 34.0208C44.9089 34.7506 45.113 35.5373 45.6499 36.0742L47.1282 
 37.552L36.7814 47.895C35.965 48.7111 34.6415 48.7111 33.8252 47.895L29.3908 43.4622L50.0846 22.7759L51.5629 
@@ -1900,23 +1872,100 @@ var import_obsidian4 = require("obsidian");
 
 // src/ui/editMermaidElementModal.ts
 var import_obsidian2 = require("obsidian");
+
+// src/ui/renderMermaidSvg.ts
+var DISALLOWED_SVG_TAGS = /* @__PURE__ */ new Set([
+  "base",
+  "embed",
+  "iframe",
+  "link",
+  "meta",
+  "object",
+  "script"
+]);
+var URL_ATTRIBUTE_NAMES = /* @__PURE__ */ new Set([
+  "href",
+  "src",
+  "xlink:href"
+]);
+function setMermaidSvgContent(containerEl, svg) {
+  containerEl.empty();
+  containerEl.appendChild(parseSanitizedSvg(svg));
+}
+function parseSanitizedSvg(svg) {
+  const parsedSvg = new DOMParser().parseFromString(svg, "image/svg+xml");
+  const parserError = parsedSvg.querySelector("parsererror");
+  const svgEl = parsedSvg.documentElement;
+  if (parserError || svgEl.nodeName.toLowerCase() !== "svg") {
+    throw new Error("Unable to parse Mermaid SVG output.");
+  }
+  sanitizeSvgTree(svgEl);
+  return document.importNode(svgEl, true);
+}
+function sanitizeSvgTree(rootEl) {
+  var _a;
+  const elements = [rootEl, ...Array.from(rootEl.querySelectorAll("*"))];
+  for (const el of elements) {
+    if (DISALLOWED_SVG_TAGS.has(el.tagName.toLowerCase())) {
+      el.remove();
+      continue;
+    }
+    sanitizeSvgAttributes(el);
+    if (el.tagName.toLowerCase() === "style") {
+      el.textContent = sanitizeCss((_a = el.textContent) != null ? _a : "");
+    }
+  }
+}
+function sanitizeSvgAttributes(el) {
+  for (const attr of Array.from(el.attributes)) {
+    const attrName = attr.name.toLowerCase();
+    if (attrName.startsWith("on")) {
+      el.removeAttribute(attr.name);
+      continue;
+    }
+    if (attrName === "style") {
+      el.setAttribute(attr.name, sanitizeCss(attr.value));
+      continue;
+    }
+    if (URL_ATTRIBUTE_NAMES.has(attrName) && !isSafeSvgUrl(attr.value)) {
+      el.removeAttribute(attr.name);
+    }
+  }
+}
+function isSafeSvgUrl(value) {
+  const trimmedValue = value.trim();
+  return trimmedValue === "" || trimmedValue.startsWith("#");
+}
+function sanitizeCss(css) {
+  return css.replace(/@import[^;]*;?/gi, "").replace(/url\s*\(\s*(['"]?)(.*?)\1\s*\)/gi, (_match, _quote, url) => {
+    const trimmedUrl = url.trim();
+    return trimmedUrl.startsWith("#") ? `url(${trimmedUrl})` : "none";
+  }).replace(/expression\s*\([^)]*\)/gi, "");
+}
+
+// src/ui/editMermaidElementModal.ts
 var EditMermaidElementModal = class extends import_obsidian2.Modal {
-  constructor(app, _plugin, _mermaid, _element, _categoryService) {
+  constructor(app, _plugin, _mermaid, element, _categoryService) {
     super(app);
     this._plugin = _plugin;
     this._mermaid = _mermaid;
-    this._element = _element;
     this._categoryService = _categoryService;
+    this._element = { ...element };
   }
   async onOpen() {
     const { contentEl } = this;
     contentEl.addClass("mermaid-tools-edit-element-modal");
     contentEl.createEl("h2", { text: "Edit element" });
     const renderContainerEl = contentEl.createDiv();
-    const renderEl = renderContainerEl.createEl("pre", { text: "rendered diagram" });
-    if (!this._mermaid)
+    const renderEl = renderContainerEl.createDiv({ text: "rendered diagram" });
+    renderEl.addClass("mermaid-tools-element-preview");
+    if (!this._mermaid) {
       this._mermaid = await (0, import_obsidian2.loadMermaid)();
-    renderEl.id = "mermaid-edit-element-modal";
+    }
+    const mermaid = this._mermaid;
+    if (!mermaid) {
+      throw new Error("Unable to load Mermaid renderer.");
+    }
     const elementCategoryContainerEl = contentEl.createDiv();
     elementCategoryContainerEl.createEl("label", { text: "Category" });
     const elementCategoryEl = elementCategoryContainerEl.createEl("select");
@@ -1926,47 +1975,61 @@ var EditMermaidElementModal = class extends import_obsidian2.Modal {
       option.value = category.id;
     }
     elementCategoryEl.value = this._element.categoryId;
-    elementCategoryEl.onchange = (e) => {
+    elementCategoryEl.onchange = async () => {
       this._element.categoryId = elementCategoryEl.value;
+      await this.renderPreview(mermaid, renderEl);
     };
     const elementDescriptionContainerEl = contentEl.createDiv();
     elementDescriptionContainerEl.createEl("label", { text: "Description" });
     const elementDescriptionEl = elementDescriptionContainerEl.createEl("input", { value: this._element.description, type: "text" });
-    elementDescriptionEl.style.minWidth = "50%";
-    elementDescriptionEl.onchange = (e) => {
+    elementDescriptionEl.addClass("mermaid-tools-element-description-input");
+    elementDescriptionEl.onchange = () => {
       this._element.description = elementDescriptionEl.value;
     };
     const elementContentContainerEl = contentEl.createDiv();
     elementContentContainerEl.createEl("label", { text: "Content" });
     const elementContentEl = elementContentContainerEl.createEl("textarea", { text: this._element.content });
-    elementContentEl.style.height = "200px";
-    elementContentEl.style.width = "100%";
-    elementContentEl.onchange = async (e) => {
+    elementContentEl.addClass("mermaid-tools-element-content-input");
+    elementContentEl.onchange = async () => {
       this._element.content = elementContentEl.value;
-      const { svg: svg2 } = await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element));
-      renderEl.innerHTML = svg2;
-      renderContainerEl.appendChild(renderEl);
+      await this.renderPreview(mermaid, renderEl);
     };
     const saveButtonEl = contentEl.createEl("button", { text: "Save" });
-    saveButtonEl.onclick = (e) => {
-      this.save();
+    saveButtonEl.onclick = () => {
+      void this.save();
     };
-    const { svg } = await this._mermaid.render(renderEl.id, this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element));
-    renderEl.innerHTML = svg;
-    renderContainerEl.appendChild(renderEl);
+    await this.renderPreview(mermaid, renderEl);
   }
-  save() {
-    this._plugin._mermaidElementService.saveElement(this._element, this._plugin);
+  async save() {
+    await this._plugin._mermaidElementService.saveElement(this._element, this._plugin);
     this.close();
   }
+  async renderPreview(mermaid, renderEl) {
+    try {
+      const { svg } = await mermaid.render(createMermaidPreviewId(), this._plugin._mermaidElementService.wrapAsCompleteDiagram(this._element));
+      renderEl.removeClass("mermaid-tools-render-error");
+      setMermaidSvgContent(renderEl, svg);
+    } catch (error) {
+      renderEl.empty();
+      renderEl.addClass("mermaid-tools-render-error");
+      renderEl.createDiv({ text: "Unable to render preview" });
+      const errorEl = renderEl.createDiv({ text: getErrorMessage(error) });
+      errorEl.addClass("mermaid-tools-render-error-message");
+    }
+  }
 };
+function getErrorMessage(error) {
+  return error instanceof Error ? error.message : String(error);
+}
+function createMermaidPreviewId() {
+  return `mermaid-tools-edit-preview-${crypto.randomUUID()}`;
+}
 
 // src/ui/editCategoryModal.ts
 var import_obsidian3 = require("obsidian");
 var EditCategoryModal = class extends import_obsidian3.Modal {
-  constructor(app, plugin, existingCategory, onSave) {
+  constructor(app, existingCategory, onSave) {
     super(app);
-    this.plugin = plugin;
     this.categoryService = CategoryService.getInstance();
     this.onSave = onSave;
     this.isNewCategory = !existingCategory;
@@ -1989,9 +2052,11 @@ var EditCategoryModal = class extends import_obsidian3.Modal {
     contentEl.createEl("h2", {
       text: this.isNewCategory ? "Create Custom Category" : "Edit Category"
     });
-    new import_obsidian3.Setting(contentEl).setName("Category ID").setDesc("Unique identifier for this category (lowercase, no spaces)").addText((text) => text.setPlaceholder("my-custom-category").setValue(this.category.id).onChange((value) => {
-      this.category.id = value.toLowerCase().replace(/\s+/g, "-");
-    }));
+    new import_obsidian3.Setting(contentEl).setName("Category ID").setDesc(this.isNewCategory ? "Unique identifier for this category (lowercase, no spaces)" : "Category IDs cannot be changed after creation").addText((text) => {
+      text.setPlaceholder("my-custom-category").setValue(this.category.id).setDisabled(!this.isNewCategory).onChange((value) => {
+        this.category.id = value.toLowerCase().replace(/\s+/g, "-");
+      });
+    });
     new import_obsidian3.Setting(contentEl).setName("Category Name").setDesc("Display name for this category").addText((text) => text.setPlaceholder("My Custom Category").setValue(this.category.name).onChange((value) => {
       this.category.name = value;
     }));
@@ -2006,35 +2071,33 @@ var EditCategoryModal = class extends import_obsidian3.Modal {
       }
     }));
     new import_obsidian3.Setting(contentEl).setName("Sort Order").setDesc("Determines the order in which categories appear").addText((text) => text.setPlaceholder("0").setValue(this.category.sortOrder.toString()).onChange((value) => {
-      const num = parseInt(value);
+      const num = parseInt(value, 10);
       if (!isNaN(num)) {
         this.category.sortOrder = num;
       }
     }));
-    const buttonContainer = contentEl.createDiv("modal-button-container");
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.justifyContent = "flex-end";
-    buttonContainer.style.gap = "10px";
-    buttonContainer.style.marginTop = "20px";
+    const buttonContainer = contentEl.createDiv("mermaid-tools-modal-button-container");
     const cancelButton = buttonContainer.createEl("button", { text: "Cancel" });
     cancelButton.onclick = () => this.close();
     const saveButton = buttonContainer.createEl("button", {
       text: this.isNewCategory ? "Create" : "Save",
       cls: "mod-cta"
     });
-    saveButton.onclick = () => this.save();
+    saveButton.onclick = () => {
+      void this.save();
+    };
   }
-  save() {
+  async save() {
     if (!this.category.id.trim()) {
-      alert("Category ID is required");
+      new import_obsidian3.Notice("Category ID is required");
       return;
     }
     if (!this.category.name.trim()) {
-      alert("Category name is required");
+      new import_obsidian3.Notice("Category name is required");
       return;
     }
     if (!this.category.defaultWrapping.trim()) {
-      alert("Default wrapping is required");
+      new import_obsidian3.Notice("Default wrapping is required");
       return;
     }
     const commonDiagramTypes = [
@@ -2062,25 +2125,26 @@ var EditCategoryModal = class extends import_obsidian3.Modal {
     ];
     const wrapping = this.category.defaultWrapping.trim().split(/\s+/)[0];
     if (!commonDiagramTypes.includes(wrapping)) {
-      const shouldContinue = confirm(`Warning: "${wrapping}" is not a recognized Mermaid diagram type. This may cause rendering errors. Are you sure you want to continue?`);
-      if (!shouldContinue) {
-        return;
-      }
+      new import_obsidian3.Notice(`"${wrapping}" is not a recognized Mermaid diagram type. The category will still be saved.`);
     }
     if (this.isNewCategory && this.categoryService.getCategoryById(this.category.id)) {
-      alert(`A category with ID '${this.category.id}' already exists`);
+      new import_obsidian3.Notice(`A category with ID '${this.category.id}' already exists`);
       return;
     }
     try {
-      this.onSave(this.category);
+      await this.onSave(this.category);
       this.close();
     } catch (error) {
-      alert(`Error saving category: ${error.message}`);
+      new import_obsidian3.Notice(`Error saving category: ${getErrorMessage2(error)}`);
     }
   }
 };
+function getErrorMessage2(error) {
+  return error instanceof Error ? error.message : String(error);
+}
 
 // src/ui/settingsTab.ts
+var expandedCategoryIds = /* @__PURE__ */ new Set();
 var MermaidToolsSettingsTab = class extends import_obsidian4.PluginSettingTab {
   constructor(_app, _plugin) {
     super(_app, _plugin);
@@ -2094,14 +2158,12 @@ var MermaidToolsSettingsTab = class extends import_obsidian4.PluginSettingTab {
 async function renderSettings(containerEl, plugin) {
   const mermaid = await (0, import_obsidian4.loadMermaid)();
   const categoryService = CategoryService.getInstance();
-  categoryService.loadCategories(plugin.settings.customCategories, plugin.settings.defaultCategorySortOrders);
+  categoryService.loadCategories(plugin.settings.customCategories, plugin.settings.defaultCategorySortOrders, plugin.settings.categoryModifications);
   containerEl.empty();
   containerEl.createEl("h1", { text: "Mermaid Tools Settings" });
   containerEl.createEl("h2", { text: "Manage Elements & Categories" });
   const buttonsContainer = containerEl.createDiv();
-  buttonsContainer.style.marginBottom = "20px";
-  buttonsContainer.style.display = "flex";
-  buttonsContainer.style.gap = "10px";
+  buttonsContainer.addClass("mermaid-tools-actions-row");
   const addElementButton = buttonsContainer.createEl("button", { text: "Add Element" });
   addElementButton.addClass("mod-cta");
   addElementButton.onclick = () => {
@@ -2117,82 +2179,79 @@ Start --> Stop`,
     const modal = new EditMermaidElementModal(plugin.app, plugin, mermaid, newElement, categoryService);
     modal.open();
     modal.onClose = () => {
-      renderSettings(containerEl, plugin);
+      void renderSettings(containerEl, plugin);
     };
   };
   const addCategoryButton = buttonsContainer.createEl("button", { text: "Add Category" });
   addCategoryButton.addClass("mod-cta");
   addCategoryButton.onclick = () => {
-    const modal = new EditCategoryModal(plugin.app, plugin, null, (category) => {
+    const modal = new EditCategoryModal(plugin.app, null, async (category) => {
       try {
         if (category.sortOrder === void 0 || category.sortOrder === null) {
           category.sortOrder = categoryService.getNextSortOrder();
         }
         categoryService.addCategory(category);
-        saveAllCategoryChanges(plugin, categoryService);
-        renderSettings(containerEl, plugin);
+        await saveAllCategoryChanges(plugin, categoryService);
+        await renderSettings(containerEl, plugin);
       } catch (error) {
-        console.error("Error adding category:", error);
+        new import_obsidian4.Notice(`Error adding category: ${getErrorMessage3(error)}`);
       }
     });
     modal.open();
   };
   createIntegratedCategorySection(containerEl, plugin, categoryService, mermaid);
 }
-function saveAllCategoryChanges(plugin, categoryService) {
+async function saveAllCategoryChanges(plugin, categoryService) {
   plugin.settings.customCategories = categoryService.getCustomCategories();
+  plugin.settings.defaultCategorySortOrders = {};
+  plugin.settings.categoryModifications = {};
   const defaultCategories = categoryService.getCategories().filter((cat) => !cat.isCustom);
   defaultCategories.forEach((cat) => {
-    plugin.settings.defaultCategorySortOrders[cat.id] = cat.sortOrder;
+    var _a, _b, _c;
+    const originalCategory = DEFAULT_CATEGORIES.find((defaultCategory) => defaultCategory.id === cat.id);
+    if (!originalCategory) {
+      return;
+    }
+    if (cat.sortOrder !== originalCategory.sortOrder) {
+      plugin.settings.defaultCategorySortOrders[cat.id] = cat.sortOrder;
+    }
+    const categoryModification = {};
+    if (cat.name !== originalCategory.name) {
+      categoryModification.name = cat.name;
+    }
+    if (cat.defaultWrapping !== originalCategory.defaultWrapping) {
+      categoryModification.defaultWrapping = cat.defaultWrapping;
+    }
+    if (!areNullableStringArraysEqual((_a = cat.wrappings) != null ? _a : null, (_b = originalCategory.wrappings) != null ? _b : null)) {
+      categoryModification.wrappings = (_c = cat.wrappings) != null ? _c : null;
+    }
+    if (Object.keys(categoryModification).length > 0) {
+      plugin.settings.categoryModifications[cat.id] = categoryModification;
+    }
   });
-  plugin.saveSettings();
+  await plugin.saveSettings();
 }
 function createIntegratedCategorySection(containerEl, plugin, categoryService, mermaid) {
   const allCategories = categoryService.getCategories().sort((a, b) => a.sortOrder - b.sortOrder);
   allCategories.forEach((category) => {
     const categoryContainer = containerEl.createDiv();
     categoryContainer.addClass("mermaid-tools-category-section");
-    categoryContainer.style.marginBottom = "20px";
-    categoryContainer.style.border = "1px solid var(--background-modifier-border)";
-    categoryContainer.style.borderRadius = "8px";
-    categoryContainer.style.padding = "15px";
     const categoryHeader = categoryContainer.createDiv();
-    categoryHeader.style.display = "flex";
-    categoryHeader.style.alignItems = "center";
-    categoryHeader.style.justifyContent = "space-between";
-    categoryHeader.style.marginBottom = "10px";
-    categoryHeader.style.cursor = "pointer";
+    categoryHeader.addClass("mermaid-tools-category-header");
     const categoryTitle = categoryHeader.createDiv();
-    categoryTitle.style.display = "flex";
-    categoryTitle.style.alignItems = "center";
-    categoryTitle.style.gap = "10px";
+    categoryTitle.addClass("mermaid-tools-category-title");
     const expandIcon = categoryTitle.createSpan();
-    expandIcon.innerHTML = "\u25BC";
-    expandIcon.style.fontSize = "12px";
-    expandIcon.style.transition = "transform 0.2s";
+    expandIcon.addClass("mermaid-tools-expand-icon");
+    expandIcon.setText("\u25BC");
     const categoryName = categoryTitle.createEl("h3", { text: category.name });
-    categoryName.style.margin = "0";
-    categoryName.style.fontSize = "16px";
+    categoryName.addClass("mermaid-tools-category-name");
     const categoryInfo = categoryTitle.createSpan();
     const elementCount = plugin.settings.elements.filter((el) => el.categoryId === category.id).length;
-    categoryInfo.textContent = `(${elementCount} elements)`;
-    categoryInfo.style.color = "var(--text-muted)";
-    categoryInfo.style.fontSize = "12px";
+    categoryInfo.setText(`(${elementCount} elements)`);
+    categoryInfo.addClass("mermaid-tools-category-info");
     const categoryControls = categoryHeader.createDiv();
-    categoryControls.style.display = "flex";
-    categoryControls.style.gap = "2px";
-    const addElementButton = categoryControls.createEl("button");
-    addElementButton.title = "Add element to this category";
-    addElementButton.style.background = "none";
-    addElementButton.style.border = "none";
-    addElementButton.style.cursor = "pointer";
-    addElementButton.style.padding = "4px";
-    addElementButton.style.display = "flex";
-    addElementButton.style.alignItems = "center";
-    addElementButton.style.borderRadius = "3px";
-    addElementButton.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"></path></svg>`;
-    addElementButton.onmouseenter = () => addElementButton.style.backgroundColor = "var(--background-modifier-hover)";
-    addElementButton.onmouseleave = () => addElementButton.style.backgroundColor = "transparent";
+    categoryControls.addClass("mermaid-tools-category-controls");
+    const addElementButton = createCategoryControlButton(categoryControls, "Add element to this category", "plus");
     addElementButton.onclick = (e) => {
       e.stopPropagation();
       const newElement = {
@@ -2207,132 +2266,61 @@ Start --> Stop`,
       const modal = new EditMermaidElementModal(plugin.app, plugin, mermaid, newElement, categoryService);
       modal.open();
       modal.onClose = () => {
-        renderSettings(containerEl, plugin);
+        void renderSettings(containerEl, plugin);
       };
     };
-    const moveUpButton = categoryControls.createEl("button");
-    moveUpButton.title = "Move category up";
-    moveUpButton.style.background = "none";
-    moveUpButton.style.border = "none";
-    moveUpButton.style.cursor = "pointer";
-    moveUpButton.style.padding = "4px";
-    moveUpButton.style.display = "flex";
-    moveUpButton.style.alignItems = "center";
-    moveUpButton.style.borderRadius = "3px";
-    moveUpButton.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"></polyline></svg>`;
-    moveUpButton.onmouseenter = () => moveUpButton.style.backgroundColor = "var(--background-modifier-hover)";
-    moveUpButton.onmouseleave = () => moveUpButton.style.backgroundColor = "transparent";
+    const moveUpButton = createCategoryControlButton(categoryControls, "Move category up", "arrow-up");
     moveUpButton.onclick = (e) => {
       e.stopPropagation();
-      const categories = categoryService.getCategories().sort((a, b) => a.sortOrder - b.sortOrder);
-      const currentIndex = categories.findIndex((cat) => cat.id === category.id);
-      if (currentIndex > 0) {
-        const temp = categories[currentIndex - 1].sortOrder;
-        categories[currentIndex - 1].sortOrder = category.sortOrder;
-        category.sortOrder = temp;
-        categoryService.updateCategory(categories[currentIndex - 1]);
-        categoryService.updateCategory(category);
-        saveAllCategoryChanges(plugin, categoryService);
-        renderSettings(containerEl, plugin);
-      }
+      void moveCategory(category, -1, containerEl, plugin, categoryService);
     };
-    const moveDownButton = categoryControls.createEl("button");
-    moveDownButton.title = "Move category down";
-    moveDownButton.style.background = "none";
-    moveDownButton.style.border = "none";
-    moveDownButton.style.cursor = "pointer";
-    moveDownButton.style.padding = "4px";
-    moveDownButton.style.display = "flex";
-    moveDownButton.style.alignItems = "center";
-    moveDownButton.style.borderRadius = "3px";
-    moveDownButton.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg>`;
-    moveDownButton.onmouseenter = () => moveDownButton.style.backgroundColor = "var(--background-modifier-hover)";
-    moveDownButton.onmouseleave = () => moveDownButton.style.backgroundColor = "transparent";
+    const moveDownButton = createCategoryControlButton(categoryControls, "Move category down", "arrow-down");
     moveDownButton.onclick = (e) => {
       e.stopPropagation();
-      const categories = categoryService.getCategories().sort((a, b) => a.sortOrder - b.sortOrder);
-      const currentIndex = categories.findIndex((cat) => cat.id === category.id);
-      if (currentIndex < categories.length - 1) {
-        const temp = categories[currentIndex + 1].sortOrder;
-        categories[currentIndex + 1].sortOrder = category.sortOrder;
-        category.sortOrder = temp;
-        categoryService.updateCategory(categories[currentIndex + 1]);
-        categoryService.updateCategory(category);
-        saveAllCategoryChanges(plugin, categoryService);
-        renderSettings(containerEl, plugin);
-      }
+      void moveCategory(category, 1, containerEl, plugin, categoryService);
     };
-    const editButton = categoryControls.createEl("button");
-    editButton.title = "Edit category";
-    editButton.style.background = "none";
-    editButton.style.border = "none";
-    editButton.style.cursor = "pointer";
-    editButton.style.padding = "4px";
-    editButton.style.display = "flex";
-    editButton.style.alignItems = "center";
-    editButton.style.borderRadius = "3px";
-    editButton.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="m18.5 2.5 a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>`;
-    editButton.onmouseenter = () => editButton.style.backgroundColor = "var(--background-modifier-hover)";
-    editButton.onmouseleave = () => editButton.style.backgroundColor = "transparent";
+    const editButton = createCategoryControlButton(categoryControls, "Edit category", "edit");
     editButton.onclick = (e) => {
       e.stopPropagation();
-      const modal = new EditCategoryModal(plugin.app, plugin, category, (updatedCategory) => {
+      const modal = new EditCategoryModal(plugin.app, category, async (updatedCategory) => {
         try {
           categoryService.updateCategory(updatedCategory);
-          saveAllCategoryChanges(plugin, categoryService);
-          renderSettings(containerEl, plugin);
+          await saveAllCategoryChanges(plugin, categoryService);
+          await renderSettings(containerEl, plugin);
         } catch (error) {
-          console.error("Error updating category:", error);
+          new import_obsidian4.Notice(`Error updating category: ${getErrorMessage3(error)}`);
         }
       });
       modal.open();
     };
-    const deleteButton = categoryControls.createEl("button");
-    deleteButton.title = "Delete category";
-    deleteButton.style.background = "none";
-    deleteButton.style.border = "none";
-    deleteButton.style.cursor = "pointer";
-    deleteButton.style.padding = "4px";
-    deleteButton.style.display = "flex";
-    deleteButton.style.alignItems = "center";
-    deleteButton.style.borderRadius = "3px";
-    deleteButton.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,6 5,6 21,6"></polyline><path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path></svg>`;
-    deleteButton.onmouseenter = () => deleteButton.style.backgroundColor = "var(--background-modifier-hover)";
-    deleteButton.onmouseleave = () => deleteButton.style.backgroundColor = "transparent";
+    const deleteButton = createCategoryControlButton(categoryControls, "Delete category", "trash-2");
+    deleteButton.disabled = !category.isCustom;
+    if (!category.isCustom) {
+      deleteButton.title = "Default categories cannot be deleted";
+      deleteButton.setAttr("aria-label", "Default categories cannot be deleted");
+    }
     deleteButton.onclick = (e) => {
       e.stopPropagation();
-      const elementsInCategory = plugin.settings.elements.filter((el) => el.categoryId === category.id);
-      if (elementsInCategory.length > 0) {
-        alert(`Cannot delete category '${category.name}' because it contains ${elementsInCategory.length} element(s). Please move or delete these elements first.`);
+      if (!category.isCustom) {
         return;
       }
-      const confirmMessage = category.isCustom ? `Are you sure you want to delete the category '${category.name}'?` : `Are you sure you want to delete the default category '${category.name}'? This action cannot be undone.`;
-      if (confirm(confirmMessage)) {
-        try {
-          categoryService.deleteCategory(category.id);
-          if (category.isCustom) {
-            plugin.settings.customCategories = categoryService.getCustomCategories();
-          }
-          plugin.saveSettings();
-          renderSettings(containerEl, plugin);
-        } catch (error) {
-          console.error("Error deleting category:", error);
-          if (!category.isCustom) {
-            alert(`Cannot delete default category: ${error.message}`);
-          }
-        }
-      }
+      openDeleteCategoryConfirmation(category, containerEl, plugin, categoryService);
     };
     const elementsContainer = categoryContainer.createDiv();
     elementsContainer.addClass("mermaid-tools-elements-container");
-    elementsContainer.style.display = "none";
-    let isCollapsed = true;
+    let isCollapsed = !expandedCategoryIds.has(category.id);
+    elementsContainer.toggleClass("is-collapsed", isCollapsed);
+    expandIcon.toggleClass("is-collapsed", isCollapsed);
     categoryHeader.onclick = () => {
       isCollapsed = !isCollapsed;
-      elementsContainer.style.display = isCollapsed ? "none" : "block";
-      expandIcon.style.transform = isCollapsed ? "rotate(-90deg)" : "rotate(0deg)";
+      if (isCollapsed) {
+        expandedCategoryIds.delete(category.id);
+      } else {
+        expandedCategoryIds.add(category.id);
+      }
+      elementsContainer.toggleClass("is-collapsed", isCollapsed);
+      expandIcon.toggleClass("is-collapsed", isCollapsed);
     };
-    expandIcon.style.transform = "rotate(-90deg)";
     renderCategoryElements(category, plugin, elementsContainer, mermaid, categoryService);
   });
 }
@@ -2340,18 +2328,12 @@ function renderCategoryElements(category, plugin, parentEl, mermaid, categorySer
   const elements = plugin.settings.elements.filter((e) => e.categoryId === category.id).sort((a, b) => a.sortingOrder - b.sortingOrder);
   if (elements.length === 0) {
     const emptyMessage = parentEl.createDiv();
-    emptyMessage.textContent = "No elements in this category";
-    emptyMessage.style.color = "var(--text-muted)";
-    emptyMessage.style.fontStyle = "italic";
-    emptyMessage.style.padding = "10px";
+    emptyMessage.setText("No elements in this category");
+    emptyMessage.addClass("mermaid-tools-empty-message");
     return;
   }
   elements.forEach((element, index) => {
     const settingContainer = parentEl.createDiv("mermaid-tools-element-container");
-    settingContainer.style.marginBottom = "10px";
-    settingContainer.style.padding = "10px";
-    settingContainer.style.backgroundColor = "var(--background-secondary)";
-    settingContainer.style.borderRadius = "5px";
     const setting = new import_obsidian4.Setting(settingContainer);
     setting.setName(element.description);
     setting.addExtraButton((cb) => {
@@ -2359,68 +2341,149 @@ function renderCategoryElements(category, plugin, parentEl, mermaid, categorySer
         const modal = new EditMermaidElementModal(plugin.app, plugin, mermaid, element, categoryService);
         modal.open();
         modal.onClose = () => {
-          const settingsContainer = parentEl.closest(".vertical-tab-content");
-          if (settingsContainer)
-            renderSettings(settingsContainer, plugin);
+          void renderSettingsFromParent(parentEl, plugin);
         };
       });
     });
     setting.addExtraButton((cb) => {
       cb.setIcon("copy").setTooltip("create a duplicate of this element").onClick(() => {
-        const duplicate = {
-          id: crypto.randomUUID(),
-          categoryId: element.categoryId,
-          description: element.description + " (copy)",
-          content: element.content,
-          sortingOrder: plugin.settings.elements.filter((el) => el.categoryId === element.categoryId).length,
-          isPinned: element.isPinned
-        };
-        plugin._mermaidElementService.saveElement(duplicate, plugin);
-        plugin.saveSettings();
-        const settingsContainer = parentEl.closest(".vertical-tab-content");
-        if (settingsContainer)
-          renderSettings(settingsContainer, plugin);
+        void duplicateElement(element, plugin, parentEl);
       });
     });
     setting.addExtraButton((cb) => {
       cb.setIcon("arrow-up").setTooltip("move element up in the sidebar").onClick(() => {
-        if (index > 0) {
-          const temp = elements[index - 1].sortingOrder;
-          elements[index - 1].sortingOrder = element.sortingOrder;
-          element.sortingOrder = temp;
-          plugin.settings.elements = plugin.settings.elements.filter((el) => el.categoryId !== category.id).concat(elements);
-          plugin.saveSettings();
-          const settingsContainer = parentEl.closest(".vertical-tab-content");
-          if (settingsContainer)
-            renderSettings(settingsContainer, plugin);
-        }
+        void moveElement(category, elements, index, -1, plugin, parentEl);
       });
     });
     setting.addExtraButton((cb) => {
       cb.setIcon("arrow-down").setTooltip("move element down in the sidebar").onClick(() => {
-        if (index < elements.length - 1) {
-          const temp = elements[index + 1].sortingOrder;
-          elements[index + 1].sortingOrder = element.sortingOrder;
-          element.sortingOrder = temp;
-          plugin.settings.elements = plugin.settings.elements.filter((el) => el.categoryId !== category.id).concat(elements);
-          plugin.saveSettings();
-          const settingsContainer = parentEl.closest(".vertical-tab-content");
-          if (settingsContainer)
-            renderSettings(settingsContainer, plugin);
-        }
+        void moveElement(category, elements, index, 1, plugin, parentEl);
       });
     });
     setting.addExtraButton((cb) => {
       cb.setIcon("trash-2").setTooltip("delete element").onClick(() => {
-        plugin.settings.elements = plugin.settings.elements.filter((e) => e.id !== element.id);
-        plugin.saveSettings();
-        const settingsContainer = parentEl.closest(".vertical-tab-content");
-        if (settingsContainer)
-          renderSettings(settingsContainer, plugin);
+        void deleteElement(element, plugin, parentEl);
       });
     });
   });
 }
+function createCategoryControlButton(parentEl, title, iconName) {
+  const button = parentEl.createEl("button");
+  button.addClass("mermaid-tools-icon-button");
+  button.title = title;
+  button.setAttr("aria-label", title);
+  (0, import_obsidian4.setIcon)(button, iconName);
+  return button;
+}
+async function moveCategory(category, direction, containerEl, plugin, categoryService) {
+  const categories = categoryService.getCategories().sort((a, b) => a.sortOrder - b.sortOrder);
+  const currentIndex = categories.findIndex((cat) => cat.id === category.id);
+  const nextIndex = currentIndex + direction;
+  if (currentIndex === -1 || nextIndex < 0 || nextIndex >= categories.length) {
+    return;
+  }
+  const adjacentCategory = categories[nextIndex];
+  const temp = adjacentCategory.sortOrder;
+  adjacentCategory.sortOrder = category.sortOrder;
+  category.sortOrder = temp;
+  categoryService.updateCategory(adjacentCategory);
+  categoryService.updateCategory(category);
+  await saveAllCategoryChanges(plugin, categoryService);
+  await renderSettings(containerEl, plugin);
+}
+function openDeleteCategoryConfirmation(category, containerEl, plugin, categoryService) {
+  const elementsInCategory = plugin.settings.elements.filter((el) => el.categoryId === category.id);
+  if (elementsInCategory.length > 0) {
+    new import_obsidian4.Notice(`Cannot delete category '${category.name}' because it contains ${elementsInCategory.length} element(s).`);
+    return;
+  }
+  new ConfirmActionModal(plugin.app, "Delete Category", category.isCustom ? `Delete the category '${category.name}'?` : `Delete the default category '${category.name}'? This action cannot be undone.`, async () => {
+    try {
+      categoryService.deleteCategory(category.id);
+      expandedCategoryIds.delete(category.id);
+      if (category.isCustom) {
+        plugin.settings.customCategories = categoryService.getCustomCategories();
+      }
+      await plugin.saveSettings();
+      await renderSettings(containerEl, plugin);
+    } catch (error) {
+      new import_obsidian4.Notice(`Error deleting category: ${getErrorMessage3(error)}`);
+    }
+  }).open();
+}
+async function duplicateElement(element, plugin, parentEl) {
+  const duplicate = {
+    id: crypto.randomUUID(),
+    categoryId: element.categoryId,
+    description: element.description + " (copy)",
+    content: element.content,
+    sortingOrder: plugin.settings.elements.filter((el) => el.categoryId === element.categoryId).length,
+    isPinned: element.isPinned
+  };
+  await plugin._mermaidElementService.saveElement(duplicate, plugin);
+  await renderSettingsFromParent(parentEl, plugin);
+}
+async function moveElement(category, elements, index, direction, plugin, parentEl) {
+  const nextIndex = index + direction;
+  if (nextIndex < 0 || nextIndex >= elements.length) {
+    return;
+  }
+  const temp = elements[nextIndex].sortingOrder;
+  elements[nextIndex].sortingOrder = elements[index].sortingOrder;
+  elements[index].sortingOrder = temp;
+  plugin.settings.elements = plugin.settings.elements.filter((el) => el.categoryId !== category.id).concat(elements);
+  expandedCategoryIds.add(category.id);
+  await plugin.saveSettings();
+  await renderSettingsFromParent(parentEl, plugin);
+}
+async function deleteElement(element, plugin, parentEl) {
+  plugin.settings.elements = plugin.settings.elements.filter((e) => e.id !== element.id);
+  await plugin.saveSettings();
+  await renderSettingsFromParent(parentEl, plugin);
+}
+async function renderSettingsFromParent(parentEl, plugin) {
+  const settingsContainer = parentEl.closest(".vertical-tab-content");
+  if (settingsContainer instanceof HTMLElement) {
+    await renderSettings(settingsContainer, plugin);
+  }
+}
+function getErrorMessage3(error) {
+  return error instanceof Error ? error.message : String(error);
+}
+function areNullableStringArraysEqual(first, second) {
+  if (first === null || second === null) {
+    return first === second;
+  }
+  return first.length === second.length && first.every((value, index) => value === second[index]);
+}
+var ConfirmActionModal = class extends import_obsidian4.Modal {
+  constructor(app, title, message, onConfirm) {
+    super(app);
+    this.title = title;
+    this.message = message;
+    this.onConfirm = onConfirm;
+  }
+  onOpen() {
+    const { contentEl } = this;
+    contentEl.addClass("mermaid-tools-confirm-modal");
+    contentEl.createEl("h2", { text: this.title });
+    contentEl.createEl("p", { text: this.message });
+    const buttonContainer = contentEl.createDiv("mermaid-tools-modal-button-container");
+    const cancelButton = buttonContainer.createEl("button", { text: "Cancel" });
+    cancelButton.onclick = () => this.close();
+    const confirmButton = buttonContainer.createEl("button", {
+      text: "Delete",
+      cls: "mod-warning"
+    });
+    confirmButton.onclick = () => {
+      void this.runConfirmedAction();
+    };
+  }
+  async runConfirmedAction() {
+    await this.onConfirm();
+    this.close();
+  }
+};
 
 // src/ui/toolbarView/mermaidToolbarView.ts
 var import_obsidian6 = require("obsidian");
@@ -2439,7 +2502,7 @@ async function createMermaidToolbar(topRowButtons, items, selectedCategoryId, on
   elementsContainer.setAttr("id", TOOLBAR_ELEMENTS_CONTAINER_ID);
   createDropdown(topRow, elementsContainer, items, selectedCategoryId, onCategoryChanged, onElementClick, categoryService);
   createTopRowBtns(topRow, topRowButtons);
-  await recreateElementsSection(elementsContainer, selectedCategoryId, items, onElementClick, categoryService);
+  await recreateElementsSection(elementsContainer, selectedCategoryId, items, onElementClick);
   return container;
 }
 function createTopRowBtns(parentEl, buttons) {
@@ -2455,31 +2518,51 @@ function createDropdown(parentEl, elementsContainer, items, selectedCategoryId, 
   });
   dropdown.setValue(selectedCategoryId);
   dropdown.onChange((val) => {
-    onSelectionChanged(val);
-    recreateElementsSection(elementsContainer, val, items, onElClick, categoryService);
+    void handleCategoryChanged(elementsContainer, val, items, onSelectionChanged, onElClick);
   });
 }
-async function recreateElementsSection(sectionContainer, categoryId, items, onElClick, categoryService) {
-  sectionContainer.innerHTML = "";
+async function handleCategoryChanged(elementsContainer, categoryId, items, onSelectionChanged, onElClick) {
+  await onSelectionChanged(categoryId);
+  await recreateElementsSection(elementsContainer, categoryId, items, onElClick);
+}
+async function recreateElementsSection(sectionContainer, categoryId, items, onElClick) {
+  sectionContainer.empty();
   const elemService = new MermaidElementService();
   const mermaid = await (0, import_obsidian5.loadMermaid)();
   const filteredSortedItems = items.filter((i) => i.categoryId === categoryId).sort((a, b) => a.sortingOrder - b.sortingOrder);
-  filteredSortedItems.forEach(async (elem, index) => {
+  for (const [index, elem] of filteredSortedItems.entries()) {
     const el = createToolbarElement(sectionContainer);
     el.id = `mermaid-toolbar-element-${elem.categoryId}-${index}`;
     const diagram = elemService.wrapAsCompleteDiagram(elem);
-    console.log(mermaid.detectType(diagram));
-    const { svg } = await mermaid.render(el.id, diagram);
     el.title = elem.description;
-    el.innerHTML = svg;
-    el.onclick = (e) => onElClick(elem.content);
+    try {
+      const { svg } = await mermaid.render(createMermaidPreviewId2(), diagram);
+      setMermaidSvgContent(el, svg);
+    } catch (error) {
+      renderToolbarElementError(el, elem.description, error);
+    }
+    el.onclick = () => onElClick(elem.content);
     sectionContainer.appendChild(el);
-  });
+  }
 }
 function createToolbarElement(parentEl) {
   const itemEl = parentEl.createEl("pre");
   itemEl.addClass(TOOLBAR_ELEMENT_CLASS_NAME);
   return itemEl;
+}
+function renderToolbarElementError(el, description, error) {
+  el.empty();
+  el.addClass("mermaid-toolbar-element-error");
+  el.title = `${description}: ${getErrorMessage4(error)}`;
+  el.createDiv({ text: description });
+  const errorEl = el.createDiv({ text: "Preview unavailable" });
+  errorEl.addClass("mermaid-toolbar-element-error-message");
+}
+function getErrorMessage4(error) {
+  return error instanceof Error ? error.message : String(error);
+}
+function createMermaidPreviewId2() {
+  return `mermaid-tools-toolbar-preview-${crypto.randomUUID()}`;
 }
 
 // src/ui/toolbarView/mermaidToolbarButtons.ts
@@ -2497,16 +2580,17 @@ var _MermaidToolbarView = class extends import_obsidian6.ItemView {
     super(leaf);
     this.topRowButtons = [
       new MermaidToolbarButton("insert Mermaid code block with sample diagram", "code-2", () => this.insertTextAtCursor(this._plugin._mermaidElementService.getSampleDiagram(this._plugin.settings.selectedCategoryId))),
-      new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid.js.org/intro/")),
+      new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid.js.org/intro/", "_blank", "noopener")),
       new MermaidToolbarButton("open settings", "settings", () => {
-        this.app.setting.open();
-        this.app.setting.openTabById("mermaid-tools");
+        const settings = this.app.setting;
+        settings == null ? void 0 : settings.open();
+        settings == null ? void 0 : settings.openTabById("mermaid-tools");
       })
     ];
     this._plugin = plugin;
     this.items = plugin.settings.elements;
     this.categoryService = CategoryService.getInstance();
-    this.categoryService.loadCategories(plugin.settings.customCategories, plugin.settings.defaultCategorySortOrders);
+    this.categoryService.loadCategories(plugin.settings.customCategories, plugin.settings.defaultCategorySortOrders, plugin.settings.categoryModifications);
     this.containerEl.children[1].addClass("mermaid-toolbar-container");
   }
   async onOpen() {
@@ -2515,12 +2599,13 @@ var _MermaidToolbarView = class extends import_obsidian6.ItemView {
   async onClose() {
   }
   async recreateToolbar(selectedCategoryId) {
+    this.items = this._plugin.settings.elements;
+    this.categoryService.loadCategories(this._plugin.settings.customCategories, this._plugin.settings.defaultCategorySortOrders, this._plugin.settings.categoryModifications);
     const container = this.containerEl.children[1];
     container.empty();
-    const toolbarElement = await createMermaidToolbar(this.topRowButtons, this.items, selectedCategoryId, async (newCategoryId) => {
+    const toolbarElement = await createMermaidToolbar(this.topRowButtons, this.items, selectedCategoryId, (newCategoryId) => {
       this._plugin.settings.selectedCategoryId = newCategoryId;
-      this._plugin.saveSettings();
-      await this.recreateToolbar(this._plugin.settings.selectedCategoryId);
+      void this._plugin.saveSettings({ refreshToolbar: false });
     }, (text) => this.insertTextAtCursor(text), this.categoryService);
     container.appendChild(toolbarElement);
   }
@@ -2546,25 +2631,28 @@ var TRIDENT_ICON_NAME = "trident-custom";
 var MermaidPlugin = class extends import_obsidian7.Plugin {
   constructor() {
     super(...arguments);
+    this.activeEditor = null;
     this._mermaidElementService = new MermaidElementService();
     this._textEditorService = new TextEditorService();
   }
   async onload() {
+    var _a, _b;
     await this.loadSettings();
     addTridentIcon();
     this.registerView(MermaidToolbarView.VIEW_TYPE, (leaf) => new MermaidToolbarView(leaf, this));
-    this.app.workspace.on("active-leaf-change", (leaf) => {
-      var _a, _b;
-      this.activeEditor = (_b = (_a = this.app.workspace.activeEditor) == null ? void 0 : _a.editor) != null ? _b : this.activeEditor;
-    });
+    this.activeEditor = (_b = (_a = this.app.workspace.activeEditor) == null ? void 0 : _a.editor) != null ? _b : null;
+    this.registerEvent(this.app.workspace.on("active-leaf-change", (_leaf) => {
+      var _a2, _b2;
+      this.activeEditor = (_b2 = (_a2 = this.app.workspace.activeEditor) == null ? void 0 : _a2.editor) != null ? _b2 : this.activeEditor;
+    }));
     this.addRibbonIcon(TRIDENT_ICON_NAME, "Open Mermaid Toolbar", () => {
-      this.activateView();
+      void this.activateView();
     });
     this.addCommand({
       id: "open-toolbar",
       name: "Open Toolbar View",
       callback: () => {
-        this.activateView();
+        void this.activateView();
       }
     });
     this.addSettingTab(new MermaidToolsSettingsTab(this.app, this));
@@ -2573,61 +2661,86 @@ var MermaidPlugin = class extends import_obsidian7.Plugin {
     this.app.workspace.detachLeavesOfType(MermaidToolbarView.VIEW_TYPE);
   }
   async loadSettings() {
-    this.settings = Object.assign({}, MermaidPluginSettings.DefaultSettings(), await this.loadData());
-    this.addNewCategories();
+    var _a, _b, _c, _d, _e, _f;
+    const defaultSettings = MermaidPluginSettings.DefaultSettings();
+    const loadedSettings = await this.loadData();
+    this.settings = Object.assign({}, defaultSettings, loadedSettings);
+    this.settings.elements = (_a = this.settings.elements) != null ? _a : defaultSettings.elements;
+    this.settings.customCategories = (_b = this.settings.customCategories) != null ? _b : defaultSettings.customCategories;
+    this.settings.selectedCategoryId = (_c = this.settings.selectedCategoryId) != null ? _c : defaultSettings.selectedCategoryId;
+    this.settings.defaultCategorySortOrders = (_d = this.settings.defaultCategorySortOrders) != null ? _d : defaultSettings.defaultCategorySortOrders;
+    this.settings.categoryModifications = (_e = this.settings.categoryModifications) != null ? _e : defaultSettings.categoryModifications;
+    this.settings.defaultElementCategoryIds = loadedSettings ? (_f = loadedSettings.defaultElementCategoryIds) != null ? _f : [] : defaultSettings.defaultElementCategoryIds;
+    if (this.addNewCategories()) {
+      await this.saveData(this.settings);
+    }
   }
   addNewCategories() {
-    if (!this.settings.elements.some((x) => x.categoryId === "mindmap")) {
-      this.settings.elements.push(...mindMapElements);
-      console.log("[Mermaid Tools] added Mindmap elements");
+    const defaultCategoryElementSets = [
+      { categoryId: "mindmap", elements: mindMapElements },
+      { categoryId: "timeline", elements: timelineElements },
+      { categoryId: "quadrantChart", elements: quadrantElements },
+      { categoryId: "c4Diagram", elements: c4DiagramElements },
+      { categoryId: "sankeyDiagram", elements: sankeyDiagramElements },
+      { categoryId: "xyChart", elements: xyChartElements },
+      { categoryId: "packet", elements: packetElements },
+      { categoryId: "kanban", elements: kanbanElements },
+      { categoryId: "block", elements: blockDiagramElements },
+      { categoryId: "architecture", elements: architectureElements }
+    ];
+    const installedCategoryIds = new Set(this.settings.defaultElementCategoryIds);
+    let settingsChanged = false;
+    for (const defaultCategory of defaultCategoryElementSets) {
+      if (installedCategoryIds.has(defaultCategory.categoryId)) {
+        continue;
+      }
+      if (!this.settings.elements.some((element) => element.categoryId === defaultCategory.categoryId)) {
+        this.settings.elements.push(...defaultCategory.elements);
+      }
+      installedCategoryIds.add(defaultCategory.categoryId);
+      settingsChanged = true;
     }
-    if (!this.settings.elements.some((x) => x.categoryId === "timeline")) {
-      this.settings.elements.push(...timelineElements);
-      console.log("[Mermaid Tools] added Timeline elements");
-    }
-    if (!this.settings.elements.some((x) => x.categoryId === "quadrantChart")) {
-      this.settings.elements.push(...quadrantElements);
-      console.log("[Mermaid Tools] added QuadrantChart elements");
-    }
-    if (!this.settings.elements.some((x) => x.categoryId === "c4Diagram")) {
-      this.settings.elements.push(...c4DiagramElements);
-      console.log("[Mermaid Tools] added C4 diagram elements");
-    }
-    if (!this.settings.elements.some((x) => x.categoryId === "packet")) {
-      this.settings.elements.push(...packetElements);
-      console.log("[Mermaid Tools] added Packet elements");
-    }
-    if (!this.settings.elements.some((x) => x.categoryId === "kanban")) {
-      this.settings.elements.push(...kanbanElements);
-      console.log("[Mermaid Tools] added Kanban elements");
-    }
-    if (!this.settings.elements.some((x) => x.categoryId === "block")) {
-      this.settings.elements.push(...blockDiagramElements);
-      console.log("[Mermaid Tools] added Block elements");
-    }
-    if (!this.settings.elements.some((x) => x.categoryId === "architecture")) {
-      this.settings.elements.push(...architectureElements);
-      console.log("[Mermaid Tools] added Architecture diagram elements");
+    this.settings.defaultElementCategoryIds = Array.from(installedCategoryIds);
+    return settingsChanged;
+  }
+  async saveSettings(options = {}) {
+    var _a;
+    await this.saveData(this.settings);
+    if ((_a = options.refreshToolbar) != null ? _a : true) {
+      await this.refreshToolbarViews();
     }
   }
-  async saveSettings() {
-    await this.saveData(this.settings);
-    await this.activateView();
+  async refreshToolbarViews() {
+    const toolbarLeaves = this.app.workspace.getLeavesOfType(MermaidToolbarView.VIEW_TYPE);
+    await Promise.all(toolbarLeaves.map(async (leaf) => {
+      if (leaf.view instanceof MermaidToolbarView) {
+        await leaf.view.recreateToolbar(this.settings.selectedCategoryId);
+      }
+    }));
   }
   async activateView() {
     var _a;
     this.app.workspace.detachLeavesOfType(MermaidToolbarView.VIEW_TYPE);
-    if (this.app.workspace === null)
-      return;
-    await ((_a = this.app.workspace.getRightLeaf(false)) == null ? void 0 : _a.setViewState({
+    const leaf = (_a = this.app.workspace.getRightLeaf(false)) != null ? _a : this.app.workspace.getLeaf(true);
+    await leaf.setViewState({
       type: MermaidToolbarView.VIEW_TYPE,
       active: true
-    }));
-    this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(MermaidToolbarView.VIEW_TYPE)[0]);
+    });
+    await this.app.workspace.revealLeaf(leaf);
   }
   insertTextAtCursor(text) {
-    this._textEditorService.insertTextAtCursor(this.activeEditor, text);
+    var _a, _b;
+    const editor = (_b = (_a = this.app.workspace.activeEditor) == null ? void 0 : _a.editor) != null ? _b : this.activeEditor;
+    try {
+      this._textEditorService.insertTextAtCursor(editor, text);
+      this.activeEditor = editor != null ? editor : this.activeEditor;
+    } catch (error) {
+      new import_obsidian7.Notice(getErrorMessage5(error));
+    }
   }
 };
+function getErrorMessage5(error) {
+  return error instanceof Error ? error.message : String(error);
+}
 
 /* nosourcemap */

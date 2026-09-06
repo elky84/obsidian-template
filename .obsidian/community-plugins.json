@@ -26,5 +26,6 @@
   "obsidian-thumbnails",
   "todoist-sync-plugin",
   "obsidian-task-progress-bar",
-  "rss-dashboard"
+  "rss-dashboard",
+  "advanced-rename-and-delete-handler"
 ]
