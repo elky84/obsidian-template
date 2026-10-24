@@ -1,53 +1,71 @@
 {
-  "scanned": true,
+  "scanned": false,
+  "seededTaskStatuses": "[ ] -> [x] TODO\n[x] -> [ ] DONE\n[/] -> [x] IN_PROGRESS\n[-] -> [ ] CANCELLED\n[ ] -> [x] TODO\n[/] -> [x] IN_PROGRESS\n[x] -> [ ] DONE\n[-] -> [ ] CANCELLED\n[>] -> [x] TODO\n[<] -> [x] TODO\n[?] -> [x] TODO\n[!] -> [x] TODO\n[*] -> [x] TODO\n[\"] -> [x] TODO\n[l] -> [x] TODO\n[b] -> [x] TODO\n[i] -> [x] TODO\n[S] -> [x] TODO\n[I] -> [x] TODO\n[p] -> [x] TODO\n[c] -> [x] TODO\n[f] -> [x] TODO\n[k] -> [x] TODO\n[w] -> [x] TODO\n[u] -> [x] TODO\n[d] -> [x] TODO",
   "reminders": {
     "Periodic/Weekly/2026-W09.md": [
       {
         "title": "Weekly 노트 생성",
         "time": "2026-03-01 00:00",
-        "rowNumber": 13
+        "rowNumber": 13,
+        "muted": false
       }
     ],
     "Periodic/Yearly/2026.md": [
       {
         "title": "회고",
         "time": "2026-12-31 13:00",
-        "rowNumber": 11
+        "rowNumber": 11,
+        "muted": false
       },
       {
         "title": "Yearly 노트 생성",
         "time": "2027-01-01 00:00",
-        "rowNumber": 12
+        "rowNumber": 12,
+        "muted": false
       }
     ],
     "Periodic/Monthly/2026-02.md": [
       {
         "title": "Monthly 노트 생성",
         "time": "2026-03-01 00:00",
-        "rowNumber": 12
+        "rowNumber": 12,
+        "muted": false
       }
     ],
     "Periodic/Quarterly/2026-Q1.md": [
       {
         "title": "회고",
         "time": "2026-03-31 13:00",
-        "rowNumber": 11
+        "rowNumber": 11,
+        "muted": false
       },
       {
         "title": "Quarterly 노트 생성",
         "time": "2026-04-01 00:00",
-        "rowNumber": 12
+        "rowNumber": 12,
+        "muted": false
       }
     ]
   },
   "debug": false,
+  "dndUntil": null,
   "settings": {
     "reminderTime": "10:00",
     "reminderTimeStep": 15,
     "laters": "In 30 minutes\nIn 1 hour\nIn 3 hours\nTomorrow\nNext week",
+    "enableNotification": true,
+    "reNotifyMutedOnStartup": false,
+    "notificationPopupStyle": "toast",
+    "openNoteOnReminderClick": false,
     "useSystemNotification": false,
+    "showPopupWithSystemNotification": false,
+    "keepSystemNotificationOnScreen": false,
+    "focusDoneButtonOnPopup": false,
+    "showOverdueCountInStatusBar": true,
     "autoCompleteTrigger": "(@",
+    "convertNonTaskLines": true,
     "primaryReminderFormat": "TasksPluginReminderFormat",
+    "editorReminderDisplay": true,
     "enableReminderPluginReminderFormat": true,
     "dateFormat": "YYYY-MM-DD",
     "dateTimeFormat": "YYYY-MM-DD HH:mm",
@@ -55,8 +73,22 @@
     "linkDatesToDailyNotes": true,
     "enableTasksPluginReminderFormat": true,
     "useCustomEmojiForTasksPlugin": true,
+    "useReminderTimeFallbackForTasksPlugin": false,
     "removeTagsForTasksPlugin": false,
+    "taskStatuses": "",
+    "enableDataviewReminderFormat": false,
+    "dataviewReminderFieldName": "reminder",
     "enableKanbanPluginReminderFormat": true,
+    "yearMonthDisplayFormat": "YYYY, MMMM",
+    "monthDayDisplayFormat": "MM/DD",
+    "shortDateWithWeekdayDisplayFormat": "M/DD (ddd)",
+    "timeDisplayFormat": "HH:mm",
+    "weekStart": "0",
+    "ntfyEnabled": false,
+    "ntfyServerUrl": "https://ntfy.sh",
+    "ntfyTopic": "",
+    "ntfyAccessToken": "",
+    "excludedPaths": "",
     "editDetectionSec": 10,
     "reminderCheckIntervalSec": 5
   }

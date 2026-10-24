@@ -62,7 +62,6 @@
   "penModeDoubleTapEraser": true,
   "penModeSingleFingerPanning": true,
   "penModeCrosshairVisible": true,
-  "panWithRightMouseButton": false,
   "renderImageInMarkdownReadingMode": false,
   "renderImageInHoverPreviewForMDNotes": false,
   "renderImageInMarkdownToPDF": false,
@@ -159,10 +158,11 @@
       }
     }
   },
+  "markdownImageDeletionPreference": "ask",
   "scriptEngineSettings": {},
   "autostartScripts": {},
   "autostartScriptFailures": {},
-  "previousRelease": "2.27.2",
+  "previousRelease": "2.29.0",
   "showReleaseNotes": true,
   "useDeclarativeSettings": true,
   "excalidrawMasteryPromoCollapsed": false,
@@ -1109,6 +1109,7 @@
     "margin": "normal"
   },
   "disableContextMenu": false,
+  "panWithRightMouseButton": false,
   "onceOffGPTVersionReset": true,
   "autosave": true,
   "openAIAPIToken": "",

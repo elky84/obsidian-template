@@ -28,7 +28,7 @@ __export(main_exports, {
   default: () => MermaidPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian7 = require("obsidian");
+var import_obsidian8 = require("obsidian");
 
 // src/elements/sampleDiagrams.ts
 var sampleDiagrams = {
@@ -1768,8 +1768,7 @@ var MermaidElementService = class {
     if (!category) {
       return this.wrapForPastingIntoEditor(this.wrapWithMermaidBlock("flowchart TD\nStart --> End"));
     }
-    const sampleKey = category.name;
-    const sample = sampleDiagrams[sampleKey];
+    const sample = sampleDiagrams[category.name];
     if (sample) {
       return this.wrapForPastingIntoEditor(this.wrapWithMermaidBlock(sample));
     }
@@ -1952,7 +1951,12 @@ var EditMermaidElementModal = class extends import_obsidian2.Modal {
     this._categoryService = _categoryService;
     this._element = { ...element };
   }
-  async onOpen() {
+  onOpen() {
+    void this.renderContent().catch((error) => {
+      new import_obsidian2.Notice(`Unable to open element editor: ${getErrorMessage(error)}`);
+    });
+  }
+  async renderContent() {
     const { contentEl } = this;
     contentEl.addClass("mermaid-tools-edit-element-modal");
     contentEl.createEl("h2", { text: "Edit element" });
@@ -1975,9 +1979,9 @@ var EditMermaidElementModal = class extends import_obsidian2.Modal {
       option.value = category.id;
     }
     elementCategoryEl.value = this._element.categoryId;
-    elementCategoryEl.onchange = async () => {
+    elementCategoryEl.onchange = () => {
       this._element.categoryId = elementCategoryEl.value;
-      await this.renderPreview(mermaid, renderEl);
+      void this.renderPreview(mermaid, renderEl);
     };
     const elementDescriptionContainerEl = contentEl.createDiv();
     elementDescriptionContainerEl.createEl("label", { text: "Description" });
@@ -1990,9 +1994,9 @@ var EditMermaidElementModal = class extends import_obsidian2.Modal {
     elementContentContainerEl.createEl("label", { text: "Content" });
     const elementContentEl = elementContentContainerEl.createEl("textarea", { text: this._element.content });
     elementContentEl.addClass("mermaid-tools-element-content-input");
-    elementContentEl.onchange = async () => {
+    elementContentEl.onchange = () => {
       this._element.content = elementContentEl.value;
-      await this.renderPreview(mermaid, renderEl);
+      void this.renderPreview(mermaid, renderEl);
     };
     const saveButtonEl = contentEl.createEl("button", { text: "Save" });
     saveButtonEl.onclick = () => {
@@ -2151,11 +2155,30 @@ var MermaidToolsSettingsTab = class extends import_obsidian4.PluginSettingTab {
     this._app = _app;
     this._plugin = _plugin;
   }
-  async display() {
-    await renderSettings(this.containerEl, this._plugin);
+  getSettingDefinitions() {
+    return [{
+      name: "Manage elements and categories",
+      desc: "Add, edit, duplicate, delete, and reorder Mermaid toolbar elements and diagram categories.",
+      aliases: ["wrapping", "description", "content", "sorting order", "custom categories"],
+      render: (setting) => {
+        setting.settingEl.empty();
+        setting.settingEl.addClass("mermaid-tools-settings-management");
+        const contentEl = setting.settingEl.createDiv();
+        this.renderContent(contentEl);
+      }
+    }];
+  }
+  display() {
+    this.renderContent(this.containerEl);
+  }
+  renderContent(containerEl) {
+    void renderSettings(containerEl, this._plugin).catch((error) => {
+      new import_obsidian4.Notice(`Unable to load Mermaid settings: ${getErrorMessage3(error)}`);
+    });
   }
 };
 async function renderSettings(containerEl, plugin) {
+  containerEl.addClass("mermaid-tools-settings-content");
   const mermaid = await (0, import_obsidian4.loadMermaid)();
   const categoryService = CategoryService.getInstance();
   categoryService.loadCategories(plugin.settings.customCategories, plugin.settings.defaultCategorySortOrders, plugin.settings.categoryModifications);
@@ -2442,7 +2465,7 @@ async function deleteElement(element, plugin, parentEl) {
   await renderSettingsFromParent(parentEl, plugin);
 }
 async function renderSettingsFromParent(parentEl, plugin) {
-  const settingsContainer = parentEl.closest(".vertical-tab-content");
+  const settingsContainer = parentEl.closest(".mermaid-tools-settings-content");
   if (settingsContainer instanceof HTMLElement) {
     await renderSettings(settingsContainer, plugin);
   }
@@ -2486,15 +2509,39 @@ var ConfirmActionModal = class extends import_obsidian4.Modal {
 };
 
 // src/ui/toolbarView/mermaidToolbarView.ts
-var import_obsidian6 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 
 // src/ui/toolbarView/viewHelpers.ts
+var import_obsidian6 = require("obsidian");
+
+// src/core/mermaidRenderer.ts
 var import_obsidian5 = require("obsidian");
+function getMermaidPreviewTheme(doc) {
+  return doc.body.classList.contains("theme-dark") ? "dark" : "default";
+}
+function renderMermaidPreview(mermaid, id, diagram, doc) {
+  var _a, _b, _c, _d;
+  const frontmatter = diagram.match(/^\s*---\r?\n([\s\S]*?\r?\n)?---[ \t]*(?:\r?\n|$)/);
+  let theme = getMermaidPreviewTheme(doc);
+  if (frontmatter) {
+    const metadata = (0, import_obsidian5.parseYaml)((_a = frontmatter[1]) != null ? _a : "");
+    theme = (_c = (_b = metadata == null ? void 0 : metadata.config) == null ? void 0 : _b.theme) != null ? _c : theme;
+  }
+  const directive = `%%{init: ${JSON.stringify({ theme })}}%%
+`;
+  const offset = (_d = frontmatter == null ? void 0 : frontmatter[0].length) != null ? _d : 0;
+  const separator = offset > 0 && !diagram.slice(0, offset).endsWith("\n") ? "\n" : "";
+  const previewDiagram = diagram.slice(0, offset) + separator + directive + diagram.slice(offset);
+  return mermaid.render(id, previewDiagram);
+}
+
+// src/ui/toolbarView/viewHelpers.ts
 var TOOLBAR_ELEMENT_CLASS_NAME = "mermaid-toolbar-element";
 var TOOLBAR_ELEMENTS_CONTAINER_CLASS_NAME = "mermaid-toolbar-elements-container";
 var TOOLBAR_ELEMENTS_CONTAINER_ID = "mermaid-toolbar-elements-container-id";
-async function createMermaidToolbar(topRowButtons, items, selectedCategoryId, onCategoryChanged, onElementClick, categoryService) {
-  const container = document.createElement("div");
+async function createMermaidToolbar(topRowButtons, items, selectedCategoryId, onCategoryChanged, onElementClick, categoryService, doc) {
+  const container = doc.body.createDiv();
+  container.detach();
   const topRow = container.createDiv();
   topRow.addClass("mermaid-toolbar-top-row");
   const elementsContainer = container.createDiv();
@@ -2507,12 +2554,12 @@ async function createMermaidToolbar(topRowButtons, items, selectedCategoryId, on
 }
 function createTopRowBtns(parentEl, buttons) {
   buttons.forEach((btn) => {
-    const b = new import_obsidian5.ButtonComponent(parentEl).setClass("clickable-icon").setIcon(btn.iconName).setTooltip(btn.tooltip).onClick(btn.callback);
+    new import_obsidian6.ButtonComponent(parentEl).setClass("clickable-icon").setIcon(btn.iconName).setTooltip(btn.tooltip).onClick(btn.callback);
   });
 }
 function createDropdown(parentEl, elementsContainer, items, selectedCategoryId, onSelectionChanged, onElClick, categoryService) {
   const categories = categoryService.getCategories();
-  const dropdown = new import_obsidian5.DropdownComponent(parentEl);
+  const dropdown = new import_obsidian6.DropdownComponent(parentEl);
   categories.forEach((category) => {
     dropdown.addOption(category.id, category.name);
   });
@@ -2528,7 +2575,7 @@ async function handleCategoryChanged(elementsContainer, categoryId, items, onSel
 async function recreateElementsSection(sectionContainer, categoryId, items, onElClick) {
   sectionContainer.empty();
   const elemService = new MermaidElementService();
-  const mermaid = await (0, import_obsidian5.loadMermaid)();
+  const mermaid = await (0, import_obsidian6.loadMermaid)();
   const filteredSortedItems = items.filter((i) => i.categoryId === categoryId).sort((a, b) => a.sortingOrder - b.sortingOrder);
   for (const [index, elem] of filteredSortedItems.entries()) {
     const el = createToolbarElement(sectionContainer);
@@ -2536,7 +2583,7 @@ async function recreateElementsSection(sectionContainer, categoryId, items, onEl
     const diagram = elemService.wrapAsCompleteDiagram(elem);
     el.title = elem.description;
     try {
-      const { svg } = await mermaid.render(createMermaidPreviewId2(), diagram);
+      const { svg } = await renderMermaidPreview(mermaid, createMermaidPreviewId2(), diagram, sectionContainer.ownerDocument);
       setMermaidSvgContent(el, svg);
     } catch (error) {
       renderToolbarElementError(el, elem.description, error);
@@ -2575,9 +2622,10 @@ var MermaidToolbarButton = class {
 };
 
 // src/ui/toolbarView/mermaidToolbarView.ts
-var _MermaidToolbarView = class extends import_obsidian6.ItemView {
+var _MermaidToolbarView = class extends import_obsidian7.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
+    this.toolbarRenderVersion = 0;
     this.topRowButtons = [
       new MermaidToolbarButton("insert Mermaid code block with sample diagram", "code-2", () => this.insertTextAtCursor(this._plugin._mermaidElementService.getSampleDiagram(this._plugin.settings.selectedCategoryId))),
       new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid.js.org/intro/", "_blank", "noopener")),
@@ -2592,13 +2640,23 @@ var _MermaidToolbarView = class extends import_obsidian6.ItemView {
     this.categoryService = CategoryService.getInstance();
     this.categoryService.loadCategories(plugin.settings.customCategories, plugin.settings.defaultCategorySortOrders, plugin.settings.categoryModifications);
     this.containerEl.children[1].addClass("mermaid-toolbar-container");
+    this.previewTheme = getMermaidPreviewTheme(this.containerEl.ownerDocument);
+    this.registerEvent(this.app.workspace.on("css-change", () => {
+      const theme = getMermaidPreviewTheme(this.containerEl.ownerDocument);
+      if (theme !== this.previewTheme) {
+        void this.recreateToolbar(this._plugin.settings.selectedCategoryId);
+      }
+    }));
   }
   async onOpen() {
     await this.recreateToolbar(this._plugin.settings.selectedCategoryId);
   }
   async onClose() {
+    this.toolbarRenderVersion++;
   }
   async recreateToolbar(selectedCategoryId) {
+    const renderVersion = ++this.toolbarRenderVersion;
+    this.previewTheme = getMermaidPreviewTheme(this.containerEl.ownerDocument);
     this.items = this._plugin.settings.elements;
     this.categoryService.loadCategories(this._plugin.settings.customCategories, this._plugin.settings.defaultCategorySortOrders, this._plugin.settings.categoryModifications);
     const container = this.containerEl.children[1];
@@ -2606,8 +2664,10 @@ var _MermaidToolbarView = class extends import_obsidian6.ItemView {
     const toolbarElement = await createMermaidToolbar(this.topRowButtons, this.items, selectedCategoryId, (newCategoryId) => {
       this._plugin.settings.selectedCategoryId = newCategoryId;
       void this._plugin.saveSettings({ refreshToolbar: false });
-    }, (text) => this.insertTextAtCursor(text), this.categoryService);
-    container.appendChild(toolbarElement);
+    }, (text) => this.insertTextAtCursor(text), this.categoryService, this.containerEl.ownerDocument);
+    if (renderVersion === this.toolbarRenderVersion) {
+      container.appendChild(toolbarElement);
+    }
   }
   insertTextAtCursor(text) {
     this._plugin.insertTextAtCursor(text);
@@ -2628,7 +2688,7 @@ MermaidToolbarView.VIEW_DESCRIPTION = "Mermaid Toolbar";
 
 // main.ts
 var TRIDENT_ICON_NAME = "trident-custom";
-var MermaidPlugin = class extends import_obsidian7.Plugin {
+var MermaidPlugin = class extends import_obsidian8.Plugin {
   constructor() {
     super(...arguments);
     this.activeEditor = null;
@@ -2656,9 +2716,6 @@ var MermaidPlugin = class extends import_obsidian7.Plugin {
       }
     });
     this.addSettingTab(new MermaidToolsSettingsTab(this.app, this));
-  }
-  async onunload() {
-    this.app.workspace.detachLeavesOfType(MermaidToolbarView.VIEW_TYPE);
   }
   async loadSettings() {
     var _a, _b, _c, _d, _e, _f;
@@ -2720,7 +2777,11 @@ var MermaidPlugin = class extends import_obsidian7.Plugin {
   }
   async activateView() {
     var _a;
-    this.app.workspace.detachLeavesOfType(MermaidToolbarView.VIEW_TYPE);
+    const existingLeaf = this.app.workspace.getLeavesOfType(MermaidToolbarView.VIEW_TYPE)[0];
+    if (existingLeaf) {
+      await this.app.workspace.revealLeaf(existingLeaf);
+      return;
+    }
     const leaf = (_a = this.app.workspace.getRightLeaf(false)) != null ? _a : this.app.workspace.getLeaf(true);
     await leaf.setViewState({
       type: MermaidToolbarView.VIEW_TYPE,
@@ -2735,7 +2796,7 @@ var MermaidPlugin = class extends import_obsidian7.Plugin {
       this._textEditorService.insertTextAtCursor(editor, text);
       this.activeEditor = editor != null ? editor : this.activeEditor;
     } catch (error) {
-      new import_obsidian7.Notice(getErrorMessage5(error));
+      new import_obsidian8.Notice(getErrorMessage5(error));
     }
   }
 };

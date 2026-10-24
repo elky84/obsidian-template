@@ -37,7 +37,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -229,7 +231,17 @@
             }
           },
           {
-            "id": "3b2e86263ab6e7d2",
+            "id": "91828d49809e47e6",
+            "type": "leaf",
+            "state": {
+              "type": "planner-time-tracker",
+              "state": {},
+              "icon": "timer",
+              "title": "Time Tracker"
+            }
+          },
+          {
+            "id": "784b73f448108daa",
             "type": "leaf",
             "state": {
               "type": "reminder-list",
@@ -252,7 +264,6 @@
       "canvas:새 캔버스 만들기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "markdown-importer:마크다운 형식 불러오기 열기": false,
       "audio-recorder:녹음 시작/정지": false,
       "bases:새 베이스 생성하기": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
@@ -266,7 +277,6 @@
       "chronology:Open Chronology": false,
       "obsidian-git:Open Git source control": false,
       "rss-dashboard:RSS dashboard": false,
-      "rss-dashboard:RSS discover": false,
       "periodic-notes:Open today": false,
       "obsidian-task-progress-bar:Open Task Genius view": false
     }

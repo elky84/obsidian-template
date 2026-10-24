@@ -18,18 +18,7 @@
   "markdownUrlFormat": "",
   "moveAttachmentToProperFolderUsedByMultipleNotesMode": "CopyAll",
   "networkImageDownloadTimeoutInSeconds": 30,
-  "proposedRenameDeleteSettings": {
-    "emptyFolderBehavior": "DeleteWithEmptyParents",
-    "excludePaths": [],
-    "includePaths": [],
-    "shouldHandleDeletions": false,
-    "shouldHandleRenames": true,
-    "shouldRenameAttachmentFiles": false,
-    "shouldRenameAttachmentFolder": true,
-    "treatAsAttachmentExtensions": [
-      ".excalidraw.md"
-    ]
-  },
+  "proposedRenameDeleteSettings": null,
   "renamedAttachmentFileName": "",
   "shouldPreserveImageMetadata": false,
   "shouldRenameAttachmentsCreatedByOtherPlugins": false,
